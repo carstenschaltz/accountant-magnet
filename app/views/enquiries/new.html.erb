@@ -1,0 +1,7 @@
+<h1>Submit an Enquiry</h1>
+<%= simple_form_for @enquiry do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :is_local %>
+  <%= f.submit %>
+<% end %>
