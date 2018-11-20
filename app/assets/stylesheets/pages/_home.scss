@@ -14,30 +14,6 @@ body {
   }
 }
 
-.primary-color {
-  background-color: orange;
-  border: none;
-  &:hover {
-    background-color: orange;
-    border: none;
-  &:active {
-    background-color: orange;
-    }
-  }
-}
-
-.secondary-color {
-  background-color: blue;
-  border: none;
-  &:hover {
-    background-color: blue;
-    border: none;
-  &:active {
-    background-color: blue;
-    }
-  }
-}
-
 .welcome-three-points {
   width: 100%;
   height: 200px;
