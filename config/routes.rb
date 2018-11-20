@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :accountants, only: :index
+
+  resources :users, only: [:show]
 end
+
