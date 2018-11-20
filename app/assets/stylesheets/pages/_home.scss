@@ -1,1 +1,100 @@
 // Specific CSS for your home-page
+// Specific CSS for your home-page
+
+body {
+  background-color: white;
+}
+
+.banner {
+  h1 {
+    color: black;
+  }
+  p {
+    color: black;
+  }
+}
+
+.primary-color {
+  background-color: orange;
+  border: none;
+  &:hover {
+    background-color: orange;
+    border: none;
+  &:active {
+    background-color: orange;
+    }
+  }
+}
+
+.secondary-color {
+  background-color: blue;
+  border: none;
+  &:hover {
+    background-color: blue;
+    border: none;
+  &:active {
+    background-color: blue;
+    }
+  }
+}
+
+.welcome-three-points {
+  width: 100%;
+  height: 200px;
+  background-color: #F8F8F8;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.point {
+  display: flex;
+  align-items: center;
+}
+
+.trusted-by{
+  width: 100%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.trusted-by p {
+  text-align: center;
+}
+
+.title {
+  font-weight: 300;
+  text-align: center;
+  text-transform: uppercase;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.heading-main {
+  font-weight: 300;
+  margin-bottom: 1.25rem;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+
+.company {
+  filter: grayscale(100%);
+}
+
+.how-it-works  {
+  h5 {
+    display: inline-block;
+    color: #EEA63E;
+  }
+  .number {
+    padding-bottom: 20px;
+  }
+}
+
+
+.item{
+  padding-bottom: 60px;
+}
