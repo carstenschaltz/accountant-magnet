@@ -1,2 +1,21 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="grey-wrapper">
+  <div class="container">
+    <div class="white-card">
+      <h1>h1 Lorem Ipsem</h1>
+      <h2>h2 Lorem Ipsem</h2>
+      <h3>h3 Lorem Ipsem</h3>
+      <p>Find me in app/views/pages/home.html.erb</p>
+      <%= link_to 'This is a link', root_path %><br>
+      <%= link_to "btn btn-primary", root_path, class:'btn btn-primary' %>
+      <%= link_to "btn btn-info", root_path, class:'btn btn-info' %>
+      <br><hr>
+      <%= link_to "btn btn-primary-outline", root_path, class:'btn btn-primary-outline' %>
+      <%= link_to "btn btn-info-outline", root_path, class:'btn btn-info-outline' %>
+    </div>
+  </div>
+  <div class="container">
+    <div class="white-card border-hover">
+      <h1>This card has class .border-hover</h1>
+    </div>
+  </div>
+</div>
