@@ -10,10 +10,10 @@ services.map! do |service|
   Service.create! name: service
 end
 
-u = User.create! name: "Paul", email: 'paul@abracadabra.com' company_size: '<1', company_name: 'Abracadabra Magicians Ltd', company_industry: 'Entertainment', company_location: 'London'
-u2 = User.create! name: "James", email: 'james@slimline.org' company_size: '1-10', company_name: 'Slimline Fashion inc', company_industry: 'Retail', company_location: 'Oxford'
-u3 = User.create! name: "Jennifer", email: 'jen@thedailyreporter.org' company_size: '10-25', company_name: 'The Daily Reporter', company_industry: 'Printing and Publishing', company_location: 'Reading'
-u4 = User.create! name: "Steven", email: 'steven.s@btinternet.net' company_size: '<1', company_name: 'The Fox and Hounds', company_industry: 'Catering (Pubs, Restaurants, Food and Drink)', company_location: 'Exeter'
+u = User.create! name: "Paul", email: 'paul@abracadabra.com', company_size: '<1', company_name: 'Abracadabra Magicians Ltd', company_industry: 'Entertainment', company_location: 'London'
+u2 = User.create! name: "James", email: 'james@slimline.org', company_size: '1-10', company_name: 'Slimline Fashion inc', company_industry: 'Retail', company_location: 'Oxford'
+u3 = User.create! name: "Jennifer", email: 'jen@thedailyreporter.org', company_size: '10-25', company_name: 'The Daily Reporter', company_industry: 'Printing and Publishing', company_location: 'Reading'
+u4 = User.create! name: "Steven", email: 'steven.s@btinternet.net', company_size: '<1', company_name: 'The Fox and Hounds', company_industry: 'Catering (Pubs, Restaurants, Food and Drink)', company_location: 'Exeter'
 
 e = Enquiry.create! title: "Import/Export taxation", user: u, is_local: true, description: "My company imports and distributes a lot of equipment from China, looking for some help with taxes."
 e2 = Enquiry.create! title: "General Bookkeeping", user: u2, is_local: false, description: "As my company has been growing I have been looking for someone to help keep the bookkeeping under control"
