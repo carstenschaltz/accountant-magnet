@@ -1,6 +1,6 @@
 class EnquiryPolicy < ApplicationPolicy
   def show?
-    record.user == user unless user.nil?
+    record.user == user # unless user.nil?
   end
 
   def new?
