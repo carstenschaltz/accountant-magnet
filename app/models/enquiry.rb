@@ -7,5 +7,5 @@ class Enquiry < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true
-  validates :is_local, presence: true
+  validates :is_local, inclusion: { in: [true, false] }
 end
