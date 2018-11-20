@@ -15,6 +15,13 @@ class EnquiriesController < ApplicationController
     @enquiry = Enquiry.new(enquiry_params)
     authorize @enquiry
     if @enquiry.save
+      services = params[:enquiry][:services]
+      services.each do |service_name|
+        if SERVICES.include?(service_name)
+          EnquiryService.create(enquiry: @enquiry, service: Service.find_by_name(service_name))
+        end
+      end
+      @enquiry.save
       redirect_to enquiry_path(@enquiry)
     else
       render :new
@@ -28,6 +35,6 @@ class EnquiriesController < ApplicationController
   end
 
   def enquiry_params
-    params.require(:enquiry).permit(:title, :description, :is_local)
+    params.require(:enquiry).permit(:title, :email, :description, :is_local)
   end
 end
