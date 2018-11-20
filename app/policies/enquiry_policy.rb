@@ -3,6 +3,14 @@ class EnquiryPolicy < ApplicationPolicy
     record.user == user # unless user.nil?
   end
 
+  def update?
+    record.user == user # unless user.nil?
+  end
+
+  def destroy?
+    record.user == user # unless user.nil?
+  end
+
   def new?
     create?
   end

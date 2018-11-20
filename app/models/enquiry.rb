@@ -1,7 +1,7 @@
 class Enquiry < ApplicationRecord
   belongs_to :user, optional: true
   has_many :quotes
-  has_many :enquiry_services
+  has_many :enquiry_services, dependent: :destroy
   has_many :services, through: :enquiry_services
   has_many :accountants, through: :quotes
 
