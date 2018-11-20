@@ -1,21 +1,58 @@
-<div class="grey-wrapper">
-  <div class="container">
-    <div class="white-card">
-      <h1>h1 Lorem Ipsem</h1>
-      <h2>h2 Lorem Ipsem</h2>
-      <h3>h3 Lorem Ipsem</h3>
-      <p>Find me in app/views/pages/home.html.erb</p>
-      <%= link_to 'This is a link', root_path %><br>
-      <%= link_to "btn btn-primary", root_path, class:'btn btn-primary' %>
-      <%= link_to "btn btn-info", root_path, class:'btn btn-info' %>
-      <br><hr>
-      <%= link_to "btn btn-primary-outline", root_path, class:'btn btn-primary-outline' %>
-      <%= link_to "btn btn-info-outline", root_path, class:'btn btn-info-outline' %>
+<div class="banner">
+  <div class="banner-content text-left">
+    <div>
+      <h1> Find top accountants in seconds from your network  </h1>
+      <p>Top companies rely on Stotles to find expert accountants for their business.</p>
+      <%= link_to "Lets get started", '#', class:'btn btn-primary btn-lg primary-color' %>
+      <%= link_to "Browse our accountants", '#', class:'btn btn-primary btn-lg secondary-color' %>
     </div>
-  </div>
-  <div class="container">
-    <div class="white-card border-hover">
-      <h1>This card has class .border-hover</h1>
-    </div>
+    <%= image_tag "landing-background.png" %>
   </div>
 </div>
+
+<div class="title">
+  <p>Trusted by </p>
+</div>
+<div class="trusted-by">
+  <div class="company">
+     <%= image_tag "airbnb.png", width: 120 %>
+  </div>
+   <div class="company">
+     <%= image_tag "lewagon.png", width: 120 %>
+  </div>
+   <div class="company">
+     <%= image_tag "crowdcube.jpg", width: 120 %>
+  </div>
+   <div class="company">
+     <%= image_tag "revolut.png", width: 120 %>
+  </div>
+   <div class="company">
+     <%= image_tag "muchbetteradventures.png", width: 120 %>
+  </div>
+</div>
+
+
+<div class="how-it-works" id ="works">
+  <div class="container">
+    <h4 class = "heading-main">How does Stotles work?</h4>
+    <div class="row">
+      <div class="col-xs-6 item">
+          <%= image_tag "one.png", width: 30, class: "number" %>
+          <h5>Tell us about your enquiry</h5>
+           <p> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia </p>
+      </div>
+      <div class="col-xs-6 item">
+        <%= image_tag "two.png", width: 30, class: "number" %>
+        <h5> We'll work our magic</h5>
+         <p> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia </p>
+      </div>
+        <div class="col-xs-6 item">
+          <%= image_tag "three.png", width: 30, class: "number" %>
+          <h5>Review and hire a expert</h5>
+           <p> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia </p>
+        </div>
+        <div class="col-xs-6 item">
+          <%= image_tag "four.png", width: 30, class: "number" %>
+          <h5>Work with them with no risk</h5>
+           <p> "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia </p>
+        </div>
