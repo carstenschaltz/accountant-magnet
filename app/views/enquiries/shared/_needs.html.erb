@@ -1,0 +1,10 @@
+<h3>Which services are you looking for? Check all that apply</h3>
+<%= f.input :services, as: :check_boxes, collection: SERVICES %>
+<hr>
+<%= f.input :is_local, label: "I'm only interested in local accountants" %>
+<hr>
+<%= f.input :title, label: "Subject" %>
+<%= f.input :description, placeholder: 'Describe what you are looking for' %>
+<br>
+<button class="btn btn-default btn-secondary" type="button">Back</button>
+<button class="btn btn-default btn-primary" type="button">Next</button>

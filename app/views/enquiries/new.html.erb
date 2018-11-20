@@ -1,9 +1,28 @@
-<h1>Submit an Enquiry</h1>
-<%= simple_form_for @enquiry do |f| %>
-  <%= f.input :title %>
-  <%= f.input :services, as: :check_boxes, collection: SERVICES %>
-  <%= f.input :description %>
-  <%= f.input :is_local %>
-  <%= f.input :email %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <h1>Submit an Enquiry</h1>
+  <div class="tabs-area">
+    <div class="col-xs-12">
+      <div class="col-xs-3">
+        <ul class="nav nav-tabs tabs-left sideways">
+          <li class="active"><a href="#needs-v" data-toggle="tab">What you need</a></li>
+          <li><a href="#you-v" data-toggle="tab">A bit about you</a></li>
+          <li><a href="#confirm-v" data-toggle="tab">Confirm & send</a></li>
+        </ul>
+      </div>
+
+      <div class="col-xs-9">
+        <%= simple_form_for @enquiry, html: { class: "tab-content"} do |f| %>
+          <div class="tab-pane active" id="needs-v">
+            <%= render '/enquiries/shared/needs', f: f %>
+          </div>
+          <div class="tab-pane" id="you-v">
+            <%= render '/enquiries/shared/you', f: f %>
+          </div>
+          <div class="tab-pane" id="confirm-v">
+            <%= render '/enquiries/shared/submit', f: f %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
