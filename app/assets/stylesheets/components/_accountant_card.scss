@@ -37,9 +37,12 @@
 
 .acct-card-services {
   display: flex;
-  flex-direction: row-reverse;
   flex-wrap: wrap;
   flex-grow: 1;
+}
+
+.flex-reverse {
+  flex-direction: row-reverse;
 }
 
 .card-service {
@@ -51,7 +54,13 @@
   margin: 5px;
   p {
     font-weight: normal;
+    margin: 0;
   }
+}
+
+.display-flex {
+  display: flex;
+  justify-content: space-between;
 }
 
 .text-bold {
@@ -60,4 +69,14 @@
 
 .sm-margin {
     margin: 3px 0px 5px 0px;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.qual-logo {
+  width: 75px;
+  height: 75px;
+  margin-right: 5px;
 }

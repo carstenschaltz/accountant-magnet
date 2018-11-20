@@ -17,7 +17,7 @@
             <p><%= accountant.email %></p>
             <p><%= accountant.phone_number %></p>
           </div>
-          <div class="acct-card-services">
+          <div class="acct-card-services flex-reverse">
             <% accountant.services.each do |service| %>
               <div class="card-service">
                 <p><%= service.name %></p>
