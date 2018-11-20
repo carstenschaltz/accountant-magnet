@@ -10,10 +10,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_181140) do
+ActiveRecord::Schema.define(version: 2018_11_20_120708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accountant_services", force: :cascade do |t|
+    t.bigint "service_id"
+    t.bigint "accountant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["accountant_id"], name: "index_accountant_services_on_accountant_id"
+    t.index ["service_id"], name: "index_accountant_services_on_service_id"
+  end
+
+  create_table "accountants", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone_number"
+    t.text "bio"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "enquiries", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.boolean "is_local"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_enquiries_on_user_id"
+  end
+
+  create_table "enquiry_services", force: :cascade do |t|
+    t.bigint "service_id"
+    t.bigint "enquiry_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["enquiry_id"], name: "index_enquiry_services_on_enquiry_id"
+    t.index ["service_id"], name: "index_enquiry_services_on_service_id"
+  end
+
+  create_table "quotes", force: :cascade do |t|
+    t.boolean "successful"
+    t.text "message"
+    t.bigint "enquiry_id"
+    t.bigint "accountant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["accountant_id"], name: "index_quotes_on_accountant_id"
+    t.index ["enquiry_id"], name: "index_quotes_on_enquiry_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +78,20 @@ ActiveRecord::Schema.define(version: 2018_11_19_181140) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "company_industry"
+    t.string "company_name"
+    t.string "company_size"
+    t.string "company_location"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "accountant_services", "accountants"
+  add_foreign_key "accountant_services", "services"
+  add_foreign_key "enquiries", "users"
+  add_foreign_key "enquiry_services", "enquiries"
+  add_foreign_key "enquiry_services", "services"
+  add_foreign_key "quotes", "accountants"
+  add_foreign_key "quotes", "enquiries"
 end
