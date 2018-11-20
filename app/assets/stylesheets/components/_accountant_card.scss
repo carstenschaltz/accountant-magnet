@@ -1,0 +1,63 @@
+.grey-text {
+  color: $dk-grey;
+  :hover {
+    color: $dk-grey;
+  }
+  :visited {
+    color: $dk-grey;
+  }
+}
+
+.acct-card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  h2 {
+    margin-top: 12.5px;
+    margin-bottom: 0;
+  }
+  p {
+    margin: 0;
+    color: $primary-orange;
+    font-weight: normal;
+  }
+}
+
+.acct-card-details {
+  display: flex;
+  justify-content: space-between;
+  p {
+    margin: 0;
+  }
+}
+
+.acct-card-contact {
+  margin-right: 10px;
+}
+
+.acct-card-services {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+.card-service {
+  align-self: flex-start;
+  font-size: 14px;
+  border-radius: 14px;
+  background-color: $secondary-blue;
+  padding: 0 12px;
+  margin: 5px;
+  p {
+    font-weight: normal;
+  }
+}
+
+.text-bold {
+  font-weight: normal;
+}
+
+.sm-margin {
+    margin: 3px 0px 5px 0px;
+}

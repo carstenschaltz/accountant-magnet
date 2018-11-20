@@ -1,0 +1,31 @@
+<div class="container">
+
+    <%= link_to accountant_path(accountant), class:'grey-text' do %>
+      <div class="white-card border-hover">
+        <div class="acct-card-title">
+          <div>
+            <h2><%= accountant.name %></h2>
+          </div>
+          <div>
+            <p>See more details</p>
+          </div>
+        </div>
+        <hr class="sm-margin">
+        <div class="acct-card-details">
+          <div class="acct-card-contact">
+            <p class="text-bold"><%= accountant.location %></p>
+            <p><%= accountant.email %></p>
+            <p><%= accountant.phone_number %></p>
+          </div>
+          <div class="acct-card-services">
+            <% accountant.services.each do |service| %>
+              <div class="card-service">
+                <p><%= service.name %></p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+</div>
