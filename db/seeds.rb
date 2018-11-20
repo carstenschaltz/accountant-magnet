@@ -40,7 +40,7 @@ as6 = AccountantService.create! accountant: a2, service: services[-1] # other
 as7 = AccountantService.create! accountant: a3, service: services[4] # M&A Transaction
 as8 = AccountantService.create! accountant: a4, service: services[0] # annual accounts
 
-q = Quote.create! message: "Can you solve my problems?", successful: true, enquiry: e, accountant: a4
-q2 = Quote.create! message: "Can you help me manage my books?", successful: false, enquiry: e2, accountant: a2
-q3 = Quote.create! message: "Are you able to help with the company audits?", successful: true, enquiry: e3, accountant: a
-q4 = Quote.create! message: "The pub is going through some hard times, are you able to help us out?", successful: false, enquiry: e4, accountant: a3
+q = Quote.create! message: "I can offer my accountancy services to you", successful: true, enquiry: e, accountant: a4
+q2 = Quote.create! message: "We offer excellent accounting for pubs", successful: false, enquiry: e2, accountant: a2
+q3 = Quote.create! message: "We can offer a contract for £30p hour", successful: true, enquiry: e3, accountant: a
+q4 = Quote.create! message: "£70/h for our services", successful: false, enquiry: e4, accountant: a3

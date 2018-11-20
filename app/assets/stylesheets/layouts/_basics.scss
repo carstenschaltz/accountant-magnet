@@ -23,6 +23,23 @@ a {
   margin: 10px 0;
 }
 
+.enquiry-card {
+  background-color: white;
+  padding: 10px 30px 20px 30px;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+  margin: 10px 0;
+  width: 70%;
+  height: 250px;
+}
+
+.quote-card{
+  background-color: white;
+  padding: 10px 30px 20px 30px;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+  margin: 10px 0;
+  width: 70%;
+  height: 250px;
+}
 .border-hover:hover {
   border: 1px solid $secondary-blue;
 }

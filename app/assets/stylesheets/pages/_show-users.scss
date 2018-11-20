@@ -1,0 +1,35 @@
+.vertical-nav {
+  width: 20%;
+  height: 100vh;
+  background-color: #5C5A59;
+  display: flex;
+}
+
+
+.flex-parent {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.enquiry-card {
+  background-color: white;
+  padding: 10px 30px 20px 30px;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+  margin: 10px 0;
+  width: 75%;
+  height: 250px;
+}
+
+
+.quote-card{
+  background-color: grey;
+  padding: 10px 30px 20px 30px;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+  margin: 10px 0;
+  width: 150px;
+  height: 200px;
+}
+
+
+
