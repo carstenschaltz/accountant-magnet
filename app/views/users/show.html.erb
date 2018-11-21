@@ -16,8 +16,14 @@
       </ul>
   </div>
 
-  <div class="context-sidebar">
-    <h2>Your Enquiries</h2>
+  <div class="context-sidebar grey-wrapper">
+    <h3>Your Enquiries</h3>
+      <div class="enquiry-context-card enquiry-card">
+      <% @user_enquiries.each do |enquiry| %>
+        <h2> <%= enquiry.title %></h2>
+        <p> <%= enquiry.description %> </p>
+      <% end %>
+    </div>
   </div>
 
   <div class="enquiries">
