@@ -3,7 +3,7 @@ class QuotesController < ApplicationController
     @accountant = Accountant.find(params[:accountant][:accountant_id])
     @enquiry = Enquiry.find(params[:accountant][:id])
     @quote = Quote.new(enquiry: @enquiry)
-    authorize @quote #need to adjust to be for quotes
+    authorize @quote
   end
 
   def create
