@@ -32,7 +32,7 @@
             <h4 class="modal-title" id="myModalLabel">Which of your postings do you want to invite <%= accountant.name %> to? </h4>
             <%= simple_form_for accountant, url: new_quote_path, method: :get do |f| %>
               <%= f.input :accountant_id, as: :hidden, input_html: { value: accountant.id } %>
-              <%= f.input :id, as: :radio_buttons, collection: @open_enquiries_no_quote, hint: "Postings with quotes from this accountant won't show here", label: "" %>
+              <%= f.input :id, as: :radio_buttons, collection: @open_enquiries_no_quote, hint: "Your postings that already have quotes from this accountant won't show", label: "" %>
               <%= f.submit "Invite to quote", class:'btn btn-primary' %>
             <% end %>
           </div>
