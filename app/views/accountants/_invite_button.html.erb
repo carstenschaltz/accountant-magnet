@@ -3,41 +3,80 @@
 </a>
 
 
-<% if user_signed_in? && current_user.enquiries.where(closed: false).length > 1 %>
+<% if user_signed_in? && @open_enquiries.length > 1 %>
 
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Which of your postings do you want to invite <%= accountant.name %> to? </h4>
-        </div>
-        <div class="modal-body">
-          <%= simple_form_for current_user, url: accountant_path(accountant), method: :get do |f| %>
-            <%= f.input_field :id, as: :check_boxes, collection: current_user.enquiries.where(closed: false) %>
-            <%= f.submit "Invite to quote", class:'btn btn-primary' %>
-          <% end %>
+  <% unless @open_enquiries_no_quote.any? %>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><strong><%= accountant.name %></strong> already knows about your enquiries</h4>
+          </div>
+          <div class="modal-body">
+            Pop over to your dashboard to check your postings
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= link_to "My dashboard", user_path(current_user), class:'btn btn-primary' %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-<% elsif user_signed_in? && current_user.enquiries.where(closed: false).length == 1 %>
-
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Great, we'll invite <strong><%= accountant.name %></strong> to quote for your enquiry <strong><%= current_user.enquiries.where(closed: false).first.title %></strong></h4>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <%= link_to "Confirm", new_enquiry_path, class:'btn btn-primary' %>
+  <% else %>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Which of your postings do you want to invite <%= accountant.name %> to? </h4>
+            <%= simple_form_for accountant, url: new_quote_path, method: :get do |f| %>
+              <%= f.input :accountant_id, as: :hidden, input_html: { value: accountant.id } %>
+              <%= f.input :id, as: :radio_buttons, collection: @open_enquiries_no_quote, hint: "Your postings that already have quotes from this accountant won't show", label: "" %>
+              <%= f.submit "Invite to quote", class:'btn btn-primary' %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
+
+<% elsif user_signed_in? && @open_enquiries.length == 1 %>
+
+  <% unless @open_enquiries_no_quote.any? %>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><strong><%= accountant.name %></strong> already knows about your enquiry <strong><%= @open_enquiries.first.title %></strong></h4>
+          </div>
+          <div class="modal-body">
+            Pop over to your dashboard to check your posting
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= link_to "My dashboard", user_path(current_user), class:'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Great, we'll invite <strong><%= accountant.name %></strong> to quote for your enquiry <strong><%= @open_enquiries.first.title %></strong></h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= link_to "Confirm", new_quote_path(accountant: {id: @open_enquiries.first.id, accountant_id: accountant.id}), class:'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 
 <% else %>
 

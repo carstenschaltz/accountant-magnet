@@ -1,0 +1,20 @@
+<div class="grey-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-md-offset-3">
+        <div class="white-card">
+          <h2>Invite <%= @accountant.name %> to quote</h2>
+          <hr>
+          <h4>Leave a message regarding <strong><%= @enquiry.title %>:</strong></h4>
+          <%= simple_form_for @quote do |f| %>
+            <%= f.input :accountant_id, as: :hidden, input_html: { value: @accountant.id } %>
+            <%= f.input :enquiry_id, as: :hidden, input_html: { value: @enquiry.id } %>
+            <%= f.input :message, label: false %>
+            <%= f.submit "Invite", class:'btn btn-primary btn-block' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
