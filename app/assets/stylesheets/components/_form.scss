@@ -1,6 +1,5 @@
 .service-choices {
   display: flex;
-  // justify-content: space-between;
   flex-wrap: wrap;
   margin: 20px 0;
 }
@@ -18,7 +17,7 @@
     cursor: pointer;
   }
   &.active-enquiry {
-  background: $blue;
+  background: $secondary-blue;
   color: white;
   opacity: 1;
   }
@@ -52,5 +51,33 @@ svg { overflow:visible }
         stroke-linecap: round;
         stroke-dashoffset: 0;
     }
+}
+
+#new_enquiry {
+  td {
+    padding: 30px 25px;
+    border-bottom: 1px solid $md-grey;
+    p {
+      opacity: 50%;
+    }
+  }
+}
+
+#services {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.selected-service {
+  background: $secondary-blue;
+  padding: 20px;
+  margin: 5px;
+  border-radius: 5px;
+  opacity: 1;
+  flex: 0 0 30%;
+  text-align: center;
+  color: white;
+  width: 50%;
+  font-weight: bold;
 }
 

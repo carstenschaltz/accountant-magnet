@@ -9,4 +9,6 @@ class Enquiry < ApplicationRecord
   validates :email, format: { with: /[^@]{1,}\@[^@.]{1,}\.[^@]{1,}/ }, presence: true
   validates :description, presence: true
   validates :is_local, inclusion: { in: [true, false] }
+  validates :industry, inclusion: { in: INDUSTRIES }
+  validates :size, inclusion: { in: COMPANY_SIZES }
 end
