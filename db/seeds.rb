@@ -20,6 +20,7 @@ e = Enquiry.create! title: "Import/Export taxation", user: u, is_local: true, de
 e2 = Enquiry.create! title: "General Bookkeeping", user: u2, is_local: false, description: "As my company has been growing I have been looking for someone to help keep the bookkeeping under control"
 e3 = Enquiry.create! title: "Audit", user: u3, is_local: false, description: "Looking for an accountant to help out with audits."
 e4 = Enquiry.create! title: "Financial difficulties", user: u4, is_local: true, description: "The pub is going through some hard times, we are looking for an accountant to help with insolvency."
+e5 = Enquiry.create! title: "Looking for a specalist in tax", user: u, is_local: true, description: "My company is going international and I want a tax specalist."
 
 es = EnquiryService.create! service: services[3], enquiry: e
 es2 = EnquiryService.create! service: services[5], enquiry: e2
@@ -44,3 +45,4 @@ q = Quote.create! message: "I can offer my accountancy services to you", success
 q2 = Quote.create! message: "We offer excellent accounting for pubs", successful: false, enquiry: e2, accountant: a2
 q3 = Quote.create! message: "We can offer a contract for £30p hour", successful: true, enquiry: e3, accountant: a
 q4 = Quote.create! message: "£70/h for our services", successful: false, enquiry: e4, accountant: a3
+q5 = Quote.create! message: "£100/h for our tax expertise", successful: false, enquiry: e, accountant: a3

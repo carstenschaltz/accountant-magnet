@@ -18,36 +18,40 @@
 
   <div class="context-sidebar grey-wrapper">
     <h3>Your Enquiries</h3>
-      <div class="enquiry-context-card enquiry-card">
       <% @user_enquiries.each do |enquiry| %>
+      <div class="enquiry-context-card enquiry-card">
         <h2> <%= enquiry.title %></h2>
         <p> <%= enquiry.description %> </p>
+      </div>
       <% end %>
-    </div>
   </div>
 
   <div class="enquiries">
-    <div class="enquiry-card">
       <% @user_enquiries.each do |enquiry| %>
+      <div class="enquiry-card">
         <h2> <%= enquiry.title %></h2>
         <p> <%= enquiry.description %> </p>
-      <% end %>
-    </div>
-
-  <div class="container">
-  <h3>Your Quotes</h3>
-    <div class="row">
-      <div class="col-xs-12 col-sm-4">
-        <div class="quote-card">
-           <% @user_enquiries.each do |enquiry| %>
-            <% enquiry.quotes.each do |quote| %>
-              <p><%= quote.message %></p>
-            <% end %>
-          <% end %>
-        </div>
       </div>
+      <% end %>
+
+      <div class="container">
+        <h3>Your Quotes</h3>
+        <div class="row">
+         <% @user_enquiries.each do |enquiry| %>
+          <% enquiry.quotes.each do |quote| %>
+            <div class="col-xs-12 col-sm-4">
+              <div class="quote-card">
+                <h4><%= quote.accountant.name %></h>
+                <p><%= quote.message %></p>
+                <p> <%= quote.accountant.email %></p>
+                <%= link_to "Connect", '#', class:'btn btn-primary btn primary-color' %>
+                <%= link_to "Discard", '#', class:'btn btn-info btn' %>
+              </div>
+            </div>
+            <% end %>
+            <% end %>
+        </div>
     </div>
-  </div>
 </div>
 
 
