@@ -14,7 +14,7 @@
         </div>
         <div class="modal-body">
           <%= simple_form_for current_user, url: accountant_path(accountant), method: :get do |f| %>
-            <%= f.input_field :id, as: :check_boxes, collection: current_user.enquiries.where(closed: false) %>
+            <%= f.input_field :id, as: :radio_buttons, collection: current_user.enquiries.where(closed: false) %>
             <%= f.submit "Invite to quote", class:'btn btn-primary' %>
           <% end %>
         </div>
@@ -33,7 +33,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <%= link_to "Confirm", new_enquiry_path, class:'btn btn-primary' %>
+          <%= link_to "Confirm", new_quote_path(user: {id: current_user.enquiries.where(closed: false).first.id }, id: accountant.id), class:'btn btn-primary' %>
         </div>
       </div>
     </div>
