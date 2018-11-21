@@ -1,0 +1,62 @@
+<a type="button" class="btn btn-primary-outline header-btn" data-toggle="modal" data-target="#myModal">
+  Invite to quote
+</a>
+
+
+<% if user_signed_in? && current_user.enquiries.where(closed: false).length > 1 %>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Which of your postings do you want to invite <%= accountant.name %> to? </h4>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for current_user, url: accountant_path(accountant), method: :get do |f| %>
+            <%= f.input_field :id, as: :check_boxes, collection: current_user.enquiries.where(closed: false) %>
+            <%= f.submit "Invite to quote", class:'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% elsif user_signed_in? && current_user.enquiries.where(closed: false).length == 1 %>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Great, we'll invite <strong><%= accountant.name %></strong> to quote for your enquiry <strong><%= current_user.enquiries.where(closed: false).first.title %></strong></h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= link_to "Confirm", new_enquiry_path, class:'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% else %>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">You don't have any postings yet</h4>
+        </div>
+        <div class="modal-body">
+          Let's quickly make one so you can get the help you deserve.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= link_to "Let's go!", new_enquiry_path, class:'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>

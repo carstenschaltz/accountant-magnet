@@ -37,3 +37,5 @@ SERVICES = ['Annual Accounts',
             'M&A/Transaction',
             'Bookkeeping',
             'Other']
+
+QUALIFICATIONS = ['ACCA']
