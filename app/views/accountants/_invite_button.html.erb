@@ -13,7 +13,7 @@
           <h4 class="modal-title" id="myModalLabel">Which of your postings do you want to invite <%= accountant.name %> to? </h4>
         </div>
         <div class="modal-body">
-          <%= simple_form_for current_user, url: accountant_path(accountant) do |f| %>
+          <%= simple_form_for current_user, url: accountant_path(accountant), method: :get do |f| %>
             <%= f.input_field :id, as: :check_boxes, collection: current_user.enquiries.where(closed: false) %>
             <%= f.submit "Invite to quote", class:'btn btn-primary' %>
           <% end %>
