@@ -1,55 +1,26 @@
-<div class="main-container">
-  <div class="sidebar">
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" href="#1b" data-toggle="tab">Your Enquiries</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#2b" data-toggle="tab">Your Quotes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#3b" data-toggle="tab">Your Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#4b" data-toggle="tab">New Enquiry</a>
-        </li>
-      </ul>
-  </div>
 
-  <div class="tab-content">
-    <div class="tab-pane active" id="1b">
-      <div class="context-sidebar grey-wrapper">
-        <h3>Your Enquiries</h3>
-        <ul class='nav'>
-          <% @user_enquiries.each_with_index do |enquiry, index| %>
-            <li class='nav-item'>
-              <a class='nav-link' href='#<%= index + 1 %>c' data-toggle='tab'>
-                <div class="enquiry-context-card enquiry-card">
-                  <h2> <%= enquiry.title %></h2>
-                  <p> <%= enquiry.description %> </p>
-                </div>
-              </a>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-    <div class="tab-pane" id="2b">
-      <h3>We use the class nav-pills instead of nav-tabs which automatically creates a background color for the tab</h3>
-    </div>
-    <div class="tab-pane" id="3b">
-      <h3>We applied clearfix to the tab-content to rid of the gap between the tab and the content</h3>
-    </div>
-    <div class="tab-pane" id="4b">
-      <h3>We use css to change the background color of the content to be equal to the tab</h3>
-    </div>
-  </div>
+  <!-- Nav tabs -->
+<div>
+  <ul class="nav nav-tabs" role="tablist">
+    <% @user_enquiries.each_with_index do |enquiry, index| %>
+      <li role="presentation" class="<%= 'active' if index == 0 %>"><a href="#enquiry-<%= index %>" aria-controls="enquiry-<%= index %>" role="tab" data-toggle="tab"><%= enquiry.title %></a></li>
+    <% end %>
+  </ul>
 
+  <!-- Tab panes -->
   <div class="tab-content">
     <% @user_enquiries.each_with_index do |enquiry, index| %>
-      <div class="tab-pane" id="<%= index + 1 %>c">
-        <div class="context-sidebar grey-wrapper">
+      <div role="tabpanel" class="tab-pane <%= 'active' if index == 0 %>" id="enquiry-<%= index %>">
+        <div class=" grey-wrapper">
           <div class="container">
+            <div class="display-flex">
+            <h3>Active Enquiry</h3>
+            <%= link_to "New Enquiry", new_enquiry_path, class:'btn btn-primary btn primary-color header-btn'%>
+            </div>
+            <div class="enquiry-card">
+              <h2> <%= enquiry.title %> </h2>
+              <%= enquiry.description %>
+            </div>
             <h3>Your Quotes</h3>
             <div class="row">
               <% enquiry.quotes.each do |quote| %>
@@ -67,9 +38,7 @@
           </div>
         </div>
       </div>
-  <% end %>
+    <% end %>
   </div>
 </div>
-
-
 
