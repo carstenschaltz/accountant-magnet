@@ -4,6 +4,7 @@ class CreateAccountants < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :email
       t.string :phone_number
+      t.string :website
       t.text :bio
       t.string :location
 
