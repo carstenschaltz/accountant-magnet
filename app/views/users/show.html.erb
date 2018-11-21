@@ -1,42 +1,48 @@
-<div class="flex-parent">
-  <div class="vertical-nav">
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Your Enquiries</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Your Quotes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Your Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">New Enquiry</a>
-      </li>
-    </ul>
+<div class="main-container">
+  <div class="sidebar">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Your Enquiries</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Your Quotes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Your Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">New Enquiry</a>
+        </li>
+      </ul>
   </div>
 
-  <!-- Enquiries and quotes-->
+  <div class="context-sidebar">
+    <h2>Your Enquiries</h2>
+  </div>
 
+  <div class="enquiries">
     <div class="enquiry-card">
       <% @user_enquiries.each do |enquiry| %>
-        <h1> <%= enquiry.title %></h1>
+        <h2> <%= enquiry.title %></h2>
         <p> <%= enquiry.description %> </p>
       <% end %>
     </div>
 
-
-
-  <h2>View quotes</h2>
-
-
-
-  <div class="quote-card">
-      <% @user_enquiries.each do |enquiry| %>
-        <% enquiry.quotes.each do |quote| %>
-          <p><%= quote.message %></p>
-        <% end %>
-      <% end %>
+  <div class="container">
+  <h3>Your Quotes</h3>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <div class="quote-card">
+           <% @user_enquiries.each do |enquiry| %>
+            <% enquiry.quotes.each do |quote| %>
+              <p><%= quote.message %></p>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+
+
