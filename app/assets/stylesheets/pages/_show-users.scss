@@ -12,8 +12,7 @@
 }
 
 .context-sidebar{
-  flex: 0 0 300px;
-  height: 100vh;
+  flex: 1 0 0px;
   overflow-y: scroll;
 }
 .enquiries{
@@ -30,12 +29,13 @@
   box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
   margin: 10px 0;
   max-width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .enquiry-context-card{
   max-height: 150px;
-  max-width: 90%;
-  display: flex; /*added*/
+  display: flex;
   flex-direction: column;
 }
 
@@ -52,6 +52,11 @@
   background-color: #F4F4F4;
   padding: 10px 30px 20px 30px;
   box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+  height: 250px;
+}
+
+.heading-tab {
+  width: 250px;
 }
 
 
