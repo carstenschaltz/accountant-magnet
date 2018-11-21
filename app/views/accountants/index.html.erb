@@ -1,5 +1,12 @@
-<h1>Our accountants</h1>
-<% @accountants.each do |accountant| %>
-  <%= accountant.name %>
-  <br>
-<% end %>
+<div class="grey-wrapper">
+  <div class="container">
+    <div class="white-card">
+      <h1>Find your accountant</h1>
+    </div>
+  </div>
+
+  <% @accountants.each do |accountant| %>
+    <%= render 'accountant_card', accountant: accountant %>
+  <% end %>
+</div>
+

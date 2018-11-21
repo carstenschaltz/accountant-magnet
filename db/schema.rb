@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2018_11_20_144650) do
     t.string "name"
     t.string "email"
     t.string "phone_number"
+    t.string "website"
     t.text "bio"
     t.string "location"
     t.datetime "created_at", null: false

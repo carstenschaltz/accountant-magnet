@@ -1,0 +1,52 @@
+h1 {
+  font-weight: bold;
+}
+
+p {
+  font-weight: 300;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.grey-wrapper {
+  background-color: $light-gray;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.white-card {
+  background: white;
+  padding: 10px 30px 20px 30px;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+  margin: 10px 0;
+}
+
+.border-hover:hover {
+  border: 1px solid $secondary-blue;
+}
+
+.btn-primary-outline {
+  color: $primary-orange;
+  border: 1px solid $primary-orange;
+  transition: background 0.1s ease;
+}
+
+.btn-primary-outline:hover {
+  color: white;
+  background-color: $primary-orange;
+  border: 1px solid $primary-orange;
+}
+
+.btn-info-outline {
+  color: $secondary-blue ;
+  border: 1px solid $secondary-blue;
+  transition: background 0.1s ease;
+}
+
+.btn-info-outline:hover {
+  color: white;
+  background-color: $secondary-blue;
+  border: 1px solid $secondary-blue;
+}
