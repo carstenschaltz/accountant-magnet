@@ -10,5 +10,4 @@ class Enquiry < ApplicationRecord
   validates :description, presence: true
   validates :is_local, inclusion: { in: [true, false] }
   validates :industry, inclusion: { in: INDUSTRIES }
-  validates :size, inclusion: { in: COMPANY_SIZES }
 end

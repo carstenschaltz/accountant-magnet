@@ -4,6 +4,7 @@ class CreateEnquiries < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :description
       t.boolean :is_local
+      t.boolean :closed, null: false, default: false
       t.references :user, foreign_key: true
 
       t.timestamps

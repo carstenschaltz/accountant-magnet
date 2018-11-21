@@ -1,14 +1,20 @@
 <div class="grey-wrapper">
   <div class="container">
-    <div class="white-card">
-      <h1><%= @accountant.name %></h1>
-      <p><%= @accountant.bio %></p>
+    <div class="white-card display-flex">
+      <div>
+        <h1><%= @accountant.name %></h1>
+        <p><%= @accountant.bio %></p>
+      </div>
+      <%= render 'invite_button', accountant: @accountant %>
     </div>
 
     <!-- contact info -->
 
     <div class="white-card">
-      <h3>Contact information</h3>
+      <div class="display-flex">
+        <h3>Contact information</h3>
+        <%= link_to "Get in touch", root_path, class:'btn btn-info-outline header-btn' %>
+      </div>
       <hr class="sm-margin">
       <div class="acct-card-details">
         <div class="acct-card-contact">
@@ -25,7 +31,7 @@
     <div class="white-card">
       <h3>Services and qualifications</h3>
       <hr class="sm-margin">
-      <div class="display-flex">
+      <gdiv class="display-flex">
         <div id="services">
           <p class="text-bold no-margin">Specializing in:</p>
           <div class="acct-card-services">
@@ -38,8 +44,8 @@
         </div>
         <div id="qualifications">
           <p class="text-bold no-margin">Qualified by:</p>
-          <div class="display-flex">
-            <img class="qual-logo" src="https://upload.wikimedia.org/wikipedia/commons/f/f0/ACCA_logo.svg" alt="">
+          <div id="qual-box">
+            <img id="qual-logo" src="https://upload.wikimedia.org/wikipedia/commons/f/f0/ACCA_logo.svg" alt="">
             <p> The Association of Chartered Certified Accountants</p>
           </div>
         </div>

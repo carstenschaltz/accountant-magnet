@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2018_11_21_150248) do
     t.string "name"
     t.string "email"
     t.string "phone_number"
+    t.string "website"
+    t.string "qualification"
     t.text "bio"
     t.string "location"
     t.datetime "created_at", null: false
@@ -38,6 +40,7 @@ ActiveRecord::Schema.define(version: 2018_11_21_150248) do
     t.string "title"
     t.text "description"
     t.boolean "is_local"
+    t.boolean "closed", default: false, null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -61,6 +64,7 @@ ActiveRecord::Schema.define(version: 2018_11_21_150248) do
 
   create_table "quotes", force: :cascade do |t|
     t.boolean "successful"
+    t.boolean "invite"
     t.text "message"
     t.bigint "enquiry_id"
     t.bigint "accountant_id"

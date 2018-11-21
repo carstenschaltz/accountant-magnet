@@ -39,6 +39,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-grow: 1;
+  max-width: 600px;
 }
 
 .flex-reverse {
@@ -75,8 +76,19 @@
   margin: 0;
 }
 
-.qual-logo {
+#qual-logo {
   width: 75px;
   height: 75px;
   margin-right: 5px;
+}
+
+#qual-box {
+  display: flex;
+  justify-content: space-between;
+  max-width: 300px;
+}
+
+.header-btn {
+  align-self: flex-end;
+  margin-bottom: 12.5px;
 }
