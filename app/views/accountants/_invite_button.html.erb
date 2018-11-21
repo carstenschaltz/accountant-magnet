@@ -13,7 +13,8 @@
           <h4 class="modal-title" id="myModalLabel">Which of your postings do you want to invite <%= accountant.name %> to? </h4>
         </div>
         <div class="modal-body">
-          <%= simple_form_for current_user, url: accountant_path(accountant), method: :get do |f| %>
+          <%= simple_form_for accountant, url: new_quote_path, method: :get do |f| %>
+            <%= f.input :accountant_id, as: :hidden, input_html: { value: accountant.id } %>
             <%= f.input_field :id, as: :radio_buttons, collection: current_user.enquiries.where(closed: false) %>
             <%= f.submit "Invite to quote", class:'btn btn-primary' %>
           <% end %>
@@ -33,7 +34,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <%= link_to "Confirm", new_quote_path(user: {id: current_user.enquiries.where(closed: false).first.id }, id: accountant.id), class:'btn btn-primary' %>
+          <%= link_to "Confirm", new_quote_path(accountant: {id: current_user.enquiries.where(closed: false).first.id, accountant_id: accountant.id}), class:'btn btn-primary' %>
         </div>
       </div>
     </div>
