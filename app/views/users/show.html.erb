@@ -13,7 +13,10 @@
       <div role="tabpanel" class="tab-pane <%= 'active' if index == 0 %>" id="enquiry-<%= index %>">
         <div class=" grey-wrapper">
           <div class="container">
+            <div class="display-flex">
             <h3>Active Enquiry</h3>
+            <%= link_to "New Enquiry", new_enquiry_path, class:'btn btn-primary btn primary-color header-btn'%>
+            </div>
             <div class="enquiry-card">
               <h2> <%= enquiry.title %> </h2>
               <%= enquiry.description %>
