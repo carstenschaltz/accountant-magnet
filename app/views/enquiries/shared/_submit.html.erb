@@ -1,10 +1,21 @@
-<h3>You need:</h3>
-<div class="needs">
+<div id="needs">
+  <h3>You need:</h3>
   <p>Services:</p>
-  <div class="services"></div>
+  <div id="services" class="service-choices"></div>
   <p>Subject:</p>
-  <div class="subject"></div>
+  <div id="subject"></div>
   <p>Description:</p>
-  <div class="description"></div>
+  <div id="description"></div>
+  <hr>
+  <div id="locality" class='hidden'>I'm only interested in local accountants</div>
 </div>
-<%= f.submit %>
+<hr>
+<div id="business">
+  <h3>Your business</h3>
+  <span>industry</span>
+  <span>turnover</span>
+  <span>location</span>
+</div>
+<%= f.input :email %>
+<button class="btn btn-secondary breathing-room back-button" type="button">Back</button>
+<%= f.submit class: 'btn btn-primary btn-lg' %>
