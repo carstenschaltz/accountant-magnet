@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :accountants, only: [:index, :show]
+  resources :enquiries, only: [:new, :create, :show, :destroy, :update]
 end
