@@ -1,0 +1,32 @@
+<h3>Which services are you looking for? Check all that apply</h3>
+<div class="form-group">
+  <label class="control-label check_boxes optional">Services</label>
+  <input type="hidden" name="enquiry[services][]" value="">
+  <div class="service-choices">
+    <% SERVICES.each_with_index do |service, index| %>
+      <div class="service-choice">
+        <input type="checkbox" class="hidden" value="<%= index %>" name="enquiry[services][]" id="service_category_ids_<%= index %>">
+        <label for="service_category_ids_<%= index %>">
+          <div class="tick-wrapper"></div>
+          <%= service %>
+        </label>
+      </div>
+    <% end %>
+  </div>
+</div>
+<hr>
+<%= f.input :is_local, label: "I'm only interested in local accountants" %>
+<hr>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0">
+      <%= f.input :title, label: "Subject", placeholder: 'eg. Bookkeeping for Barbershop' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10">
+      <%= f.input :description, placeholder: 'What do you need from your accountant?' %>
+    </div>
+  </div>
+<br>
+<button class="btn btn-default btn-secondary" type="button">Back</button>
+<button class="btn btn-default btn-primary" type="button">Next</button>

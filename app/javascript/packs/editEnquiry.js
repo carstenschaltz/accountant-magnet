@@ -7,14 +7,15 @@ const showForm = () => {
     enquiryInfo.classList.toggle('hidden');
     form.classList.toggle('hidden');
   };
+  if (pencil) {
+    pencil.addEventListener('click', (event) => {
+      toggleHidden();
+    });
 
-  pencil.addEventListener('click', (event) => {
-    toggleHidden();
-  });
-
-  cancel.addEventListener('click', (event) => {
-    toggleHidden();
-  });
+    cancel.addEventListener('click', (event) => {
+      toggleHidden();
+    });
+  }
 };
 
 export { showForm }

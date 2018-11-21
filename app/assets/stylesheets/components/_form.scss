@@ -1,0 +1,56 @@
+.service-choices {
+  display: flex;
+  // justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.service-choice label {
+  background: #b7b7b7;
+  padding: 20px;
+  margin: 5px;
+  border-radius: 5px;
+  opacity: .4;
+  flex: 0 0 30%;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active-enquiry {
+  background: $blue;
+  color: white;
+  opacity: 1;
+  }
+}
+
+.tick-wrapper {
+  display: inline-block;
+}
+
+.check path {
+    fill:none;
+    stroke: white;
+    stroke-miterlimit:10;
+    stroke-width: 25px;
+
+
+    margin: 40px;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    animation: draw 0.9s linear forwards;
+
+}
+
+svg { overflow:visible }
+
+@keyframes draw {
+    from {
+        stroke-linecap: round;
+    }
+    to {
+        stroke-linecap: round;
+        stroke-dashoffset: 0;
+    }
+}
+

@@ -6,7 +6,7 @@ class Enquiry < ApplicationRecord
   has_many :accountants, through: :quotes
 
   validates :title, presence: true
-  validates :email, format: { with: /[^@]{1,}\@[^@.]{1,}\.[^@]{1,}/ }
+  validates :email, format: { with: /[^@]{1,}\@[^@.]{1,}\.[^@]{1,}/ }, presence: true
   validates :description, presence: true
   validates :is_local, inclusion: { in: [true, false] }
 
