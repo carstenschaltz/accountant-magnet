@@ -20,6 +20,7 @@ e = Enquiry.create! title: "Import/Export taxation", user: u, email: 'paul@abrac
 e2 = Enquiry.create! title: "General Bookkeeping", user: u2, email: 'james@slimline.org', is_local: false, description: "As my company has been growing I have been looking for someone to help keep the bookkeeping under control"
 e3 = Enquiry.create! title: "Audit", user: u3, email: 'jen@thedailyreporter.org', is_local: false, description: "Looking for an accountant to help out with audits."
 e4 = Enquiry.create! title: "Financial difficulties", email: 'steven.s@btinternet.net', user: u4, is_local: true, description: "The pub is going through some hard times, we are looking for an accountant to help with insolvency."
+e5 = Enquiry.create! title: "Looking for a specalist in tax", user: u, email: 'paul@abracadabra.com', is_local: true, description: "My company is going international and I want a tax specalist."
 
 es = EnquiryService.create! service: services[3], enquiry: e
 es2 = EnquiryService.create! service: services[5], enquiry: e2
@@ -45,7 +46,14 @@ as8 = AccountantService.create! accountant: a, service: services[3]
 as8 = AccountantService.create! accountant: a, service: services[4]
 as8 = AccountantService.create! accountant: a, service: services[6]
 
-q = Quote.create! message: "Can you solve my problems?", successful: true, enquiry: e, accountant: a4
-q2 = Quote.create! message: "Can you help me manage my books?", successful: false, enquiry: e2, accountant: a2
-q3 = Quote.create! message: "Are you able to help with the company audits?", successful: true, enquiry: e3, accountant: a
-q4 = Quote.create! message: "The pub is going through some hard times, are you able to help us out?", successful: false, enquiry: e4, accountant: a3
+q = Quote.create! message: "I can offer my accountancy services to you", successful: true, enquiry: e, accountant: a4
+q2 = Quote.create! message: "We offer excellent accounting for pubs", successful: false, enquiry: e2, accountant: a2
+q3 = Quote.create! message: "We can offer a contract for £30p hour", successful: true, enquiry: e3, accountant: a
+q4 = Quote.create! message: "£70/h for our services", successful: false, enquiry: e4, accountant: a3
+q5 = Quote.create! message: "£100/h for our tax expertise", successful: false, enquiry: e, accountant: a3
+
+q = Quote.create! message: "Can you solve my problems?", invite: true, successful: true, enquiry: e, accountant: a4
+q2 = Quote.create! message: "Can you help me manage my books?", invite: true, successful: false, enquiry: e2, accountant: a2
+q3 = Quote.create! message: "I specialize in your industry, I can help you with your audits", invite: false, successful: true, enquiry: e3, accountant: a
+q4 = Quote.create! message: "I've helped numerous pubs like yours out of the financial difficulties your having. Happy to help here too!", invite: false, successful: false, enquiry: e4, accountant: a3
+q5 = Quote.create! message: "£100/h for our tax expertise", invite: false, successful: false, enquiry: e, accountant: a3
