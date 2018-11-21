@@ -16,10 +16,10 @@ u2 = User.create! name: "James", email: 'james@slimline.org', password: 'passwor
 u3 = User.create! name: "Jennifer", email: 'jen@thedailyreporter.org', password: 'password', company_size: '10-25', company_name: 'The Daily Reporter', company_industry: 'Printing and Publishing', company_location: 'Reading'
 u4 = User.create! name: "Steven", email: 'steven.s@btinternet.net', password: 'password', company_size: '<1', company_name: 'The Fox and Hounds', company_industry: 'Catering (Pubs, Restaurants, Food and Drink)', company_location: 'Exeter'
 
-e = Enquiry.create! title: "Import/Export taxation", user: u, is_local: true, description: "My company imports and distributes a lot of equipment from China, looking for some help with taxes."
-e2 = Enquiry.create! title: "General Bookkeeping", user: u2, is_local: false, description: "As my company has been growing I have been looking for someone to help keep the bookkeeping under control"
-e3 = Enquiry.create! title: "Audit", user: u3, is_local: false, description: "Looking for an accountant to help out with audits."
-e4 = Enquiry.create! title: "Financial difficulties", user: u4, is_local: true, description: "The pub is going through some hard times, we are looking for an accountant to help with insolvency."
+e = Enquiry.create! title: "Import/Export taxation", user: u, email: 'paul@abracadabra.com', is_local: true, description: "My company imports and distributes a lot of equipment from China, looking for some help with taxes."
+e2 = Enquiry.create! title: "General Bookkeeping", user: u2, email: 'james@slimline.org', is_local: false, description: "As my company has been growing I have been looking for someone to help keep the bookkeeping under control"
+e3 = Enquiry.create! title: "Audit", user: u3, email: 'jen@thedailyreporter.org', is_local: false, description: "Looking for an accountant to help out with audits."
+e4 = Enquiry.create! title: "Financial difficulties", email: 'steven.s@btinternet.net', user: u4, is_local: true, description: "The pub is going through some hard times, we are looking for an accountant to help with insolvency."
 
 es = EnquiryService.create! service: services[3], enquiry: e
 es2 = EnquiryService.create! service: services[5], enquiry: e2
