@@ -51,9 +51,9 @@ as8 = AccountantService.create! accountant: a, service: services[6]
 
 # run_accountant_scraper
 
-q = Quote.create! message: "Can you solve my problems?", invite: true, successful: true, enquiry: e, accountant: Accountant.first
-q2 = Quote.create! message: "Can you help me manage my books?", invite: true, successful: false, enquiry: e2, accountant: Accountant.all[500]
-q3 = Quote.create! message: "I specialize in your industry, I can help you with your audits", invite: false, successful: true, enquiry: e3, accountant: Accountant.all[1000]
-q4 = Quote.create! message: "I've helped numerous pubs like yours out of the financial difficulties your having. Happy to help here too!", invite: false, successful: false, enquiry: e4, accountant: Accountant.all[5000]
-q5 = Quote.create! message: "£100/h for our tax expertise", invite: false, successful: false, enquiry: e, accountant: Accountant.last
+q = Quote.create! message: "Can you solve my problems?", invite: true, successful: true, enquiry: e, accountant: a
+q2 = Quote.create! message: "Can you help me manage my books?", invite: true, successful: false, enquiry: e2, accountant: a2
+q3 = Quote.create! message: "I specialize in your industry, I can help you with your audits", invite: false, successful: true, enquiry: e3, accountant: a3
+q4 = Quote.create! message: "I've helped numerous pubs like yours out of the financial difficulties your having. Happy to help here too!", invite: false, successful: false, enquiry: e4, accountant: a4
+q5 = Quote.create! message: "£100/h for our tax expertise", invite: false, successful: false, enquiry: e, accountant: a
 
