@@ -30,26 +30,26 @@ es3 = EnquiryService.create! service: services[1], enquiry: e3
 es4 = EnquiryService.create! service: services[2], enquiry: e4
 
 # old data
-# a = Accountant.create! name: 'Simmonds', email: 'enquiries@simmonds.org', phone_number: '020 733 9542', bio: 'Specialising in large businesses', location: "Manchester", website: 'www.accountant-directory.co.uk'
-# a2 = Accountant.create! name: 'Lewis Accountants inc', email: 'contact@lewisacct.com', phone_number: '01796 543 915', bio: 'Tax specialists', location: "Bristol", website: 'www.accountant-directory.co.uk'
-# a3 = Accountant.create! name: 'Smiths Ltd', email: 'new@ssmiths.biz', phone_number: '01759 582 535', bio: 'Insolvency experts', location: "Exeter", website: 'www.accountant-directory.co.uk'
-# a4 = Accountant.create! name: 'Harvey\'s accounting services', email: 'enquiries@harveys.co.uk', phone_number: '01258 413 092', bio: 'We focus on small import/export businesses', location: "London", website: 'www.accountant-directory.co.uk'
+a = Accountant.create! name: 'Simmonds', email: 'enquiries@simmonds.org', phone_number: '020 733 9542', bio: 'Specialising in large businesses', location: "Manchester", website: 'www.accountant-directory.co.uk'
+a2 = Accountant.create! name: 'Lewis Accountants inc', email: 'contact@lewisacct.com', phone_number: '01796 543 915', bio: 'Tax specialists', location: "Bristol", website: 'www.accountant-directory.co.uk'
+a3 = Accountant.create! name: 'Smiths Ltd', email: 'new@ssmiths.biz', phone_number: '01759 582 535', bio: 'Insolvency experts', location: "Exeter", website: 'www.accountant-directory.co.uk'
+a4 = Accountant.create! name: 'Harvey\'s accounting services', email: 'enquiries@harveys.co.uk', phone_number: '01258 413 092', bio: 'We focus on small import/export businesses', location: "London", website: 'www.accountant-directory.co.uk'
 
-# as = AccountantService.create! accountant: a, service: services[0] # annual accounts
-# as2 = AccountantService.create! accountant: a2, service: services[3] # tax
-# as3 = AccountantService.create! accountant: a3, service: services[2] # business advice
-# as4 = AccountantService.create! accountant: a4, service: services[3] # tax
-# as5 = AccountantService.create! accountant: a, service: services[5] # bookkeeping
-# as6 = AccountantService.create! accountant: a2, service: services[-1] # other
-# as7 = AccountantService.create! accountant: a3, service: services[4] # M&A Transaction
-# as8 = AccountantService.create! accountant: a4, service: services[0] # annual accounts
-# as8 = AccountantService.create! accountant: a, service: services[1]
-# as8 = AccountantService.create! accountant: a, service: services[2]
-# as8 = AccountantService.create! accountant: a, service: services[3]
-# as8 = AccountantService.create! accountant: a, service: services[4]
-# as8 = AccountantService.create! accountant: a, service: services[6]
+as = AccountantService.create! accountant: a, service: services[0] # annual accounts
+as2 = AccountantService.create! accountant: a2, service: services[3] # tax
+as3 = AccountantService.create! accountant: a3, service: services[2] # business advice
+as4 = AccountantService.create! accountant: a4, service: services[3] # tax
+as5 = AccountantService.create! accountant: a, service: services[5] # bookkeeping
+as6 = AccountantService.create! accountant: a2, service: services[-1] # other
+as7 = AccountantService.create! accountant: a3, service: services[4] # M&A Transaction
+as8 = AccountantService.create! accountant: a4, service: services[0] # annual accounts
+as8 = AccountantService.create! accountant: a, service: services[1]
+as8 = AccountantService.create! accountant: a, service: services[2]
+as8 = AccountantService.create! accountant: a, service: services[3]
+as8 = AccountantService.create! accountant: a, service: services[4]
+as8 = AccountantService.create! accountant: a, service: services[6]
 
-run_accountant_scraper
+# run_accountant_scraper
 
 q = Quote.create! message: "Can you solve my problems?", invite: true, successful: true, enquiry: e, accountant: Accountant.first
 q2 = Quote.create! message: "Can you help me manage my books?", invite: true, successful: false, enquiry: e2, accountant: Accountant.all[500]
