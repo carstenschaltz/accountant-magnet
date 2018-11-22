@@ -11,15 +11,19 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Successful Invite</h4>
+        <h4 class="modal-title" id="myModalLabel">Connect with <%= quote.accountant.name %></h4>
       </div>
       <div class="modal-body">
-        <p> Your details have been shared!</p>
+        <p> <%= quote.accountant.bio  %></p>
+        <p> We will share your details with <%= quote.accountant.email  %></p>
+        <p> Expect to hear back within 24hours!</p>
       </div>
       <div class="modal-footer">
-         <%= link_to "Connect", quote_change_status_path(quote), class:'btn btn-primary' %>
+         <%= link_to "Connect", quote_change_status_path(quote), class:'btn btn-primary', remote:true %>
       </div>
     </div>
   </div>
 </div>
 <% end %>
+
+

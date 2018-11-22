@@ -19,6 +19,12 @@
             <div class="enquiry-card">
               <h2> <%= enquiry.title %> </h2>
               <%= enquiry.description %>
+              <%= link_to "Edit Enquiry", edit_enquiry_path(enquiry) %>
+              <div class="card-service">
+                <% enquiry.services.each do |service| %>
+                <p><%= service.name %></p>
+                <% end %>
+              </div>
             </div>
             <h3>Your Quotes</h3>
             <div class="row">
@@ -42,6 +48,7 @@
                       </div>
                     </div>
                     <h4><%= quote.accountant.name %></h4>
+                    <h5><%= quote.accountant.bio %></h5>
                     <p> <%= quote.accountant.email %></p>
                     <%= render 'connect-button', quote: quote %>
                   </div>

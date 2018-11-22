@@ -9,9 +9,9 @@ class QuotesController < ApplicationController
   def create
     @quote = Quote.new(quote_params)
     @quote.invite = true
-    @quote.successful
+    @quote.successful = true
     if @quote.save
-      redirect_to accountant_path(quote_params[:accountant_id])
+      redirect_to user_path(current_user)
     else
       render :new
     end
