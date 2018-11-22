@@ -7,14 +7,15 @@
   <p>Description:</p>
   <div id="description"></div>
   <hr>
-  <div id="locality" class='hidden'>I'm only interested in local accountants</div>
+  <div id="locality_true" class='hidden'>I'm only interested in local accountants</div>
+  <div id="locality_false" class=''>I'm open to accountants outside of my area</div>
 </div>
 <hr>
 <div id="business">
   <h3>Your business</h3>
-  <span>industry</span>
-  <span>turnover</span>
-  <span>location</span>
+  <p>Industry: <span id="industry"></span></p>
+  <p>Turnover: <span id="size"></span></p>
+  <p>Location: <span id="location"></span></p>
 </div>
 <%= f.input :email %>
 <button class="btn btn-secondary breathing-room back-button" type="button">Back</button>
