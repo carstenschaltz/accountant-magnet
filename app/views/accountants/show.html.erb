@@ -13,7 +13,7 @@
     <div class="white-card">
       <div class="display-flex">
         <h3>Contact information</h3>
-        <%= link_to "Get in touch", root_path, class:'btn btn-info-outline header-btn' %>
+        <%= render 'contact_button', accountant: @accountant %>
       </div>
       <hr class="sm-margin">
       <div class="acct-card-details">
