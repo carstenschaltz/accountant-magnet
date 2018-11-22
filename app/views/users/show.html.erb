@@ -25,11 +25,25 @@
               <% enquiry.quotes.each do |quote| %>
                 <div class="col-xs-12 col-sm-4">
                   <div class="quote-card">
+                    <div class="acct-card-services">
+                      <div class="card-service">
+                        <% if quote.invite == true %>
+                          <p>Invited by you</p>
+                        <% else %>
+                          <p>New quote</p>
+                        <% end %>
+                      </div>
+                      <div class="card-service">
+                        <% if quote.successful == true %>
+                          <p>Connected</p>
+                        <% else %>
+                          <p id="connect">Not connected</p>
+                        <% end %>
+                      </div>
+                    </div>
                     <h4><%= quote.accountant.name %></h4>
-                    <p><%= quote.message %></p>
                     <p> <%= quote.accountant.email %></p>
-                    <%= link_to "Connect", '#', class:'btn btn-primary btn primary-color' %>
-                    <%= link_to "Discard", quote_path(quote), method: :delete, data: { confirm: "Are you sure?" }, class:'btn btn-info btn' %>
+                    <%= render 'connect-button', quote: quote %>
                   </div>
                 </div>
               <% end %>
@@ -39,4 +53,13 @@
       </div>
     <% end %>
   </div>
+
+
+<script>
+  const button = document.getElementById("click-connect");
+  button.addEventListener("click", (e) => {
+    document.getElementById("connect").innerHTML = "connected";
+    button.remove()
+  });
+</script>
 

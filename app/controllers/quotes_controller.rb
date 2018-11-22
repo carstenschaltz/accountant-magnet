@@ -9,6 +9,7 @@ class QuotesController < ApplicationController
   def create
     @quote = Quote.new(quote_params)
     @quote.invite = true
+    @quote.successful
     if @quote.save
       redirect_to accountant_path(quote_params[:accountant_id])
     else
@@ -22,6 +23,15 @@ class QuotesController < ApplicationController
     @quote.destroy
     authorize @quote
       redirect_to user_path(current_user)
+  end
+
+  def change_status
+    @quote = Quote.find(params[:quote_id])
+    @quote.successful = true
+    authorize @quote
+    if @quote.save
+      redirect_to user_path(current_user)
+    end
   end
 
   private

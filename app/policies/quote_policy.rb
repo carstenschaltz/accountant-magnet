@@ -12,6 +12,10 @@ class QuotePolicy < ApplicationPolicy
     record.enquiry.user == user
   end
 
+  def change_status?
+    true
+  end
+
 
   class Scope < Scope
     def resolve
