@@ -1,36 +1,56 @@
 
   <!-- Nav tabs -->
-<div>
   <ul class="nav nav-tabs" role="tablist">
     <% @user_enquiries.each_with_index do |enquiry, index| %>
       <li role="presentation" class="<%= 'active' if index == 0 %>"><a href="#enquiry-<%= index %>" aria-controls="enquiry-<%= index %>" role="tab" data-toggle="tab"><%= enquiry.title %></a></li>
     <% end %>
   </ul>
-
   <!-- Tab panes -->
   <div class="tab-content">
     <% @user_enquiries.each_with_index do |enquiry, index| %>
       <div role="tabpanel" class="tab-pane <%= 'active' if index == 0 %>" id="enquiry-<%= index %>">
         <div class=" grey-wrapper">
           <div class="container">
-            <div class="display-flex">
-            <h3>Active Enquiry</h3>
-            <%= link_to "New Enquiry", new_enquiry_path, class:'btn btn-primary btn primary-color header-btn'%>
+            <div style="display: flex;">
+              <h3 id="title">Active Enquiry </h3>
+              <%= link_to "Invite Accountants", accountants_path, class:'btn-primary-outline btn  header-btn flex-buttons'%>
+              <%= link_to "New Enquiry", new_enquiry_path, class:'btn-primary-outline btn  header-btn'%>
             </div>
             <div class="enquiry-card">
               <h2> <%= enquiry.title %> </h2>
               <%= enquiry.description %>
+              <%= link_to "Edit Enquiry", edit_enquiry_path(enquiry) %>
+              <div class="card-service">
+                <% enquiry.services.each do |service| %>
+                <p><%= service.name %></p>
+                <% end %>
+              </div>
             </div>
             <h3>Your Quotes</h3>
             <div class="row">
               <% enquiry.quotes.each do |quote| %>
                 <div class="col-xs-12 col-sm-4">
                   <div class="quote-card">
+                    <div class="acct-card-services">
+                      <div class="card-service">
+                        <% if quote.invite == true %>
+                          <p>Invited by you</p>
+                        <% else %>
+                          <p>New quote</p>
+                        <% end %>
+                      </div>
+                      <div class="card-service">
+                        <% if quote.successful == true %>
+                          <p>Connected</p>
+                        <% else %>
+                          <p id="connect">Not connected</p>
+                        <% end %>
+                      </div>
+                    </div>
                     <h4><%= quote.accountant.name %></h4>
-                    <p><%= quote.message %></p>
+                    <h5><%= quote.accountant.bio %></h5>
                     <p> <%= quote.accountant.email %></p>
-                    <%= link_to "Connect", '#', class:'btn btn-primary btn primary-color' %>
-                    <%= link_to "Discard", '#', class:'btn btn-info btn' %>
+                    <%= render 'connect-button', quote: quote %>
                   </div>
                 </div>
               <% end %>
@@ -40,5 +60,13 @@
       </div>
     <% end %>
   </div>
-</div>
+
+
+<script>
+  const button = document.getElementById("click-connect");
+  button.addEventListener("click", (e) => {
+    document.getElementById("connect").innerHTML = "connected";
+    button.remove()
+  });
+</script>
 

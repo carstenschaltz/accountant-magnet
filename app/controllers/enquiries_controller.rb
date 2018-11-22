@@ -13,19 +13,32 @@ class EnquiriesController < ApplicationController
   def create
     @enquiry = Enquiry.new(enquiry_params)
     authorize @enquiry
+    update_comp_info(@enquiry)
     if @enquiry.save
       update_services(@enquiry)
-      redirect_to enquiry_path(@enquiry)
+      if user_signed_in?
+        @enquiry.update(user: current_user)
+        redirect_to user_path(current_user)
+      elsif User.where(email: enquiry_params[:email]).any?
+        redirect_to new_user_session_path(email: enquiry_params[:email])
+      else
+        redirect_to new_user_registration_path(email: enquiry_params[:email])
+      end
     else
       render :new
     end
+  end
+
+  def edit
+    @enquiry= Enquiry.find(params[:id])
+    authorize @enquiry
   end
 
   def update
     @enquiry.update(enquiry_params)
     if @enquiry.save
       update_services(@enquiry)
-      redirect_to enquiry_path(@enquiry)
+      redirect_to user_path(current_user)
     else
       render :new
     end
@@ -44,7 +57,7 @@ class EnquiriesController < ApplicationController
   end
 
   def enquiry_params
-    params.require(:enquiry).permit(:title, :email, :description, :is_local)
+    params.require(:enquiry).permit(:title, :email, :description, :is_local, :industry, :size, :location)
   end
 
   def update_services(enquiry)
@@ -56,6 +69,13 @@ class EnquiriesController < ApplicationController
         EnquiryService.create(enquiry: @enquiry, service: service)
       end
     end
-    @enquiry.save
+    enquiry.save
+  end
+
+  def update_comp_info(enquiry)
+    enquiry.industry = nil if params[:enquiry][:industry].empty?
+    enquiry.size = nil if params[:enquiry][:size].empty?
+    enquiry.location = nil if params[:enquiry][:location].empty?
+    enquiry.save
   end
 end
