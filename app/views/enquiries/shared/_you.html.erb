@@ -3,38 +3,40 @@
   <button class="btn btn-default btn-secondary skip-button to-final-tab" type="button" style="opacity: 50%; max-height: 40px; align-items: center;">Skip</button>
 </div>
 <p>Find your business to help us get you the most relevant quotes</p>
-<div class="col-xs-12 col-sm-8">
-  <table>
-    <tr>
-      <td>
-        <p>Either:</p>
-      </td>
-      <td>
-        <%= f.input :company_name %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>Or:</p>
-      </td>
-      <td>
-        <%= f.input :company_reg %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>Or:</p>
-      </td>
-      <td>
-        <%= f.input :industry, collection: INDUSTRIES, prompt: "Select one" %>
-        <%= f.input :size, collection: COMPANY_SIZES.map { |e| "£#{e}m" }, prompt: "Turnover" %>
-        <%= f.input :location %>
-      </td>
-    </tr>
-  </table>
-  <br>
-  <div class="item">
-    <button class="btn btn-secondary breathing-room back-button" type="button">Back</button>
-    <button class="btn btn-default btn-info breathing-room next-button to-final-tab" type="button">Next</button>
+<div class="row">
+  <div class="col-xs-12 col-sm-8">
+    <table>
+      <tr>
+        <td>
+          <p>Either:</p>
+        </td>
+        <td>
+          <%= f.input :company_name %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Or:</p>
+        </td>
+        <td>
+          <%= f.input :company_reg %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p>Or:</p>
+        </td>
+        <td>
+          <%= f.input :industry, collection: INDUSTRIES, prompt: "Select one" %>
+          <%= f.input :size, collection: COMPANY_SIZES.map { |e| "£#{e}m" }, prompt: "Turnover" %>
+          <%= f.input :location %>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <div class="item">
+      <button class="btn btn-secondary breathing-room back-button" type="button">Back</button>
+      <button class="btn btn-default btn-info breathing-room next-button to-final-tab" type="button">Next</button>
+    </div>
   </div>
 </div>
