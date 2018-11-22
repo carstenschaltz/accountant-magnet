@@ -13,10 +13,11 @@ class EnquiriesController < ApplicationController
   def create
     @enquiry = Enquiry.new(enquiry_params)
     authorize @enquiry
+    update_comp_info(@enquiry)
     if @enquiry.save
       update_services(@enquiry)
-      update_comp_info(@enquiry)
       if user_signed_in?
+        @enquiry.update(user: current_user)
         redirect_to user_path(current_user)
       else
         redirect_to enquiry_path(@enquiry)
@@ -65,9 +66,9 @@ class EnquiriesController < ApplicationController
   end
 
   def update_comp_info(enquiry)
-    enquiry.industry = params[:enquiry][:industry]
-    enquiry.size = params[:enquiry][:size]
-    enquiry.location = params[:enquiry][:location]
+    enquiry.industry = nil if params[:enquiry][:industry].empty?
+    enquiry.size = nil if params[:enquiry][:size].empty?
+    enquiry.location = nil if params[:enquiry][:location].empty?
     enquiry.save
   end
 end
