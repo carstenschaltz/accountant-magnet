@@ -13,7 +13,7 @@ class QuotePolicy < ApplicationPolicy
   end
 
   def change_status?
-    true
+    record.enquiry.user == user
   end
 
 
