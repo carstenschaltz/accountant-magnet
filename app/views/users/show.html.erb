@@ -20,11 +20,13 @@
               <h2> <%= enquiry.title %> </h2>
               <%= enquiry.description %>
               <%= link_to "Edit Enquiry", edit_enquiry_path(enquiry) %>
-              <div class="card-service">
-                <% enquiry.services.each do |service| %>
-                <p><%= service.name %></p>
-                <% end %>
-              </div>
+                <div class="acct-card-services">
+                  <% enquiry.services.each do |service| %>
+                  <div class="card-service">
+                      <p><%= service.name %></p>
+                  </div>
+                  <% end %>
+                </div>
             </div>
             <h3>Your Quotes</h3>
             <div class="row">
