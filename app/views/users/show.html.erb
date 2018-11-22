@@ -1,11 +1,9 @@
 
   <!-- Nav tabs -->
-<div>
   <ul class="nav nav-tabs" role="tablist">
     <% @user_enquiries.each_with_index do |enquiry, index| %>
       <li role="presentation" class="<%= 'active' if index == 0 %>"><a href="#enquiry-<%= index %>" aria-controls="enquiry-<%= index %>" role="tab" data-toggle="tab"><%= enquiry.title %></a></li>
     <% end %>
-  </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
@@ -30,7 +28,7 @@
                     <p><%= quote.message %></p>
                     <p> <%= quote.accountant.email %></p>
                     <%= link_to "Connect", '#', class:'btn btn-primary btn primary-color' %>
-                    <%= link_to "Discard", '#', class:'btn btn-info btn' %>
+                    <%= link_to "Discard", quote_path(quote), method: :delete, data: { confirm: "Are you sure?" }, class:'btn btn-info btn' %>
                   </div>
                 </div>
               <% end %>
@@ -41,4 +39,3 @@
     <% end %>
   </div>
 </div>
-

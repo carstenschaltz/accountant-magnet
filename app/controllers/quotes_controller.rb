@@ -14,7 +14,14 @@ class QuotesController < ApplicationController
     else
       render :new
     end
+      authorize @quote
+  end
+
+  def destroy
+    @quote = Quote.find(params[:id])
+    @quote.destroy
     authorize @quote
+      redirect_to user_path(current_user)
   end
 
   private

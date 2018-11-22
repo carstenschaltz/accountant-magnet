@@ -8,6 +8,11 @@ class QuotePolicy < ApplicationPolicy
     record.enquiry.user == user
   end
 
+  def destroy?
+    record.enquiry.user == user
+  end
+
+
   class Scope < Scope
     def resolve
       scope.all

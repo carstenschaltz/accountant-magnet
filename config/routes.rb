@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :accountants, only: [:index, :show]
   resources :enquiries, only: [:new, :create, :show, :destroy, :update]
-  resources :quotes, only: [:new, :create]
+  resources :quotes, only: [:new, :create, :destroy]
 end
 
