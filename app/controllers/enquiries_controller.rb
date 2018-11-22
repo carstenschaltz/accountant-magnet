@@ -29,11 +29,16 @@ class EnquiriesController < ApplicationController
     end
   end
 
+  def edit
+    @enquiry= Enquiry.find(params[:id])
+    authorize @enquiry
+  end
+
   def update
     @enquiry.update(enquiry_params)
     if @enquiry.save
       update_services(@enquiry)
-      redirect_to enquiry_path(@enquiry)
+      redirect_to user_path(current_user)
     else
       render :new
     end
