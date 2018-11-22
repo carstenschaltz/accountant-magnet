@@ -4,16 +4,17 @@
     <% @user_enquiries.each_with_index do |enquiry, index| %>
       <li role="presentation" class="<%= 'active' if index == 0 %>"><a href="#enquiry-<%= index %>" aria-controls="enquiry-<%= index %>" role="tab" data-toggle="tab"><%= enquiry.title %></a></li>
     <% end %>
-
+  </ul>
   <!-- Tab panes -->
   <div class="tab-content">
     <% @user_enquiries.each_with_index do |enquiry, index| %>
       <div role="tabpanel" class="tab-pane <%= 'active' if index == 0 %>" id="enquiry-<%= index %>">
         <div class=" grey-wrapper">
           <div class="container">
-            <div class="display-flex">
-            <h3>Active Enquiry</h3>
-            <%= link_to "New Enquiry", new_enquiry_path, class:'btn-primary-outline btn  header-btn '%>
+            <div style="display: flex;">
+              <h3 id="title">Active Enquiry </h3>
+              <%= link_to "Invite Accountants", accountants_path, class:'btn-primary-outline btn  header-btn flex-buttons'%>
+              <%= link_to "New Enquiry", new_enquiry_path, class:'btn-primary-outline btn  header-btn'%>
             </div>
             <div class="enquiry-card">
               <h2> <%= enquiry.title %> </h2>
@@ -38,4 +39,4 @@
       </div>
     <% end %>
   </div>
-</div>
+
