@@ -15,7 +15,12 @@ class EnquiriesController < ApplicationController
     authorize @enquiry
     if @enquiry.save
       update_services(@enquiry)
-      redirect_to enquiry_path(@enquiry)
+      update_comp_info(@enquiry)
+      if user_signed_in?
+        redirect_to user_path(current_user)
+      else
+        redirect_to enquiry_path(@enquiry)
+      end
     else
       render :new
     end
@@ -44,7 +49,7 @@ class EnquiriesController < ApplicationController
   end
 
   def enquiry_params
-    params.require(:enquiry).permit(:title, :email, :description, :is_local)
+    params.require(:enquiry).permit(:title, :email, :description, :is_local, :industry, :size, :location)
   end
 
   def update_services(enquiry)
@@ -56,6 +61,13 @@ class EnquiriesController < ApplicationController
         EnquiryService.create(enquiry: @enquiry, service: service)
       end
     end
-    @enquiry.save
+    enquiry.save
+  end
+
+  def update_comp_info(enquiry)
+    enquiry.industry = params[:enquiry][:industry]
+    enquiry.size = params[:enquiry][:size]
+    enquiry.location = params[:enquiry][:location]
+    enquiry.save
   end
 end

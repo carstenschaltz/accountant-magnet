@@ -4,7 +4,7 @@
   <div class="service-choices">
     <% SERVICES.each_with_index do |service, index| %>
       <div class="service-choice">
-        <input type="checkbox" class="hidden" value="<%= index %>" name="enquiry[services][]" id="service_category_ids_<%= index %>">
+        <input type="checkbox" class="hidden" value="<%= service %>" name="enquiry[services][]" id="service_category_ids_<%= index %>">
         <label class='display-flex' for="service_category_ids_<%= index %>">
           <div class="tick-wrapper"></div>
           <div class="service-name"><%= service %></div>
