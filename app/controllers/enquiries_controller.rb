@@ -19,8 +19,10 @@ class EnquiriesController < ApplicationController
       if user_signed_in?
         @enquiry.update(user: current_user)
         redirect_to user_path(current_user)
+      elsif User.where(email: enquiry_params[:email]).any?
+        redirect_to new_user_session_path(email: enquiry_params[:email])
       else
-        redirect_to enquiry_path(@enquiry)
+        redirect_to new_user_registration_path(email: enquiry_params[:email])
       end
     else
       render :new
