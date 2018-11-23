@@ -69,7 +69,8 @@
   const button = document.getElementById("click-connect");
   button.addEventListener("click", (e) => {
     document.getElementById("connect").innerHTML = "connected";
-    button.remove()
+    document.querySelector('.close').click()
+    document.getElementById('connect-button').remove()
   });
 </script>
 
