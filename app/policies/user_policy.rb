@@ -8,6 +8,10 @@ class UserPolicy < ApplicationPolicy
     record.admin == true
   end
 
+  def id_check?
+    record.admin == true
+  end
+
   class Scope < Scope
     def resolve
       scope.all
