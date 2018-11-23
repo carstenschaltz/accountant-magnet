@@ -1,4 +1,5 @@
 class QuotesController < ApplicationController
+
   def new
     @accountant = Accountant.find(params[:accountant][:accountant_id])
     @enquiry = Enquiry.find(params[:accountant][:id])

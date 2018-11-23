@@ -1,7 +1,7 @@
 <% if quote.successful == true  %>
-<%= link_to "Discard", quote_path(quote), method: :delete, data: { confirm: "Are you sure?" }, class:'btn btn-info btn' %>
+<%= link_to "Discard", quote_path(quote), method: :delete, data: { confirm: "Are you sure?" }, class:'btn btn-info btn discard-button', remote:true %>
   <% else %>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#id-<%= quote.id %>">
+    <button type="button" class="btn btn-primary" id="connect-button" data-toggle="modal" data-target="#id-<%= quote.id %>">
       Connect
     </button>
     <%= link_to "Discard", quote_path(quote), method: :delete, data: { confirm: "Are you sure?" }, class:'btn btn-info btn' %>
@@ -19,7 +19,7 @@
         <p> Expect to hear back within 24hours!</p>
       </div>
       <div class="modal-footer">
-         <%= link_to "Connect", quote_change_status_path(quote), class:'btn btn-primary', remote:true %>
+         <%= link_to "Connect", quote_change_status_path(quote), class:'btn btn-primary', id:"click-connect", remote:true %>
       </div>
     </div>
   </div>

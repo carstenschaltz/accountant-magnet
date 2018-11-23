@@ -45,8 +45,10 @@ class EnquiriesController < ApplicationController
   end
 
   def destroy
+    @enquiry= Enquiry.find(params[:id])
     @enquiry.destroy
-    redirect_to root_path
+    authorize @enquiry
+     redirect_to user_path(current_user)
   end
 
   private
