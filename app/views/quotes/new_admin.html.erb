@@ -1,0 +1,16 @@
+<div class="grey-wrapper">
+  <div class="container">
+    <div class="white-card">
+      <h1>Admin page: create quote</h1>
+      <h2>On behalf of accountant</h2>
+      <hr>
+      <%= simple_form_for @quote do |f| %>
+        <%= f.input :accountant_id, label: "Accountant Id" %>
+        <%= f.input :enquiry_id, label: "Enquiry Id" %>
+        <%= f.input :message %>
+        <%= f.input :invite, as: :hidden, input_html: { value: false } %>
+        <%= f.submit "Create quote", class:'btn btn-primary btn-block' %>
+      <% end %>
+    </div>
+  </div>
+</div>

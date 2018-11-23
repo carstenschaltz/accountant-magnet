@@ -5,17 +5,16 @@ class QuotePolicy < ApplicationPolicy
   end
 
   def create?
-    record.enquiry.user == user
+    record.enquiry.user == user || user.admin
   end
 
   def destroy?
-    record.enquiry.user == user
+    record.enquiry.user == user || user.admin
   end
 
   def change_status?
     true
   end
-
 
   class Scope < Scope
     def resolve

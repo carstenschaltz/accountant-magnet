@@ -1,7 +1,11 @@
 class UserPolicy < ApplicationPolicy
 
   def show?
-    record == user
+    record == user || user.admin
+  end
+
+  def new_admin?
+    record.admin == true
   end
 
   class Scope < Scope
