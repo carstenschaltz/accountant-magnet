@@ -1,0 +1,23 @@
+const checkId = () => {
+  console.log('running')
+  const accountantInput = document.getElementById('quote_accountant_id');
+  const accountantBtn = document.getElementById('accountant-id-btn');
+  const accountantText = document.getElementById('accountant-id-text');
+  accountantBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log(accountantInput.value)
+    accountantText.innerHTML = `<%= Accountant.find(${accountantInput.value}).name %>`
+    accountantBtn.insertAdjacentHTML('beforeend', '<%= j render "quotes/accountant_id_check", review: @review %>');
+  });
+
+  const enquiryInput = document.getElementById('quote_enquiry_id');
+  const enquiryBtn = document.getElementById('enquiry-id-btn');
+  const enquiryText = document.getElementById('enquiry-id-text');
+  enquiryBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log(enquiryInput.value)
+    enquiryText.innerHTML = `<%= Enquiry.find(${enquiryInput.value}).name %>`
+  });
+};
+
+export { checkId }
