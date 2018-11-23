@@ -20,6 +20,7 @@
               <h2> <%= enquiry.title %> </h2>
               <%= enquiry.description %>
               <%= link_to "Edit Enquiry", edit_enquiry_path(enquiry) %>
+              <%= link_to "Delete Enquiry",  enquiry_path(enquiry), method: :delete, data: { confirm: "Are you sure?" } %>
                 <div class="acct-card-services">
                   <% enquiry.services.each do |service| %>
                   <div class="card-service">
@@ -71,4 +72,28 @@
     button.remove()
   });
 </script>
+
+
+<% if @user_enquiries.count == 0  %>
+  <div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
+    <div class="row text-center">
+      <h3> You have no enquiries.</h3>
+      <%= link_to "New Enquiry", new_enquiry_path, class:'btn-primary-outline btn  header-btn '%>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
