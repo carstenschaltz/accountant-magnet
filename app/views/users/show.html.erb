@@ -67,12 +67,14 @@
 
 
 <script>
-  const button = document.getElementById("click-connect");
-  button.addEventListener("click", (e) => {
-    document.getElementById("connect").innerHTML = "connected";
-    document.querySelector('.close').click()
-    document.getElementById('connect-button').remove()
-  });
+  const buttons = document.querySelectorAll("#click-connect");
+  buttons.forEach((button, index) => {
+    button.addEventListener("click", (e) => {
+      document.querySelectorAll("#connect")[index].innerHTML = "connected";
+      document.querySelectorAll('.close')[index].click()
+      document.querySelectorAll('#connect-button')[index].remove()
+    });
+  })
 </script>
 
 <script>
