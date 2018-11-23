@@ -1,10 +1,10 @@
-EnquiryService.destroy_all
-AccountantService.destroy_all
-Service.destroy_all
-Quote.destroy_all
-Enquiry.destroy_all
-Accountant.destroy_all
-User.destroy_all
+# EnquiryService.destroy_all
+# AccountantService.destroy_all
+# Service.destroy_all
+# Quote.destroy_all
+# Enquiry.destroy_all
+# Accountant.destroy_all
+# User.destroy_all
 
 services = ['Annual Accounts', 'Audit Services', 'Business Advice', 'Tax Services', 'M&A/Transaction', 'Bookkeeping', 'Other']
 services.map! do |service|
