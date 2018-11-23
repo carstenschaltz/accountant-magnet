@@ -2,7 +2,7 @@ class AccountantsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @accountants = policy_scope(Accountant)
+    @accountants = policy_scope(Accountant).first(50)
   end
 
   def show
