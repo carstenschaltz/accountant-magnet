@@ -15,4 +15,4 @@ end
 
 # Run:
 # rails c
-# LoadServices.perfom_now
+# LoadServicesJob.perfom_now
