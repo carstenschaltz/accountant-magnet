@@ -6,10 +6,13 @@ class QuotesController < ApplicationController
     authorize @quote
   end
 
+  def new_admin
+    authorize current_user
+    @quote = Quote.new
+  end
+
   def create
     @quote = Quote.new(quote_params)
-    @quote.invite = true
-    @quote.successful = true
     if @quote.save
       redirect_to user_path(current_user)
     else
@@ -37,6 +40,6 @@ class QuotesController < ApplicationController
   private
 
   def quote_params
-    params.require(:quote).permit(:message, :accountant_id, :enquiry_id)
+    params.require(:quote).permit(:message, :accountant_id, :enquiry_id, :invite, :successful)
   end
 end

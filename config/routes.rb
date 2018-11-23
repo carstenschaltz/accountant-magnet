@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :enquiries, only: [:new, :create, :show, :destroy, :update, :edit]
   resources :quotes, only: [:new, :create, :destroy] do
     get 'change_status'
+    collection do
+      get 'new_admin'
+    end
   end
 end
 
