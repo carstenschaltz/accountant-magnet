@@ -6,10 +6,10 @@
 # Accountant.destroy_all
 # User.destroy_all
 
-services = ['Annual Accounts', 'Audit Services', 'Business Advice', 'Tax Services', 'M&A/Transaction', 'Bookkeeping', 'Other']
-services.map! do |service|
-  Service.create! name: service
-end
+# services = ['Annual Accounts', 'Audit Services', 'Business Advice', 'Tax Services', 'M&A/Transaction', 'Bookkeeping', 'Other']
+# services.map! do |service|
+#   Service.create! name: service
+# end
 
 u = User.create! name: "Paul", email: 'paul@abracadabra.com', password: 'password', company_size: '<1', company_name: 'Abracadabra Magicians Ltd', company_industry: 'Entertainment', company_location: 'London'
 u2 = User.create! name: "James", email: 'james@slimline.org', password: 'password', company_size: '1-10', company_name: 'Slimline Fashion inc', company_industry: 'Retail', company_location: 'Oxford'
