@@ -1,12 +1,10 @@
-require_relative 'scraper'
-
-EnquiryService.destroy_all
-AccountantService.destroy_all
-Service.destroy_all
-Quote.destroy_all
-Enquiry.destroy_all
-Accountant.destroy_all
-User.destroy_all
+# EnquiryService.destroy_all
+# AccountantService.destroy_all
+# Service.destroy_all
+# Quote.destroy_all
+# Enquiry.destroy_all
+# Accountant.destroy_all
+# User.destroy_all
 
 services = ['Annual Accounts', 'Audit Services', 'Business Advice', 'Tax Services', 'M&A/Transaction', 'Bookkeeping', 'Other']
 services.map! do |service|
@@ -49,8 +47,6 @@ as8 = AccountantService.create! accountant: a, service: services[2]
 as8 = AccountantService.create! accountant: a, service: services[3]
 as8 = AccountantService.create! accountant: a, service: services[4]
 as8 = AccountantService.create! accountant: a, service: services[6]
-
-# run_accountant_scraper
 
 q = Quote.create! message: "Can you solve my problems?", invite: true, successful: true, enquiry: e, accountant: a
 q2 = Quote.create! message: "Can you help me manage my books?", invite: true, successful: false, enquiry: e2, accountant: a2
