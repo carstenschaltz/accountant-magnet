@@ -30,6 +30,7 @@
                 </div>
             </div>
             <h3>Your Quotes</h3>
+              <%= render 'no-quotes', enquiries: @user_enquiries %>
             <div class="row">
               <% enquiry.quotes.each do |quote| %>
                 <div class="col-xs-12 col-sm-4">
@@ -50,7 +51,7 @@
                         <% end %>
                       </div>
                     </div>
-                    <h4><%= quote.accountant.name %></h4>
+                    <h4><%= link_to quote.accountant.name, accountant_path(quote.accountant) %> </h4>
                     <h5><%= quote.accountant.bio %></h5>
                     <p> <%= quote.accountant.email %></p>
                     <%= render 'connect-button', quote: quote %>
@@ -74,6 +75,16 @@
   });
 </script>
 
+<script>
+  const buttonsRemove = document.querySelectorAll(".discard-button");
+  buttonsRemove.forEach((button, index) => {
+    button.addEventListener("click", (e) => {
+      document.querySelectorAll('.quote-card')[index].remove()
+    });
+  });
+</script>
+
+
 
 <% if @user_enquiries.count == 0  %>
   <div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
@@ -83,6 +94,7 @@
     </div>
   </div>
 <% end %>
+
 
 
 
