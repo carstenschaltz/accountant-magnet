@@ -11,6 +11,12 @@
   position: relative;
 }
 
+#navbar-logo {
+  color: $secondary-blue;
+  margin: 0;
+  font-size: 56px;
+}
+
 /* Logo */
 .navbar-wagon-brand img {
   height: 50px;
