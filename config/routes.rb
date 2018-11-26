@@ -12,5 +12,10 @@ Rails.application.routes.draw do
       post 'id_check'
     end
   end
+  namespace :api, defaults: { format: :json } do
+      namespace :v1 do
+        get 'enquiries/:id', to: 'enquiries#show_quotes'
+      end
+    end
 end
 

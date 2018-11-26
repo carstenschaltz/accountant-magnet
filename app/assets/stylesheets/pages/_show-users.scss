@@ -38,3 +38,11 @@
   margin-right: 10px;
 }
 
+.slow-appear {
+  animation: fadein 1s;
+}
+
+@keyframes fadein {
+    from { opacity: 0.99; }
+    to   { opacity: 1; }
+}

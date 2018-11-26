@@ -1,4 +1,8 @@
 class QuotePolicy < ApplicationPolicy
+  def show?
+    record.enquiry.user == user || user.admin
+  end
+
   def new?
     # record.all? { |enquiry| enquiry.user == user }
     create?
