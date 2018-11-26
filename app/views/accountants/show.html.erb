@@ -22,7 +22,9 @@
           <p><%= @accountant.phone_number %></p>
           <p class="text-bold"><%= @accountant.location %></p>
         </div>
-        <%= link_to @accountant.website, 'http://' + @accountant.website, target: :_blank %>
+        <% if @accountant.website %>
+          <%= link_to @accountant.website, 'http://' + @accountant.website, target: :_blank %>
+        <% end %>
       </div>
     </div>
 

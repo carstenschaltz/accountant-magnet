@@ -1,4 +1,5 @@
 class QuotesController < ApplicationController
+
   def new
     @accountant = Accountant.find(params[:accountant][:accountant_id])
     @enquiry = Enquiry.find(params[:accountant][:id])
@@ -6,10 +7,22 @@ class QuotesController < ApplicationController
     authorize @quote
   end
 
+  def new_admin
+    authorize current_user
+    @quote = Quote.new
+  end
+
+  def id_check
+    authorize current_user
+    @accountant = Accountant.where(id: params[:quote][:accountant_id]).first
+    @enquiry = Enquiry.where(id: params[:quote][:enquiry_id]).first
+    respond_to do |format|
+      format.js  # <-- will render `app/views/reviews/create.js.erb`
+    end
+  end
+
   def create
     @quote = Quote.new(quote_params)
-    @quote.invite = true
-    @quote.successful = true
     if @quote.save
       redirect_to user_path(current_user)
     else
@@ -37,6 +50,6 @@ class QuotesController < ApplicationController
   private
 
   def quote_params
-    params.require(:quote).permit(:message, :accountant_id, :enquiry_id)
+    params.require(:quote).permit(:message, :accountant_id, :enquiry_id, :invite, :successful)
   end
 end

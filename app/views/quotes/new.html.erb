@@ -9,6 +9,8 @@
           <%= simple_form_for @quote do |f| %>
             <%= f.input :accountant_id, as: :hidden, input_html: { value: @accountant.id } %>
             <%= f.input :enquiry_id, as: :hidden, input_html: { value: @enquiry.id } %>
+            <%= f.input :invite, as: :hidden, input_html: { value: true } %>
+            <%= f.input :successful, as: :hidden, input_html: { value: true } %>
             <%= f.input :message, label: false %>
             <%= f.submit "Invite", class:'btn btn-primary btn-block' %>
           <% end %>

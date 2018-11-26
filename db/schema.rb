@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_22_161130) do
+ActiveRecord::Schema.define(version: 2018_11_23_110957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,10 +69,12 @@ ActiveRecord::Schema.define(version: 2018_11_22_161130) do
     t.text "message"
     t.bigint "enquiry_id"
     t.bigint "accountant_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["accountant_id"], name: "index_quotes_on_accountant_id"
     t.index ["enquiry_id"], name: "index_quotes_on_enquiry_id"
+    t.index ["user_id"], name: "index_quotes_on_user_id"
   end
 
   create_table "services", force: :cascade do |t|
@@ -94,6 +96,7 @@ ActiveRecord::Schema.define(version: 2018_11_22_161130) do
     t.string "company_name"
     t.string "company_size"
     t.string "company_location"
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

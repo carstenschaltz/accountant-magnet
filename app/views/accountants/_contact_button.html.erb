@@ -12,7 +12,9 @@
       <div class="modal-body">
         <p>Email: <%= @accountant.email %></p>
         <p>Phone: <%= @accountant.phone_number %></p>
-        <p>Website: <%= link_to @accountant.website, 'http://' + @accountant.website, target: :_blank %></p>
+        <% if @accountant.website %>
+          <p>Website: <%= link_to @accountant.website, 'http://' + @accountant.website, target: :_blank %></p>
+        <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

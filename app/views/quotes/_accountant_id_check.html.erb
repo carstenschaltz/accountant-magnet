@@ -1,1 +1,5 @@
-<span id="accountant-id-text"></span>
+<% if @accountant %>
+  <span id="accountant-id-text"><%= @accountant.name %></span>
+<% else %>
+  <span id="accountant-id-text">NOT FOUND</span>
+<% end %>

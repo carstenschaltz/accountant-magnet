@@ -6,14 +6,17 @@
       <hr>
       <%= simple_form_for @quote do |f| %>
         <%= f.input :accountant_id, label: "Accountant Id" %>
-        <button id="accountant-id-btn">Check</button>
-        <hr>
         <%= f.input :enquiry_id, label: "Enquiry Id" %>
-        <button id="enquiry-id-btn">Check</button><span id="enquiry-id-text"></span>
-        <hr>
         <%= f.input :message %>
         <%= f.input :invite, as: :hidden, input_html: { value: false } %>
         <%= f.submit "Create quote", class:'btn btn-primary btn-block' %>
+      <% end %>
+      <hr>
+      <h3>Check IDs Here</h3>
+      <%= simple_form_for @quote, remote: true, url: id_check_quotes_path do |f| %>
+        <%= f.input :accountant_id, label: 'Accountant ID', html: { id: :Accountant_check } %>
+        <%= f.input :enquiry_id, label: 'Enquiry ID', html: { id: :Accountant_check } %>
+        <%= f.submit "Check Accountant ID" %>
       <% end %>
     </div>
   </div>

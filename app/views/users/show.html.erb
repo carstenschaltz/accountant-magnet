@@ -20,6 +20,7 @@
               <h2> <%= enquiry.title %> </h2>
               <%= enquiry.description %>
               <%= link_to "Edit Enquiry", edit_enquiry_path(enquiry) %>
+              <%= link_to "Delete Enquiry",  enquiry_path(enquiry), method: :delete, data: { confirm: "Are you sure?" } %>
                 <div class="acct-card-services">
                   <% enquiry.services.each do |service| %>
                   <div class="card-service">
@@ -29,6 +30,7 @@
                 </div>
             </div>
             <h3>Your Quotes</h3>
+              <%= render 'no-quotes', enquiries: @user_enquiries %>
             <div class="row">
               <% enquiry.quotes.each do |quote| %>
                 <div class="col-xs-12 col-sm-4">
@@ -49,7 +51,7 @@
                         <% end %>
                       </div>
                     </div>
-                    <h4><%= quote.accountant.name %></h4>
+                    <h4><%= link_to quote.accountant.name, accountant_path(quote.accountant) %> </h4>
                     <h5><%= quote.accountant.bio %></h5>
                     <p> <%= quote.accountant.email %></p>
                     <%= render 'connect-button', quote: quote %>
@@ -65,10 +67,48 @@
 
 
 <script>
-  const button = document.getElementById("click-connect");
-  button.addEventListener("click", (e) => {
-    document.getElementById("connect").innerHTML = "connected";
-    button.remove()
+  const buttons = document.querySelectorAll("#click-connect");
+  buttons.forEach((button, index) => {
+    button.addEventListener("click", (e) => {
+      document.querySelectorAll("#connect")[index].innerHTML = "connected";
+      document.querySelectorAll('.close')[index].click()
+      document.querySelectorAll('#connect-button')[index].remove()
+    });
+  })
+</script>
+
+<script>
+  const buttonsRemove = document.querySelectorAll(".discard-button");
+  buttonsRemove.forEach((button, index) => {
+    button.addEventListener("click", (e) => {
+      document.querySelectorAll('.quote-card')[index].remove()
+    });
   });
 </script>
+
+
+
+<% if @user_enquiries.count == 0  %>
+  <div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
+    <div class="row text-center">
+      <h3> You have no enquiries.</h3>
+      <%= link_to "New Enquiry", new_enquiry_path, class:'btn-primary-outline btn  header-btn '%>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

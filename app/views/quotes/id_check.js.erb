@@ -1,0 +1,17 @@
+var accountantCheckInput = document.getElementById('quote_accountant_id');
+var accountantText = document.getElementById('accountant-id-text');
+var renderResult = `<%= j render "quotes/accountant_id_check" %>`;
+
+if (accountantText) {
+  accountantText.innerHTML = "";
+}
+accountantCheckInput.insertAdjacentHTML('afterend', renderResult );
+
+var enquiryCheckInput = document.getElementById('quote_enquiry_id');
+var enquiryText = document.getElementById('enquiry-id-text');
+var renderResult = `<%= j render "quotes/enquiry_id_check" %>`;
+
+if (enquiryText) {
+  enquiryText.innerHTML = "";
+}
+enquiryCheckInput.insertAdjacentHTML('afterend', renderResult );
