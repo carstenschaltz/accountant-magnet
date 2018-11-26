@@ -16,6 +16,15 @@ class ApplicationController < ActionController::Base
   #   redirect_to(root_path)
   # end
 
+  def after_sign_in_path_for(resource)
+    binding.pry
+    if flash[:to_dashboard]
+      user_path(resource)
+    else
+      root_path
+    end
+  end
+
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :company_name, :company_size, :company_location, :company_industry])
