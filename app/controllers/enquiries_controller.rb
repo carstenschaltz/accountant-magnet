@@ -20,8 +20,10 @@ class EnquiriesController < ApplicationController
         @enquiry.update(user: current_user)
         redirect_to user_path(current_user)
       elsif User.where(email: enquiry_params[:email]).any?
+        flash[:notice] = 'Your enquiry has been created! Sign in to see it & invite accountants to quote'
         redirect_to new_user_session_path(email: enquiry_params[:email])
       else
+        flash[:notice] = 'Your enquiry has been created! Sign up to see it on your dashboard & invite accountants to quote'
         redirect_to new_user_registration_path(email: enquiry_params[:email])
       end
     else
@@ -30,7 +32,7 @@ class EnquiriesController < ApplicationController
   end
 
   def edit
-    @enquiry= Enquiry.find(params[:id])
+    @enquiry = Enquiry.find(params[:id])
     authorize @enquiry
   end
 
