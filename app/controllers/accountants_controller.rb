@@ -3,7 +3,10 @@ class AccountantsController < ApplicationController
 
   def index
     @accountants = policy_scope(Accountant).paginate(page: params[:page], per_page: 10)
-
+    if params[:accountant]
+      service = Service.find(params[:accountant][:services]).name
+      @accountants = @accountants.service(service) if service.present?
+    end
   end
 
   def show
