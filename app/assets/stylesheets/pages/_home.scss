@@ -58,6 +58,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  background-color: $md-grey;
 }
 
 .trusted-by p {
@@ -70,6 +71,7 @@ body {
   text-transform: uppercase;
   padding-top: 30px;
   padding-bottom: 30px;
+  background-color: $md-grey;
 }
 
 .heading-main {
@@ -82,10 +84,14 @@ body {
 
 .company {
   filter: grayscale(100%);
+  mix-blend-mode: darken;
 }
 
 #works {
   height: 100vh;
+  background-color: white !important;
+  display: flex;
+  align-items: center;
 }
 
 .how-it-works  {
