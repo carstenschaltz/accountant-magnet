@@ -11,5 +11,10 @@ Rails.application.routes.draw do
       get 'new_admin'
     end
   end
+  namespace :api, defaults: { format: :json } do
+      namespace :v1 do
+        get 'enquiries/:id', to: 'enquiries#show_quotes'
+      end
+    end
 end
 

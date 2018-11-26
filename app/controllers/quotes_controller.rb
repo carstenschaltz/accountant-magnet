@@ -26,7 +26,6 @@ class QuotesController < ApplicationController
     @quote = Quote.find(params[:id])
     @quote.destroy
     authorize @quote
-      redirect_to user_path(current_user)
   end
 
   def change_status

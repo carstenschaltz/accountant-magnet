@@ -3,6 +3,10 @@ class EnquiryPolicy < ApplicationPolicy
     record.user == user # unless user.nil?
   end
 
+  def show_quotes?
+    record.user == user
+  end
+
   def update?
     record.user == user # unless user.nil?
   end

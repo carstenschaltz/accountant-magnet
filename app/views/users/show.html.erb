@@ -24,40 +24,16 @@
                 <div class="acct-card-services">
                   <% enquiry.services.each do |service| %>
                   <div class="card-service">
-                      <p><%= service.name %></p>
+                    <p><%= service.name %></p>
                   </div>
                   <% end %>
                 </div>
             </div>
             <h3>Your Quotes</h3>
-              <%= render 'no-quotes', enquiries: @user_enquiries %>
-            <div class="row">
-              <% enquiry.quotes.each do |quote| %>
-                <div class="col-xs-12 col-sm-4">
-                  <div class="quote-card">
-                    <div class="acct-card-services">
-                      <div class="card-service">
-                        <% if quote.invite == true %>
-                          <p>Invited by you</p>
-                        <% else %>
-                          <p>New quote</p>
-                        <% end %>
-                      </div>
-                      <div class="card-service">
-                        <% if quote.successful == true %>
-                          <p>Connected</p>
-                        <% else %>
-                          <p id="connect">Not connected</p>
-                        <% end %>
-                      </div>
-                    </div>
-                    <h4><%= link_to quote.accountant.name, accountant_path(quote.accountant) %> </h4>
-                    <h5><%= quote.accountant.bio %></h5>
-                    <p> <%= quote.accountant.email %></p>
-                    <%= render 'connect-button', quote: quote %>
-                  </div>
-                </div>
-              <% end %>
+            <%= render 'no-quotes', enquiries: @user_enquiries %>
+            <div class="row" id='quotes-container-<%= index + 1 %>'>
+              <div id="modal-container-<%= index + 1 %>"></div>
+              <%= render 'fillQuotes', enquiry: enquiry, index: index %>
             </div>
           </div>
         </div>
@@ -85,8 +61,6 @@
     });
   });
 </script>
-
-
 
 <% if @user_enquiries.count == 0  %>
   <div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">
