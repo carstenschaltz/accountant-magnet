@@ -35,6 +35,10 @@
   max-width: 65%;
 }
 
+#accountant-name h3 {
+  margin-bottom: 0px;
+}
+
 .acct-card-contact {
   margin-right: 10px;
 }
@@ -47,8 +51,9 @@
   padding: 10px;
 }
 
-.service-size{
+.service-size p {
  text-align: right;
+ font-size: 13px;
 }
 
 .flex-reverse {
