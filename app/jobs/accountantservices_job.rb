@@ -1,3 +1,7 @@
+
+# CAUTION: This job should only be run if you've scraped the site into your DB.
+# Running with production data will overwrite.
+
 require 'csv'
 
 class AccountantservicesJob < ApplicationJob
@@ -8,9 +12,9 @@ class AccountantservicesJob < ApplicationJob
     filepath    = 'db/accountantservices.csv'
     i = 1
     CSV.open(filepath, 'wb', csv_options) do |csv|
-      csv << ['accountant_id', 'service_id']
+      csv << ['accountant_id', 'subservice_name', 'service_name']
       AccountantService.all.each do |accountantservice|
-        csv << [accountantservice.accountant_id, accountantservice.service_id]
+        csv << [accountantservice.accountant_id, accountantservice.service.name, SERVICE_MAP[accountantservice.service.name]]
         puts "saved accountantservice #{i}"
         i += 1
       end

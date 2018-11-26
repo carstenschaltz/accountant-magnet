@@ -8,11 +8,11 @@ class LoadServicesJob < ApplicationJob
     filepath    = 'db/services.csv'
 
     CSV.foreach(filepath, csv_options) do |row|
-      Service.create!(name: row['name'])
+      Service.create!(name: row['service']) unless Service.where(name: row['service']).any?
     end
   end
 end
 
 # Run:
 # rails c
-# LoadServicesJob.perfom_now
+# LoadServicesJob.perform_now
