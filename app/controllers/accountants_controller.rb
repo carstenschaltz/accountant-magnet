@@ -4,8 +4,11 @@ class AccountantsController < ApplicationController
   def index
     @accountants = policy_scope(Accountant).paginate(page: params[:page], per_page: 10)
     if params[:accountant]
-      service = Service.find(params[:accountant][:services]).name
-      @accountants = @accountants.service(service) if service.present?
+      params[:accountant][:services].each do |id|
+        next if id = ""
+        @accountants = Service.find(id).accountants & @accountants
+      end
+      puts "loop done"
     end
   end
 

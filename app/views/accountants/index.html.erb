@@ -4,7 +4,7 @@
       <h1>Find your accountant</h1>
     </div>
     <%= simple_form_for Accountant.new, url: accountants_path, method: :get do |f| %>
-      <%= f.input :services, collection: Service.all %>
+      <%= f.input :services, collection: Service.all, input_html: { multiple: true } %>
       <%= f.button :submit, 'Search' %>
     <% end %>
   </div>
