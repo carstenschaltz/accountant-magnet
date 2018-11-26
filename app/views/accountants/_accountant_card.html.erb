@@ -4,7 +4,7 @@
       <div class="white-card border-hover">
         <div class="acct-card-title">
           <div>
-            <h2><%= accountant.name %></h2>
+            <h3><%= accountant.name %></h3>
           </div>
           <div>
             <p>See more details</p>
@@ -13,18 +13,25 @@
         <hr class="sm-margin">
         <div class="acct-card-details">
           <div class="acct-card-contact">
-            <p class="text-bold"><%= accountant.location %></p>
-            <p><%= accountant.email %></p>
-            <p><%= accountant.phone_number %></p>
+            <div class="max-width">
+              <p class="text-bold"><%= accountant.location %></p>
+              <p><%= accountant.email %></p>
+              <p><%= accountant.phone_number %></p>
+            </div>
           </div>
           <div class="acct-card-services flex-reverse">
-            <% accountant.services.each do |service| %>
+            <% accountant.services.first(5).each do |service| %>
               <div class="card-service">
                 <p><%= service.name %></p>
               </div>
             <% end %>
           </div>
         </div>
+            <div class="service-size">
+              <% if accountant.services.size > 5 %>
+              <p> +  <%=  accountant.services.size - 5  %> more </p>
+              <% end %>
+            </div>
       </div>
     <% end %>
 

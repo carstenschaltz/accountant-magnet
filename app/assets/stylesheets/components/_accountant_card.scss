@@ -31,6 +31,10 @@
   }
 }
 
+.max-width{
+  max-width: 65%;
+}
+
 .acct-card-contact {
   margin-right: 10px;
 }
@@ -40,6 +44,11 @@
   flex-wrap: wrap;
   flex-grow: 1;
   max-width: 600px;
+  padding: 10px;
+}
+
+.service-size{
+ text-align: right;
 }
 
 .flex-reverse {
