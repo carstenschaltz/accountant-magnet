@@ -17,7 +17,6 @@ class ApplicationController < ActionController::Base
   # end
 
   def after_sign_in_path_for(resource)
-    binding.pry
     if flash[:to_dashboard]
       user_path(resource)
     else
