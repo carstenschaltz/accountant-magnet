@@ -8,8 +8,10 @@ class LoadAccountantservicesJob < ApplicationJob
     filepath    = 'db/accountantservices.csv'
 
     CSV.foreach(filepath, csv_options) do |row|
-      AccountantService.create!(accountant_id: row['accountant_id'],
-                                service_id: row['service_id'])
+      service = Service.find_by(name: row['service_name'])
+      if AccountantService.where(accountant_id: row['accountant_id'], service: service).none?
+        AccountantService.create!(accountant_id: row['accountant_id'], service: service)
+      end
     end
   end
 end

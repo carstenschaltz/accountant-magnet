@@ -1,3 +1,5 @@
+# CAUTION: This writes to the DB. Likely next steps would be to change such that it writes to csv
+
 require 'open-uri'
 
 class ScraperJob < ApplicationJob
