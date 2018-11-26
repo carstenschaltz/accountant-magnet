@@ -1,11 +1,5 @@
 <script>
   quotesContainer<%= index + 1 %> = document.getElementById('quotes-container-<%= index + 1 %>');
-  var modalContainer<%= index + 1 %> = document.getElementById('modal-container-<%= index + 1 %>');
-  var accountantBio = document.getElementById('accountant-bio');
-  var accountantEmail = document.getElementById('accountant-email');
-  var accountantName = document.getElementById('accountant-name');
-  var connectButton = document.getElementById('click-connect');
-  var modalTrigger = document.getElementById('connect-button');
 
   function refresh() {
     fetch('/api/v1/enquiries/<%= enquiry.id %>')
@@ -78,13 +72,13 @@
                     </div>\
                   </div>`;
                   }
+          refreshButton.classList.remove('display-none')
           quotesContainer<%= index + 1 %>.insertAdjacentHTML('beforeend', text)
       });
     });
   };
   document.addEventListener("DOMContentLoaded", refresh());
 
-  window.setInterval(function() {
-    refresh();
-  }, 15000);
+  refreshButton = document.getElementById('refresh-button');
+  refreshButton.addEventListener('click', refresh());
 </script>
