@@ -3,6 +3,10 @@
     <div class="white-card">
       <h1>Find your accountant</h1>
     </div>
+    <%= simple_form_for Accountant.new, url: accountants_path, method: :get do |f| %>
+      <%= f.input :services, collection: Service.all %>
+      <%= f.button :submit, 'Search' %>
+    <% end %>
   </div>
 
   <% @accountants.each do |accountant| %>

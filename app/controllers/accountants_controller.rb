@@ -2,7 +2,11 @@ class AccountantsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @accountants = policy_scope(Accountant).first(50)
+    @accountants = policy_scope(Accountant)
+    if params[:accountant]
+      service = Service.find(params[:accountant][:services]).name
+      @accountants = @accountants.service(service) if service.present?
+    end
   end
 
   def show
