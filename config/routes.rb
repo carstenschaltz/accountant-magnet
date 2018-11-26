@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get 'change_status'
     collection do
       get 'new_admin'
+      post 'id_check'
     end
   end
 end

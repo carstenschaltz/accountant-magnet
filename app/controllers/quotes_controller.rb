@@ -12,6 +12,15 @@ class QuotesController < ApplicationController
     @quote = Quote.new
   end
 
+  def id_check
+    authorize current_user
+    @accountant = Accountant.where(id: params[:quote][:accountant_id]).first
+    @enquiry = Enquiry.where(id: params[:quote][:enquiry_id]).first
+    respond_to do |format|
+      format.js  # <-- will render `app/views/reviews/create.js.erb`
+    end
+  end
+
   def create
     @quote = Quote.new(quote_params)
     if @quote.save
