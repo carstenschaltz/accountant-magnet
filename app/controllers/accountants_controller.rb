@@ -4,11 +4,9 @@ class AccountantsController < ApplicationController
   def index
     @accountants = policy_scope(Accountant).paginate(page: params[:page], per_page: 10)
     if params[:accountant]
-      params[:accountant][:services].each do |id|
-        next if id = ""
-        @accountants = Service.find(id).accountants & @accountants
-      end
-      puts "loop done"
+      @accountants = Accountant.where(service: 'Tax Services')
+      @movies = Movie.joins(:director).where(sql_query, query: "%#{params[:query]}%")
+
     end
   end
 
