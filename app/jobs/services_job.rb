@@ -1,3 +1,7 @@
+
+# CAUTION: This job should only be run if you've scraped the site into your DB.
+# Running with production data will overwrite.
+
 require 'csv'
 
 class ServicesJob < ApplicationJob
