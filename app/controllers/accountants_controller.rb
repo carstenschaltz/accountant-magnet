@@ -2,7 +2,7 @@ class AccountantsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @accountants = policy_scope(Accountant)
+    @accountants = policy_scope(Accountant).paginate(page: params[:page], per_page: 10)
     if params[:accountant]
       service = Service.find(params[:accountant][:services]).name
       @accountants = @accountants.service(service) if service.present?
