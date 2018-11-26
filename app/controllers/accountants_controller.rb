@@ -2,7 +2,8 @@ class AccountantsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @accountants = policy_scope(Accountant).first(50)
+    @accountants = policy_scope(Accountant).paginate(page: params[:page], per_page: 10)
+
   end
 
   def show
