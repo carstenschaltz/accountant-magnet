@@ -30,7 +30,7 @@ class AccountantsController < ApplicationController
       @open_enquiries = []
       @open_enquiries_no_quote = []
     end
-    
+
     current_user.enquiries.each do |enquiry|
       enquiry.quotes.each do |quote|
         if quote.accountant_id == @accountant.id
