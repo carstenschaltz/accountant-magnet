@@ -81,3 +81,20 @@ svg { overflow:visible }
   font-weight: bold;
 }
 
+#email-subject {
+  width: 60%;
+  display: inline;
+  margin: 5px 0 !important;
+  border-radius: 3px;
+  padding: 3px;
+  border: 1px solid $md-grey;
+  color: $dk-grey;
+}
+
+#email-body {
+  width: 100%;
+  border-radius: 3px;
+  padding: 3px;
+  border: 1px solid $md-grey;
+  color: $dk-grey;
+}

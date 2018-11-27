@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :users, only: [:show]
-  resources :accountants, only: [:index, :show]
+  resources :accountants, only: [:index, :show] do
+    post '/send_email', to: 'accountants#send_email'
+  end
   resources :enquiries, only: [:new, :create, :show, :destroy, :update, :edit]
   resources :quotes, only: [:new, :create, :destroy] do
     get 'change_status'
