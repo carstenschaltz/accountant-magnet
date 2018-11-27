@@ -15,6 +15,15 @@
         <% if @accountant.website %>
           <p>Website: <%= link_to @accountant.website, 'http://' + @accountant.website, target: :_blank %></p>
         <% end %>
+        <% if user_signed_in? %>
+          <p><strong>Or contact <%= @accountant.name %> directly:</strong></p>
+          <form action="/accountants/<%= @accountant.id %>/send_email" method="post">
+            <input type="text" placeholder="Email address" id="email-address" name="email" value="<%= current_user.email %>" disabled>
+            <input type="text" placeholder="Subject" id='email-subject' name="subject">
+            <textarea placeholder="Your message" id='email-body' name="body"></textarea>
+            <input type="submit" value="Send">
+          </form>
+        <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

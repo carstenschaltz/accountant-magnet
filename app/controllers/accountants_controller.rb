@@ -1,5 +1,6 @@
 class AccountantsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :send_email]
+  before_action :find_accountant, only: [:send_email, :show]
 
   def index
     @accountants = policy_scope(Accountant).paginate(page: params[:page], per_page: 10)
@@ -10,8 +11,6 @@ class AccountantsController < ApplicationController
   end
 
   def show
-    @accountant = Accountant.find(params[:id])
-
     if user_signed_in?
       @open_enquiries = current_user.enquiries.where(closed: false)
       @open_enquiries_no_quote = []
@@ -22,7 +21,20 @@ class AccountantsController < ApplicationController
       @open_enquiries = []
       @open_enquiries_no_quote = []
     end
+  end
 
+  def send_email
+    @body = params[:body]
+    @email_from = current_user.email || params[:email]
+    @subject = params[:subject]
+    AccountantMailer.contact(@body, @email_from, @subject, @accountant.email).deliver_now
+    redirect_to root_path
+  end
+
+  private
+
+  def find_accountant
+    @accountant = Accountant.find(params[:id] || params[:accountant_id])
     authorize @accountant
   end
 end

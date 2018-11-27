@@ -12,6 +12,7 @@ gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'font-awesome-sass', '~> 5.0.9'
 gem 'nokogiri'
+gem 'postmark-rails'
 gem 'pundit'
 gem 'sassc-rails'
 gem 'simple_form'
@@ -23,6 +24,7 @@ gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'letter_opener'
 end
 
 group :development, :test do
