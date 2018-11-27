@@ -30,7 +30,6 @@
                 </div>
             </div>
             <h3>Your Quotes <span class="display-none slow-appear btn text-right"></span><i class="fas fa-sync text-center" id="refresh-button"></i></h3>
-            <%= render 'no-quotes', enquiries: @user_enquiries %>
             <div class="row" id='quotes-container-<%= index + 1 %>'>
               <%= render 'fillQuotes', enquiry: enquiry, index: index %>
             </div>
@@ -39,27 +38,6 @@
       </div>
     <% end %>
   </div>
-
-
-<script>
-  const buttons = document.querySelectorAll("#click-connect");
-  buttons.forEach((button, index) => {
-    button.addEventListener("click", (e) => {
-      document.querySelectorAll("#connect")[index].innerHTML = "connected";
-      document.querySelectorAll('.close')[index].click()
-      document.querySelectorAll('#connect-button')[index].remove()
-    });
-  })
-</script>
-
-<script>
-  const buttonsRemove = document.querySelectorAll(".discard-button");
-  buttonsRemove.forEach((button, index) => {
-    button.addEventListener("click", (e) => {
-      document.querySelectorAll('.quote-card')[index].remove()
-    });
-  });
-</script>
 
 <% if @user_enquiries.count == 0  %>
   <div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">

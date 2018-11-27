@@ -26,20 +26,22 @@ class AccountantsController < ApplicationController
       @open_enquiries.each do |e|
         @open_enquiries_no_quote << e unless e.quotes.any? { |quote| quote.accountant == @accountant }
       end
-    else
-      @open_enquiries = []
-      @open_enquiries_no_quote = []
-    end
-    
-    current_user.enquiries.each do |enquiry|
-      enquiry.quotes.each do |quote|
-        if quote.accountant_id == @accountant.id
-          @show_button = false
-        else
-          @show_button = true
+
+      current_user.enquiries.each do |enquiry|
+        enquiry.quotes.each do |quote|
+          if quote.accountant_id == @accountant.id
+            @show_button = false
+          else
+            @show_button = true
+          end
+          break
         end
         break
       end
+    else
+      @show_button = false
+      @open_enquiries = []
+      @open_enquiries_no_quote = []
     end
   end
 
