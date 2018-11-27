@@ -113,7 +113,9 @@ body {
 
 .feature{
   display: flex;
+  flex-wrap: wrap;
   padding-top: 50px;
+  justify-content: space-around;
 }
 
 .feature-card{
@@ -124,10 +126,37 @@ body {
     flex-direction: column;
     flex: 1;
     min-height: 187px;
-    padding: 20px 25px;
-    margin: 25px;
+    padding: 0 20px;
+    margin: 5px;
 }
 
 .feature-card h3 {
   font-weight: lighter;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.testimonials{
+  background-color: #F2F2F2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.testimonal{
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+  max-width: 300px;
+  padding: 0 30px;
+  background-color: white;
+  border-radius: 12px;
+  border-bottom-left-radius: 0;
+  box-shadow: -3px 5px 10px 0 rgba(0,0,0,.03);
+  text-align: center;
+}
+
+.divider {
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
