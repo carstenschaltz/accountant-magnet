@@ -7,5 +7,4 @@ const getInTouch = () => {
     });
   }
 };
-
 export { getInTouch }
