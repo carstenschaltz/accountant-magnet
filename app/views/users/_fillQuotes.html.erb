@@ -71,22 +71,6 @@
                         </div>\
                       </div>`
           }
-            text = `<div class="col-xs-12 col-sm-4 slow-appear" data-quote-id='${quote.id}'>\
-                      <div class="quote-card">\
-                        <div class="acct-card-services">\
-                          <div class="card-service">\
-                            ${invited}\
-                          </div>\
-                          <div class="card-service">
-                            ${successful}
-                          </div>\
-                        </div>\
-                        <h4>${acctName}</h4>\
-                        <p>${acctEmail}</p>\
-                        ${buttons}
-                      </div>\
-                    </div>`
-        }
           text = `<div class="col-xs-12 col-sm-4 slow-appear" data-quote-id='${quote.id}'>\
                     <div class="quote-card">\
                       <div class="acct-card-services" id="quote-pills">\
@@ -103,7 +87,7 @@
                       <div id="quote-buttons">${buttons}</div>\
                     </div>\
                   </div>`;
-        });
+        })
       }
       quotesContainer<%= index + 1 %>.insertAdjacentHTML('beforeend', text)
       changeButtons();

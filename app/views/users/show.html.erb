@@ -12,7 +12,12 @@
         <div class=" grey-wrapper">
           <div class="container">
             <div style="display: flex;">
-              <h3 id="title">Active Enquiry </h3>
+              <h3 id="title">
+                Active Enquiry
+              <% if current_user.admin %>
+                <span style="color: red">Viewing as admin</span>
+              <% end %>
+              </h3>
               <%= link_to "Invite Accountants", accountants_path, class:'btn-primary-outline btn  header-btn flex-buttons'%>
               <%= link_to "New Enquiry", new_enquiry_path, class:'btn-primary-outline btn  header-btn'%>
             </div>

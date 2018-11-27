@@ -4,19 +4,19 @@ class EnquiryPolicy < ApplicationPolicy
   end
 
   def show_quotes?
-    record.user == user
+    record.user == user || user.admin
   end
 
   def update?
-    record.user == user # unless user.nil?
+    record.user == user || user.admin # unless user.nil?
   end
 
   def edit
-    record.user == user
+    record.user == user || user.admin
   end
 
   def destroy?
-    record.user == user # unless user.nil?
+    record.user == user || user.admin # unless user.nil?
   end
 
   def new?
