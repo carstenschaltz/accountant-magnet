@@ -29,10 +29,9 @@
                   <% end %>
                 </div>
             </div>
-            <h3>Your Quotes</h3>
+            <h3>Your Quotes <span class="display-none slow-appear btn text-right"></span><i class="fas fa-sync text-center" id="refresh-button"></i></h3>
             <%= render 'no-quotes', enquiries: @user_enquiries %>
             <div class="row" id='quotes-container-<%= index + 1 %>'>
-              <div id="modal-container-<%= index + 1 %>"></div>
               <%= render 'fillQuotes', enquiry: enquiry, index: index %>
             </div>
           </div>

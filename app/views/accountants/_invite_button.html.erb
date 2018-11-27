@@ -1,7 +1,8 @@
-<a type="button" class="btn btn-primary-outline header-btn" data-toggle="modal" data-target="#myModal">
-  Invite to quote
-</a>
-
+<% if @show_button %>
+  <a type="button" class="btn btn-primary-outline header-btn" data-toggle="modal" data-target="#myModal">
+          Invite to quote
+        </a>
+<% end %>
 
 <% if user_signed_in? && @open_enquiries.length > 1 %>
 

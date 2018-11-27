@@ -10,14 +10,18 @@
         <h4 class="modal-title" id="myModalLabel">Reach <strong><%= accountant.name %></strong> through one of the following:</h4>
       </div>
       <div class="modal-body">
-        <p>Email: <%= @accountant.email %>
-          <% if user_signed_in? %>
-            <span style="float: right;">
-              <button class="btn btn-primary-outline" id="send-email">Send Message</button>
-            </span>
-          <% end %>
-        </p>
-        <p>Phone: <%= @accountant.phone_number %></p>
+        <% if @accountant.email %>
+          <p>Email: <%= @accountant.email %>
+            <% if user_signed_in? %>
+              <span style="float: right;">
+                <button class="btn btn-primary-outline" id="send-email">Send Message</button>
+              </span>
+            <% end %>
+          </p>
+        <% end %>
+        <% if @accountant.phone_number %>
+          <p>Phone: <%= @accountant.phone_number %></p>
+        <% end %>
         <% if @accountant.website %>
           <p>Website: <%= link_to @accountant.website, 'http://' + @accountant.website, target: :_blank %></p>
         <% end %>
