@@ -25,11 +25,11 @@
 
 .quote-card{
   background-color: white;
-  padding: 10px 30px 20px 30px;
+  padding: 10px 20px 20px 20px;
   margin-bottom: 30px;
   box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
   height: 250px;
-
+  position: relative;
 }
 
 
@@ -50,4 +50,29 @@
 #refresh-button {
   margin: 15px;
   cursor: pointer;
+}
+
+#quote-title {
+  margin: 0;
+}
+
+#quote-email {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+#quote-message {
+  font-size: 16px;
+}
+
+#quote-buttons {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+#quote-pills {
+  padding: 0 0 10px 0;
+  justify-content: space-between;
 }

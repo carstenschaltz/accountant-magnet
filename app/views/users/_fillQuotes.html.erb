@@ -36,7 +36,12 @@
             var successful = '<p id="connect">Not connected</p>'
           }
           acctName = `<a href="/accountants/${quote.accountant.id}">${quote.accountant.name}</a>`
-          acctEmail = `<p>${quote.accountant.email}</a>`
+          acctEmail = `${quote.accountant.email}`
+          if (quote.invite == true) {
+            acctMsg = `You wrote: ${quote.message}`
+          } else {
+            acctMsg = `They wrote: ${quote.message}`
+          }
           var buttons = `<a data-confirm="Are you sure?" class="btn btn-info btn" rel="nofollow"\
                             data-method="delete" href="/quotes/${quote.id}" data-remote="true">Discard</a>`
 
@@ -56,7 +61,7 @@
                               <h4 class="modal-title" id="myModalLabel">Connect with ${quote.accountant.name}</h4>\
                             </div>\
                             <div class="modal-body">\
-                              <p>We will share your details with ${quote.accountant.email}</p>\
+                              <p>We will share your details with ${quote.accountant.name}</p>\
                               <p>Expect to hear back within 24hours!</p>\
                             </div>\
                             <div class="modal-footer">\
@@ -80,7 +85,24 @@
                         <p>${acctEmail}</p>\
                         ${buttons}
                       </div>\
-                    </div>`;
+                    </div>`
+        }
+          text = `<div class="col-xs-12 col-sm-4 slow-appear" data-quote-id='${quote.id}'>\
+                    <div class="quote-card">\
+                      <div class="acct-card-services" id="quote-pills">\
+                        <div class="card-service">\
+                          ${invited}\
+                        </div>\
+                        <div class="card-service">
+                          ${successful}
+                        </div>\
+                      </div>\
+                      <h4 id="quote-title">${acctName}</h4>\
+                      <p id="quote-email">${acctEmail}</p>\
+                      <p id="quote-message">${acctMsg}</p>\
+                      <div id="quote-buttons">${buttons}</div>\
+                    </div>\
+                  </div>`;
         });
       }
       quotesContainer<%= index + 1 %>.insertAdjacentHTML('beforeend', text)
