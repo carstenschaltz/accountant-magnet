@@ -15,4 +15,4 @@ end
 
 # Run:
 # rails c
-# LoadLatLongJob.perform
+# LoadLatLongJob.perform_now
