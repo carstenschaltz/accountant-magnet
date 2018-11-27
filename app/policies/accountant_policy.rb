@@ -7,6 +7,10 @@ class AccountantPolicy < ApplicationPolicy
     true
   end
 
+  def send_email?
+    true
+  end
+
   class Scope < Scope
     def resolve
       scope.all
