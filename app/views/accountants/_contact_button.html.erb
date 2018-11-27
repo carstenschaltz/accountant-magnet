@@ -10,18 +10,24 @@
         <h4 class="modal-title" id="myModalLabel">Reach <strong><%= accountant.name %></strong> through one of the following:</h4>
       </div>
       <div class="modal-body">
-        <p>Email: <%= @accountant.email %></p>
+        <p>Email: <%= @accountant.email %>
+          <% if user_signed_in? %>
+            <span style="float: right;">
+              <button class="btn btn-primary-outline" id="send-email">Send Message</button>
+            </span>
+          <% end %>
+        </p>
         <p>Phone: <%= @accountant.phone_number %></p>
         <% if @accountant.website %>
           <p>Website: <%= link_to @accountant.website, 'http://' + @accountant.website, target: :_blank %></p>
         <% end %>
         <% if user_signed_in? %>
-          <p><strong>Or contact <%= @accountant.name %> directly:</strong></p>
-          <form action="/accountants/<%= @accountant.id %>/send_email" method="post">
-            <input type="text" placeholder="Email address" id="email-address" name="email" value="<%= current_user.email %>" disabled>
+          <form action="/accountants/<%= @accountant.id %>/send_email" class="hidden" method="post" id="email-form">
+            <hr>
+            <p>From: <%= current_user.email %></p>
             <input type="text" placeholder="Subject" id='email-subject' name="subject">
-            <textarea placeholder="Your message" id='email-body' name="body"></textarea>
-            <input type="submit" value="Send">
+            <textarea placeholder="Your message" id='email-body' name="body" rows="6"></textarea>
+            <input type="submit" value="Send" class="btn btn-primary">
           </form>
         <% end %>
       </div>

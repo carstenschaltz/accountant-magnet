@@ -4,6 +4,7 @@ import { fillSummary } from './fillSummary.js'
 import { toggleActive } from './toggleActive.js'
 import { location } from './location.js'
 import { next, back, skip } from './toggleEnquiryTabs.js'
+import { getInTouch } from './getInTouch.js'
 
 showForm();
 fillSummary();
@@ -12,4 +13,4 @@ location();
 next();
 back();
 skip();
-
+getInTouch();

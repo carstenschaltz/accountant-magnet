@@ -25,7 +25,7 @@ class AccountantsController < ApplicationController
 
   def send_email
     @body = params[:body]
-    @email_from = current_user.email || params[:email]
+    @email_from = current_user.email
     @subject = params[:subject]
     AccountantMailer.contact(@body, @email_from, @subject, @accountant.email).deliver_now
     redirect_to root_path
