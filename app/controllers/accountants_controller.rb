@@ -30,6 +30,7 @@ class AccountantsController < ApplicationController
         else
           @show_button = true
         end
+        break
       end
     end
     authorize @accountant
