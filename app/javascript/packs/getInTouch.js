@@ -6,6 +6,6 @@ const getInTouch = () => {
       form.classList.toggle('hidden');
     });
   }
-}
+};
 
 export { getInTouch }
