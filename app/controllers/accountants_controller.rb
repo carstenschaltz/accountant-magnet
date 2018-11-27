@@ -14,7 +14,7 @@ class AccountantsController < ApplicationController
       results = Accountant.find_by_sql(base_sql)
       @accountants = Accountant.where(id: results.map(&:id)).paginate(page: params[:page], per_page: 10)
     end
-       if params[:search].present?
+    if params[:search].present?
       @accountants = @accountants.near(params[:search], 50, order: 'distance')
     end
   end

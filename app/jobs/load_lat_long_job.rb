@@ -1,6 +1,6 @@
 require 'csv'
 
-class  LoadlatlongJob < ApplicationJob
+class  LoadLatLongJob < ApplicationJob
    queue_as :default
 
    def perform
@@ -10,5 +10,9 @@ class  LoadlatlongJob < ApplicationJob
     CSV.foreach(filepath, csv_options) do |row|
       Accountant.find(row['id']).update!(latitude: row["latitude"], longitude: row["longitude"])
     end
+  end
 end
 
+# Run:
+# rails c
+# LoadLatLongJob.perform
