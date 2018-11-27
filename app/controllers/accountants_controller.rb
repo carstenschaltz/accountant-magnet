@@ -7,6 +7,9 @@ class AccountantsController < ApplicationController
       service = Service.find(params[:accountant][:services]).name
       @accountants = @accountants.service(service) if service.present?
     end
+       if params[:search].present?
+      @accountants = @accountants.near(params[:search], 50, order: 'distance')
+    end
   end
 
   def show
