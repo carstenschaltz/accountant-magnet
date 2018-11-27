@@ -5,8 +5,17 @@ class AccountantsController < ApplicationController
   def index
     @accountants = policy_scope(Accountant).paginate(page: params[:page], per_page: 10)
     if params[:accountant]
-      service = Service.find(params[:accountant][:services]).name
-      @accountants = @accountants.service(service) if service.present?
+      to_search = params[:accountant][:services].reject(&:blank?).map(&:to_i)
+      base_sql = "SELECT id FROM \"accountants\" WHERE EXISTS (SELECT \"accountant_services\".* FROM \"accountant_services\" WHERE (accountants.id = accountant_services.accountant_id AND service_id = #{to_search.first}))"
+      to_search[1..-1].each do |id|
+        add_serv = " AND EXISTS (SELECT \"accountant_services\".* FROM \"accountant_services\" WHERE (accountants.id = accountant_services.accountant_id AND service_id = #{id}))"
+        base_sql += add_serv
+      end
+      results = Accountant.find_by_sql(base_sql)
+      @accountants = Accountant.where(id: results.map(&:id)).paginate(page: params[:page], per_page: 10)
+    end
+       if params[:search].present?
+      @accountants = @accountants.near(params[:search], 50, order: 'distance')
     end
   end
 
