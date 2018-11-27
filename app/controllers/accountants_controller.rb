@@ -20,28 +20,25 @@ class AccountantsController < ApplicationController
   end
 
   def show
+    @show_button = true
+    cnt = 0
     if user_signed_in?
       @open_enquiries = current_user.enquiries.where(closed: false)
       @open_enquiries_no_quote = []
       @open_enquiries.each do |e|
         @open_enquiries_no_quote << e unless e.quotes.any? { |quote| quote.accountant == @accountant }
       end
-    else
-      @open_enquiries = []
-      @open_enquiries_no_quote = []
-    end
-
-    @show_button = true
-    cnt = 0
-    if user_signed_in?
       current_user.enquiries.each do |enquiry|
         enquiry.quotes.each do |quote|
           if quote.accountant_id == @accountant.id
             cnt += 1
           end
+          @show_button = false if cnt == current_user.enquiries.count
         end
       end
-      @show_button = false if cnt == current_user.enquiries.count
+    else
+      @open_enquiries = []
+      @open_enquiries_no_quote = []
     end
   end
 

@@ -1,84 +1,99 @@
 <script>
   quotesContainer<%= index + 1 %> = document.getElementById('quotes-container-<%= index + 1 %>');
 
+  function changeButtons() {
+    connectButtons = document.querySelectorAll("#click-connect");
+    connectButtons.forEach((button, index) => {
+      button.addEventListener("click", (e) => {
+        document.querySelectorAll("#connect")[index].innerHTML = "connected";
+        document.querySelectorAll('.close')[index].click()
+        document.querySelectorAll('#connect-button')[index].remove()
+      });
+    })
+  }
+
   function refresh() {
     fetch('/api/v1/enquiries/<%= enquiry.id %>')
     .then((results) => results.json())
     .then((data) => {
       quotesContainer<%= index + 1 %>.innerHTML = '';
-      data.quotes.forEach((quote) => {
-        if (quote.invite === true) {
-          var invited = '<p>Invited by you</p>'
-        } else {
-          var invited = '<p>New quote</p>'
-        }
-        if (quote.successful === true) {
-          var successful = '<p>Connected</p>'
-        } else {
-          var successful = '<p id="connect">Not connected</p>'
-        }
-        acctName = `<a href="/accountants/${quote.accountant.id}">${quote.accountant.name}</a>`
-        acctEmail = `<p>${quote.accountant.email}</a>`
-        var buttons = `<a data-confirm="Are you sure?" class="btn btn-info btn" rel="nofollow"\
-                          data-method="delete" href="/quotes/${quote.id}" data-remote="true">Discard</a>`
+      if (data.quotes.length === 0) {
+        text = '<div class="row text-center">\
+                  <div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">\
+                    <h3>Expect Quotes very soon!</h3>\
+                  </div>\
+                </div>'
+      } else {
+        data.quotes.forEach((quote) => {
+          if (quote.invite === true) {
+            var invited = '<p>Invited by you</p>'
+          } else {
+            var invited = '<p>New quote</p>'
+          }
+          if (quote.successful === true) {
+            var successful = '<p>Connected</p>'
+          } else {
+            var successful = '<p id="connect">Not connected</p>'
+          }
+          acctName = `<a href="/accountants/${quote.accountant.id}">${quote.accountant.name}</a>`
+          acctEmail = `<p>${quote.accountant.email}</a>`
+          var buttons = `<a data-confirm="Are you sure?" class="btn btn-info btn" rel="nofollow"\
+                            data-method="delete" href="/quotes/${quote.id}" data-remote="true">Discard</a>`
 
-        if (quote.successful != true) {
-          var buttons = `<button type="button" class="btn btn-primary" id="connect-button" data-toggle="modal"\
-                    data-target="#id-${quote.id}">\
-                      Connect\
-                    </button>\
-                    <a data-confirm="Are you sure?" class="btn btn-info btn" rel="nofollow"\
-                    data-method="delete" href="/quotes/${quote.id}" data-remote="true">Discard</a>
-                    <div class="modal fade" id="id-${quote.id}" tabindex="-1"\
-                    role="dialog" aria-labelledby="myModalLabel">\
-                      <div class="modal-dialog" role="document">\
-                        <div class="modal-content">\
-                          <div class="modal-header">\
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
-                            <h4 class="modal-title" id="myModalLabel">Connect with ${quote.accountant.name}</h4>\
-                          </div>\
-                          <div class="modal-body">\
-                            <p> ${quote.accountant.bio}</p>\
-                            <p> We will share your details with ${quote.accountant.email}</p>\
-                            <p> Expect to hear back within 24hours!</p>\
-                          </div>\
-                          <div class="modal-footer">\
-                             <a class="btn btn-primary" id="click-connect" data-dismiss="modal" data-remote="true" href="/quotes/${quote.id}/change_status">Connect</a>\
+          if (quote.successful != true) {
+            var buttons = `<button type="button" class="btn btn-primary" id="connect-button" data-toggle="modal"\
+                      data-target="#id-${quote.id}">\
+                        Connect\
+                      </button>\
+                      <a data-confirm="Are you sure?" class="btn btn-info btn" rel="nofollow"\
+                      data-method="delete" href="/quotes/${quote.id}" data-remote="true">Discard</a>
+                      <div class="modal fade" id="id-${quote.id}" tabindex="-1"\
+                      role="dialog" aria-labelledby="myModalLabel">\
+                        <div class="modal-dialog" role="document">\
+                          <div class="modal-content">\
+                            <div class="modal-header">\
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
+                              <h4 class="modal-title" id="myModalLabel">Connect with ${quote.accountant.name}</h4>\
+                            </div>\
+                            <div class="modal-body">\
+                              <p>We will share your details with ${quote.accountant.email}</p>\
+                              <p>Expect to hear back within 24hours!</p>\
+                            </div>\
+                            <div class="modal-footer">\
+                               <a class="btn btn-primary" id="click-connect" data-dismiss="modal" data-remote="true" href="/quotes/${quote.id}/change_status">Connect</a>\
+                            </div>\
                           </div>\
                         </div>\
+                      </div>`
+          }
+            text = `<div class="col-xs-12 col-sm-4 slow-appear" data-quote-id='${quote.id}'>\
+                      <div class="quote-card">\
+                        <div class="acct-card-services">\
+                          <div class="card-service">\
+                            ${invited}\
+                          </div>\
+                          <div class="card-service">
+                            ${successful}
+                          </div>\
+                        </div>\
+                        <h4>${acctName}</h4>\
+                        <p>${acctEmail}</p>\
+                        ${buttons}
                       </div>\
-                    </div>`
-        }
-        if (data.quotes.count === 0) {
-          text = '<div class="row text-center">\
-                    <div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">\
-                      <h3>Expect Quotes very soon!</h3>\
-                    </div>\
-                  </div>'
-        } else {
-          text = `<div class="col-xs-12 col-sm-4 slow-appear" data-quote-id='${quote.id}'>\
-                    <div class="quote-card">\
-                      <div class="acct-card-services">\
-                        <div class="card-service">\
-                          ${invited}\
-                        </div>\
-                        <div class="card-service">
-                          ${successful}
-                        </div>\
-                      </div>\
-                      <h4>${acctName}</h4>\
-                      <p>${acctEmail}</p>\
-                      ${buttons}
-                    </div>\
-                  </div>`;
-                  }
-          refreshButton.classList.remove('display-none')
-          quotesContainer<%= index + 1 %>.insertAdjacentHTML('beforeend', text)
-      });
+                    </div>`;
+        });
+      }
+      quotesContainer<%= index + 1 %>.insertAdjacentHTML('beforeend', text)
+      changeButtons();
+      refreshButtons.forEach((button) => button.classList.remove('display-none'));
     });
   };
   document.addEventListener("DOMContentLoaded", refresh());
 
-  refreshButton = document.getElementById('refresh-button');
-  refreshButton.addEventListener('click', refresh());
+  refreshButtons = document.querySelectorAll('#refresh-button');
+  refreshButtons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      refresh();
+    })
+  })
 </script>
