@@ -30,16 +30,18 @@ class AccountantsController < ApplicationController
       @open_enquiries = []
       @open_enquiries_no_quote = []
     end
-    
-    current_user.enquiries.each do |enquiry|
-      enquiry.quotes.each do |quote|
-        if quote.accountant_id == @accountant.id
-          @show_button = false
-        else
-          @show_button = true
+
+    @show_button = true
+    cnt = 0
+    if user_signed_in?
+      current_user.enquiries.each do |enquiry|
+        enquiry.quotes.each do |quote|
+          if quote.accountant_id == @accountant.id
+            cnt += 1
+          end
         end
-        break
       end
+      @show_button = false if cnt == current_user.enquiries.count
     end
   end
 
