@@ -7,6 +7,14 @@
       <%= f.input :services, collection: Service.all %>
       <%= f.button :submit, 'Search' %>
     <% end %>
+
+    <div class="display-flex">
+      <%= form_tag accountants_path, method: :get do %>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search Near", name: nil, id: "search-button" %>
+      <% end %>
+    </div>
+
   </div>
 
   <% @accountants.each do |accountant| %>
