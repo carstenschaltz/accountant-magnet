@@ -4,10 +4,6 @@ class Accountant < ApplicationRecord
   has_many :quotes
   has_many :accountant_services
   has_many :services, through: :accountant_services
-
-  include PgSearch
-  pg_search_scope :search_by_service, associated_against: { service: :name }
-
-  # scope :location, ->(place) { near(place) }
-  scope :service, ->(accounting_services) { joins(accountant_services: :service).where('services.name' => accounting_services) }
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 end
