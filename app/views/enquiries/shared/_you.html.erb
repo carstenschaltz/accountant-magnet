@@ -27,7 +27,7 @@
           <p>Or:</p>
         </td>
         <td>
-          <%= f.input :industry, collection: INDUSTRIES, prompt: "Select one" %>
+          <%= f.input :industry_string, collection: INDUSTRIES, prompt: "Select one", label: 'Industry' %>
           <%= f.input :size, collection: COMPANY_SIZES.map { |e| "£#{e}m" }, prompt: "Turnover" %>
           <%= f.input :location %>
         </td>

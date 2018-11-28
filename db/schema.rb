@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_26_175620) do
+ActiveRecord::Schema.define(version: 2018_11_28_101045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accountant_industries", force: :cascade do |t|
+    t.bigint "accountant_id"
+    t.bigint "industry_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["accountant_id"], name: "index_accountant_industries_on_accountant_id"
+    t.index ["industry_id"], name: "index_accountant_industries_on_industry_id"
+  end
 
   create_table "accountant_services", force: :cascade do |t|
     t.bigint "service_id"
@@ -34,7 +43,7 @@ ActiveRecord::Schema.define(version: 2018_11_26_175620) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "industries"
+    t.string "industries_string"
     t.float "latitude"
     t.float "longitude"
   end
@@ -50,7 +59,7 @@ ActiveRecord::Schema.define(version: 2018_11_26_175620) do
     t.string "email"
     t.string "company_name"
     t.string "company_reg"
-    t.string "industry"
+    t.string "industry_string"
     t.string "size"
     t.string "location"
     t.index ["user_id"], name: "index_enquiries_on_user_id"
@@ -65,18 +74,22 @@ ActiveRecord::Schema.define(version: 2018_11_26_175620) do
     t.index ["service_id"], name: "index_enquiry_services_on_service_id"
   end
 
+  create_table "industries", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "quotes", force: :cascade do |t|
     t.boolean "successful"
     t.boolean "invite"
     t.text "message"
     t.bigint "enquiry_id"
     t.bigint "accountant_id"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["accountant_id"], name: "index_quotes_on_accountant_id"
     t.index ["enquiry_id"], name: "index_quotes_on_enquiry_id"
-    t.index ["user_id"], name: "index_quotes_on_user_id"
   end
 
   create_table "services", force: :cascade do |t|
@@ -105,6 +118,8 @@ ActiveRecord::Schema.define(version: 2018_11_26_175620) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "accountant_industries", "accountants"
+  add_foreign_key "accountant_industries", "industries"
   add_foreign_key "accountant_services", "accountants"
   add_foreign_key "accountant_services", "services"
   add_foreign_key "enquiries", "users"
