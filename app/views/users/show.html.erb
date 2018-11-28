@@ -18,21 +18,25 @@
                 <span style="color: red">Viewing as admin</span>
               <% end %>
               </h3>
-              <%= link_to "Invite Accountants", accountants_path, class:'btn-primary-outline btn  header-btn flex-buttons'%>
-              <%= link_to "New Enquiry", new_enquiry_path, class:'btn-primary-outline btn  header-btn'%>
+                <%= link_to "Invite Accountants", accountants_path, class:'btn-primary btn  header-btn flex-buttons'%>
+                <%= link_to "New Enquiry", new_enquiry_path, class:'btn-primary-outline btn  header-btn'%>
             </div>
-            <div class="enquiry-card">
-              <h2> <%= enquiry.title %> </h2>
-              <%= enquiry.description %>
-              <%= link_to "Edit Enquiry", edit_enquiry_path(enquiry) %>
-              <%= link_to "Delete Enquiry",  enquiry_path(enquiry), method: :delete, data: { confirm: "Are you sure?" } %>
-                <div class="acct-card-services">
-                  <% enquiry.services.each do |service| %>
-                  <div class="card-service">
-                    <p><%= service.name %></p>
+            <div class="pos-rel">
+              <div class="card-edit-delete-link">
+                <%= link_to "", edit_enquiry_path(enquiry), class:"far fa-edit" %>
+                <%= link_to "",  enquiry_path(enquiry), class: "fas fa-trash-alt", method: :delete, data: { confirm: "Are you sure?" } %>
+              </div>
+              <div class="enquiry-card">
+                <h2> <%= enquiry.title %> </h2>
+                <%= enquiry.description %>
+                  <div class="acct-card-services">
+                    <% enquiry.services.each do |service| %>
+                    <div class="card-service">
+                      <p><%= service.name %></p>
+                    </div>
+                    <% end %>
                   </div>
-                  <% end %>
-                </div>
+              </div>
             </div>
             <h3>Your Quotes <span class="display-none slow-appear btn text-right"></span><i class="fas fa-sync text-center" id="refresh-button"></i></h3>
             <div class="row" id='quotes-container-<%= index + 1 %>'>
