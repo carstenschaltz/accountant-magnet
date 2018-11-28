@@ -21,8 +21,10 @@
   </div>
   <% else  %>
     <%= link_to "How it works", root_path(anchor: 'works'), class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Find accountants", accountants_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to "Log in", new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to "Sign Up", new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Create Enquiry", new_enquiry_path, class:'btn btn-primary-outline btn-sm landing-button' %>
   </div>
     <% end %>
 
