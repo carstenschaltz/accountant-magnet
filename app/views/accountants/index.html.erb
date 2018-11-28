@@ -5,18 +5,19 @@
     </div>
 
     <%= simple_form_for Accountant.new, url: accountants_path, method: :get do |f| %>
-    <div class = "display-flex">
-      <%= f.input :services, collection: Service.all,  placeholder: 'Search Services', input_html: { class: 'select2', multiple: "multiple"} %>
-      <label for="commit">Location</label>
-      <div class="form-group"><%= text_field_tag :search, params[:search], input_html: { prompt: 'Search Location' } %></div>
-      <%= f.button :submit, 'Search', class: "btn-primary" %>
-    </div>
+      <div class = "display-flex">
+        <%= f.input :services, collection: Service.all,  placeholder: 'Search Services', input_html: { class: 'select2', multiple: "multiple"} %>
+        <label for="commit">Location</label>
+        <div class="form-group"><%= text_field_tag :search, params[:search], input_html: { prompt: 'Search Location' } %></div>
+        <%= f.button :submit, 'Search', class: "btn-primary" %>
+      </div>
     <% end %>
 
     <%= simple_form_for Accountant.new, url: accountants_path, method: :get do |f| %>
       <%= f.input :industries, collection: Industry.all, input_html: { multiple: true } %>
       <%= f.button :submit, 'Search' %>
     <% end %>
+  </div>
 
   <% @accountants.each do |accountant| %>
     <%= render 'accountant_card', accountant: accountant %>

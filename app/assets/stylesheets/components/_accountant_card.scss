@@ -104,3 +104,13 @@
   margin-bottom: 12.5px;
 }
 
+@media (max-width: 768px) {
+  .acct-card-details {
+    display: block;
+  }
+
+  .acct-card-services {
+    flex-direction: column;
+    align-items: center;
+  }
+}
