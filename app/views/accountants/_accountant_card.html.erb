@@ -13,11 +13,11 @@
         <hr class="sm-margin">
         <div class="acct-card-details">
           <div class="acct-card-contact">
-            <div class="max-width">
-              <p class="text-bold"><%= accountant.location %></p>
-              <p><%= accountant.email %></p>
-              <p><%= accountant.phone_number %></p>
-            </div>
+            <% city = accountant.location.split(',')[-3].capitalize %>
+            <% post_code = accountant.location.split(',')[-1] %>
+            <p class="text-bold"><%= "#{city}, #{post_code}" %></p>
+            <p><%= accountant.email %></p>
+            <p><%= accountant.phone_number %></p>
           </div>
           <div class="acct-card-services flex-reverse">
             <% accountant.services.first(5).each do |service| %>
