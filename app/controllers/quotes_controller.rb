@@ -17,7 +17,7 @@ class QuotesController < ApplicationController
     @accountant = Accountant.where(id: params[:quote][:accountant_id]).first
     @enquiry = Enquiry.where(id: params[:quote][:enquiry_id]).first
     respond_to do |format|
-      format.js  # <-- will render `app/views/reviews/create.js.erb`
+      format.js # <-- will render `app/views/reviews/create.js.erb`
     end
   end
 
@@ -28,7 +28,7 @@ class QuotesController < ApplicationController
     else
       render :new
     end
-      authorize @quote
+    authorize @quote
   end
 
   def destroy
@@ -41,8 +41,8 @@ class QuotesController < ApplicationController
     @quote = Quote.find(params[:quote_id])
     @quote.successful = true
     authorize @quote
-    if @quote.save
-      redirect_to user_path(current_user)
+    unless @quote.save
+      render :show
     end
   end
 

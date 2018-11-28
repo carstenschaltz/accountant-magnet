@@ -1,0 +1,3 @@
+document.querySelector('#close<%= @quote.id %>').click()
+document.querySelector("[data-connect-id='<%= @quote.id %>']").remove();
+document.querySelector("#connect<%= @quote.id %>").innerHTML = "connected";
