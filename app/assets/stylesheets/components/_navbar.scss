@@ -11,6 +11,12 @@
   position: relative;
 }
 
+@media (max-width: 768px) {
+  .navbar-wagon {
+    padding: 0 20px;
+  }
+}
+
 #navbar-logo {
   color: $secondary-blue;
   margin: 0;
