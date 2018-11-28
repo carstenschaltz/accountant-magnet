@@ -34,16 +34,18 @@
     <h3>Services and qualifications</h3>
     <hr class="sm-margin">
     <div class="display-flex">
-      <div class="display-flex">
-        <p class="text-bold no-margin">Specializing in:</p>
-        <div class="acct-card-services">
-          <% @accountant.services.each do |service| %>
-            <div class="card-service">
-              <p><%= service.name %></p>
-            </div>
-          <% end %>
+      <% if @accountant.services.any? %>
+        <div class="display-flex">
+          <p class="text-bold no-margin">Specializing in:</p>
+          <div class="acct-card-services">
+            <% @accountant.services.each do |service| %>
+              <div class="card-service">
+                <p><%= service.name %></p>
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
       <div id="qualifications">
         <p class="text-bold no-margin">Qualified by:</p>
         <div id="qual-box">
