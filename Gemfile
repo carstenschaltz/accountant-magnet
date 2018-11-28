@@ -23,6 +23,7 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 gem "geocoder"
 gem 'dotenv-rails', groups: [:development, :test]
+gem "select2-rails"
 
 group :development do
   gem 'web-console', '>= 3.3.0'

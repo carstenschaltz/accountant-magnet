@@ -61,7 +61,7 @@ class EnquiriesController < ApplicationController
   end
 
   def enquiry_params
-    params.require(:enquiry).permit(:title, :email, :description, :is_local, :industry, :size, :location)
+    params.require(:enquiry).permit(:title, :email, :description, :is_local, :industry_string, :size, :location)
   end
 
   def update_services(enquiry)
@@ -77,7 +77,7 @@ class EnquiriesController < ApplicationController
   end
 
   def update_comp_info(enquiry)
-    enquiry.industry = nil if params[:enquiry][:industry].empty?
+    enquiry.industry_string = nil if params[:enquiry][:industry_string].empty?
     enquiry.size = nil if params[:enquiry][:size].empty?
     enquiry.location = nil if params[:enquiry][:location].empty?
     enquiry.save
