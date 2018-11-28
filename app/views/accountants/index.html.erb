@@ -3,18 +3,14 @@
     <div class="white-card">
       <h1>Find your accountant</h1>
     </div>
+
     <%= simple_form_for Accountant.new, url: accountants_path, method: :get do |f| %>
-      <%= f.input :services, collection: Service.all, input_html: { multiple: true } %>
-      <%= f.button :submit, 'Search' %>
-    <% end %>
-
-    <div class="display-flex">
-      <%= form_tag accountants_path, method: :get do %>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search Near", name: nil, id: "search-button" %>
-      <% end %>
+    <div>
+      <%= f.input :services, collection: Service.all, input_html: { class: 'select2', multiple: "multiple" } %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= f.button :submit, 'Search', class: "btn-primary mx-sm-2" %>
     </div>
-
+    <% end %>
   </div>
 
   <% @accountants.each do |accountant| %>
@@ -26,3 +22,7 @@
   <%= will_paginate @accountants, renderer: BootstrapPagination::Rails %>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function() { $(".select2").select2({theme: "bootstrap"}); });
+</script>
