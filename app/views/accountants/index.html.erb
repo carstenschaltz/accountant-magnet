@@ -5,10 +5,11 @@
     </div>
 
     <%= simple_form_for Accountant.new, url: accountants_path, method: :get do |f| %>
-    <div>
-      <%= f.input :services, collection: Service.all, input_html: { class: 'select2', multiple: "multiple" } %>
-      <%= text_field_tag :search, params[:search] %>
-      <%= f.button :submit, 'Search', class: "btn-primary mx-sm-2" %>
+    <div class = "display-flex">
+      <%= f.input :services, collection: Service.all,  placeholder: 'Search Services', input_html: { class: 'select2', multiple: "multiple"} %>
+      <label for="commit">Location</label>
+      <div class="form-group"><%= text_field_tag :search, params[:search], input_html: { prompt: 'Search Location' } %></div>
+      <%= f.button :submit, 'Search', class: "btn-primary" %>
     </div>
     <% end %>
   </div>
