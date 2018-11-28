@@ -14,7 +14,7 @@ class LoadAccountantsJob < ApplicationJob
                          website: row['website'],
                          qualification: row['qualification'],
                          location: row['location'],
-                         industries: row['industries'])
+                         industries_string: row['industries'])
     end
   end
 end

@@ -98,3 +98,58 @@ svg { overflow:visible }
   border: 1px solid $md-grey;
   color: $dk-grey;
 }
+
+.accountant-search {
+  display: flex;
+  align-items: top;
+  li.select2-selection__choice {
+    background-color: $secondary-blue;
+  }
+  .form-group {
+    flex-grow: 1;
+    margin: 0;
+    span {
+      margin-right: 0 !important;
+      width: inherit;
+    }
+  }
+  .form-group.select.optional.accountant_industries > span > span.selection > span,
+  .form-group.select.optional.accountant_services > span > span.selection > span {
+    flex-grow: 1;
+    height: 4.5em;
+    margin-bottom: 0;
+  }
+}
+
+#location-filter .ap-nostyle-input  {
+  display: inline-block;
+  border: 1px solid #CCCCCC;
+  background: #ffffff;
+  padding: 1em 0 1em 45px;
+  flex-grow: 1;
+}
+
+#location-filter .ap-nostyle-input:focus, #location-filter .ap-nostyle-input:active {
+  outline: 0;
+  border-color: $secondary-blue;
+  background: #ffffff;
+}
+
+#algolia-places-nostyle-listbox-0 {
+  box-shadow: none;
+  border: 1px solid $md-grey;
+  background: #fff;
+  width: 100%;
+}
+
+#location-filter button.ap-nostyle-input-icon {
+  display: block;
+  position: absolute;
+  background: none;
+  border: none;
+  fill: $secondary-blue;
+}
+
+#location-filter .ap-nostyle-icon-pin { left: 5px;top: 17px; }
+#location-filter .ap-nostyle-icon-clear { right: 5px;top: 17px }
+#location-filter .ap-nostyle-suggestion { border: 1px solid $lt-grey; }

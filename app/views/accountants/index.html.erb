@@ -1,22 +1,14 @@
 <div class="grey-wrapper">
   <div class="container">
-    <div class="white-card">
-      <h1>Find your accountant</h1>
-    </div>
+    <h1>Find your accountant</h1>
 
-    <%= simple_form_for Accountant.new, url: accountants_path, method: :get do |f| %>
-    <div class = "display-flex">
-      <%= f.input :services, collection: Service.all,  placeholder: 'Search Services', input_html: { class: 'select2', multiple: "multiple"} %>
-      <label for="commit">Location</label>
-      <div class="form-group"><%= text_field_tag :search, params[:search], input_html: { prompt: 'Search Location' } %></div>
-      <%= f.button :submit, 'Search', class: "btn-primary" %>
-    </div>
+    <%= simple_form_for Accountant.new, url: accountants_path, method: :get, html: { class: 'accountant-search' } do |f| %>
+        <%= f.input :services, collection: Service.all, label: false, placeholder: 'Search Services', input_html: { class: 'select2', multiple: "multiple"} %>
+        <%= f.input :industries, collection: Industry.all, label: false, input_html: { class: 'select2', multiple: "multiple"} %>
+        <div id="location-filter"><%= text_field_tag :search, params[:search] %></div>
+      <%= f.button :submit, 'Filter', class: "btn-primary" %>
     <% end %>
-
-    <%= simple_form_for Accountant.new, url: accountants_path, method: :get do |f| %>
-      <%= f.input :industries, collection: Industry.all, input_html: { multiple: true } %>
-      <%= f.button :submit, 'Search' %>
-    <% end %>
+  </div>
 
   <% @accountants.each do |accountant| %>
     <%= render 'accountant_card', accountant: accountant %>
@@ -29,5 +21,5 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-  $(document).ready(function() { $(".select2").select2({theme: "bootstrap"}); });
+  $(document).ready(function() { $(".select2").select2(); });
 </script>
