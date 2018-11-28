@@ -12,7 +12,11 @@
       <%= f.button :submit, 'Search', class: "btn-primary" %>
     </div>
     <% end %>
-  </div>
+
+    <%= simple_form_for Accountant.new, url: accountants_path, method: :get do |f| %>
+      <%= f.input :industries, collection: Industry.all, input_html: { multiple: true } %>
+      <%= f.button :submit, 'Search' %>
+    <% end %>
 
   <% @accountants.each do |accountant| %>
     <%= render 'accountant_card', accountant: accountant %>
