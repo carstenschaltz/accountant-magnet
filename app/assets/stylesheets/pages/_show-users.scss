@@ -75,4 +75,32 @@
 #quote-pills {
   padding: 0 0 10px 0;
   justify-content: space-between;
+
+  .pill {
+    font-size: 14px;
+    border-radius: 14px;
+    padding: 0 12px;
+    margin: 5px;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+#invited-you {
+  background-color: transparent;
+  border: 1px solid #94D1F2;
+  color: #94D1F2 !important;
+}
+
+#invited-new {
+  background-color: transparent;
+  border: 1px solid #FCA311;
+  color: #FCA311 !important;
+}
+
+#successful-pill {
+  background-color: $green;
+  color: white !important;
 }

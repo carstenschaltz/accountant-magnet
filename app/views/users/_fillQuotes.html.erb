@@ -26,14 +26,18 @@
       } else {
         data.quotes.forEach((quote) => {
           if (quote.invite === true) {
-            var invited = '<p>Invited by you</p>'
+            var invited = '<div class="pill" id="invited-you">\
+                            <p><strong>Invited by You</strong></p>\
+                          </div>'
           } else {
-            var invited = '<p>New quote</p>'
+            var invited = '<div class="pill" id="invited-new">\
+                            <p><strong>New Quote</strong></p>\
+                          </div>'
           }
           if (quote.successful === true) {
-            var successful = '<p>Connected</p>'
+            var successful = '<p><strong>Connected</strong></p>'
           } else {
-            var successful = '<p id="connect">Not connected</p>'
+            var successful = '<p id="connect"><strong>Not connected</strong></p>'
           }
           acctName = `<a href="/accountants/${quote.accountant.id}">${quote.accountant.name}</a>`
           acctEmail = `${quote.accountant.email}`
@@ -74,10 +78,8 @@
           text = `<div class="col-xs-12 col-sm-4 slow-appear" data-quote-id='${quote.id}'>\
                     <div class="quote-card">\
                       <div class="acct-card-services" id="quote-pills">\
-                        <div class="card-service">\
-                          ${invited}\
-                        </div>\
-                        <div class="card-service">
+                        ${invited}\
+                        <div class="pill" id="successful-pill">
                           ${successful}
                         </div>\
                       </div>\
