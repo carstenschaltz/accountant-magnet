@@ -103,7 +103,12 @@ svg { overflow:visible }
   display: flex;
   align-items: top;
   li.select2-selection__choice {
-    background-color: $secondary-blue;
+    background-color: $secondary-blue !important;
+    color: white !important;
+    border: none !important;
+    span {
+      color: white !important;
+    }
   }
   .form-group {
     flex-grow: 1;
