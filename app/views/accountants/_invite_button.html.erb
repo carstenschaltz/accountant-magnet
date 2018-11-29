@@ -68,12 +68,23 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Great, we'll invite <strong><%= accountant.name %></strong> to quote for your enquiry <strong><%= @open_enquiries.first.title %></strong></h4>
+            <h2>Invite <%= accountant.name %> to quote</h2>
+          </div>
+          <div class="modal-body">
+            <h4>Leave a message regarding <strong><%=  @open_enquiries.first.title %>:</strong></h4>
+            <%= render 'quotes/new_form', accountant: @accountant, enquiry: @open_enquiries.first, quote: Quote.new %>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <%= link_to "Confirm", new_quote_path(accountant: {id: @open_enquiries.first.id, accountant_id: accountant.id}), class:'btn btn-primary' %>
+            <button class='btn btn-primary' id='modal-invite-button'>Invite</button>
           </div>
+          <script>
+            document.getElementById('invite-button').style.display = 'none';
+            const btn = document.getElementById('modal-invite-button');
+            btn.addEventListener('click', () => {
+              document.getElementById('new_quote').submit();
+            });
+          </script>
         </div>
       </div>
     </div>

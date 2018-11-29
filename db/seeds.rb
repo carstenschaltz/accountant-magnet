@@ -14,7 +14,7 @@
 u = User.create! name: "Paul", email: 'paul@abracadabra.com', password: 'password', company_size: '<1', company_name: 'Abracadabra Magicians Ltd', company_industry: 'Entertainment', company_location: 'London'
 u2 = User.create! name: "James", email: 'james@slimline.org', password: 'password', company_size: '1-10', company_name: 'Slimline Fashion inc', company_industry: 'Retail', company_location: 'Oxford'
 u3 = User.create! name: "Jennifer", email: 'jen@thedailyreporter.org', password: 'password', company_size: '10-25', company_name: 'The Daily Reporter', company_industry: 'Printing and Publishing', company_location: 'Reading'
-u4 = User.create! name: "Steven", email: 'steven.s@btinternet.net', password: 'password', company_size: '<1', company_name: 'The Fox and Hounds', company_industry: 'Catering (Pubs, Restaurants, Food and Drink)', company_location: 'Exeter'
+u4 = User.create! name: "Steven", email: 'steven.s@btinternet.net', password: 'password', company_size: '<1', company_name: 'The Fox and Hounds', company_industry: 'Catering', company_location: 'Exeter'
 ua = User.create! name: "Admin", email: 'admin@admin.com', password: 'Data4days', admin: true
 
 e = Enquiry.create! title: "Import/Export taxation", user: u, email: 'paul@abracadabra.com', is_local: true, description: "My company imports and distributes a lot of equipment from China, looking for some help with taxes."
@@ -50,7 +50,7 @@ es4 = EnquiryService.create! service: Service.all[2], enquiry: e4
 
 q = Quote.create! message: "Can you solve my problems?", invite: true, successful: true, enquiry: e, accountant: Accountant.find(3)
 q2 = Quote.create! message: "Can you help me manage my books?", invite: true, successful: false, enquiry: e2, accountant: Accountant.find(30)
-q3 = Quote.create! message: "I specialize in your industry, I can help you with your audits", invite: false, successful: true, enquiry: e3, Accountant.find(300)
+q3 = Quote.create! message: "I specialize in your industry, I can help you with your audits", invite: false, successful: true, enquiry: es, accountant: Accountant.find(300)
 q4 = Quote.create! message: "I've helped numerous pubs like yours out of the financial difficulties your having. Happy to help here too!", invite: false, successful: false, enquiry: e4, accountant: Accountant.find(3000)
 q5 = Quote.create! message: "£100/h for our tax expertise", invite: false, successful: false, enquiry: e, accountant: Accountant.find(5000)
 

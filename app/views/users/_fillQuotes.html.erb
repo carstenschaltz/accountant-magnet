@@ -43,7 +43,8 @@
             acctMsg = `They wrote: ${quote.message}`
           }
           var buttons = `<a data-confirm="Are you sure?" class="btn btn-info btn" rel="nofollow"\
-                            data-method="delete" href="/quotes/${quote.id}" data-remote="true">Discard</a>`
+                            data-method="delete" href="/quotes/${quote.id}" data-remote="true">Discard</a>`;
+          var emailButton;
 
           if (quote.successful != true) {
             var buttons = `<button type="button" class="btn btn-primary" id="connect-button" data-toggle="modal"\
@@ -62,16 +63,24 @@
                             </div>\
                             <div class="modal-body">\
                               <p>Connect to <strong>share your contact details</strong> with ${quote.accountant.name}.<br><br>That's it! <strong>They'll reach out</strong> so you can get back to the work you'd rather be doing.</p>\
+                              <form action="/accountants/${quote.accountant.id}/send_email" class="hidden" method="post" id="email-form${quote.id}">\
+                                <hr>\
+                                <p>From: <%= current_user.email %></p>\
+                                <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>\
+                                <input type="text" placeholder="Subject" id='email-subject' name="subject">\
+                                <textarea placeholder="Your message" id='email-body' name="body" rows="6"></textarea>\
+                                <button class="btn btn-primary" data-remote="true" id="send-now${quote.id}">Send</button>\
+                              </form>\
                             </div>\
                             <div class="modal-footer">\
                               <div class="footer-flex">\
-                                <p class="no-margin"><strong>Need for speed?</strong> Feel free to <a href="#"><strong>Reach out now.</strong></a></p>\
+                                <p class="no-margin"><strong>Need for speed?</strong> Feel free to <strong><a\ id="send-email${quote.id}" href='#' data-remote="true">Reach out now.</a></strong></p>\
                                 <a class="btn btn-primary" data-remote="true" href="/quotes/${quote.id}/change_status">Connect</a>\
                               </div>\
                             </div>\
                           </div>\
                         </div>\
-                      </div>`
+                      </div>`;
           }
           text = `<div class="col-xs-12 col-sm-4 slow-appear" data-quote-id='${quote.id}'>\
                     <div class="quote-card">\
@@ -86,6 +95,21 @@
                     </div>\
                   </div>`;
           quotesContainer<%= index + 1 %>.insertAdjacentHTML('afterbegin', text)
+          var emailButton = document.getElementById(`send-email${quote.id}`);
+          var form = document.getElementById(`email-form${quote.id}`);
+          var sendNow = document.getElementById(`send-now${quote.id}`);
+
+          if (emailButton) {
+            emailButton.addEventListener('click', (event) => {
+              console.log(0)
+              event.preventDefault();
+              form.classList.toggle('hidden');
+            });
+            sendNow.addEventListener('click', (event) => {
+              event.preventDefault();
+              Rails.fire(form, 'submit');
+            });
+          }
         })
       }
       refreshButtons.forEach((button) => button.classList.remove('display-none'));
