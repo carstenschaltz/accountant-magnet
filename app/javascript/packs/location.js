@@ -1,6 +1,6 @@
 const location = () => {
   const locationInput = document.getElementById('enquiry_location');
-  const searchFilter = document.querySelector('#location-filter #search');
+  const searchFilter = document.querySelector('#location-field-group #search');
 
   if (locationInput) {
     const places = require('places.js');
