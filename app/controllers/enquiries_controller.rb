@@ -29,6 +29,7 @@ class EnquiriesController < ApplicationController
     else
       render :new
     end
+    assign_user(@enquiry)
   end
 
   def edit
@@ -47,10 +48,10 @@ class EnquiriesController < ApplicationController
   end
 
   def destroy
-    @enquiry= Enquiry.find(params[:id])
+    @enquiry = Enquiry.find(params[:id])
     @enquiry.destroy
     authorize @enquiry
-     redirect_to user_path(current_user)
+    redirect_to user_path(current_user)
   end
 
   private
@@ -69,9 +70,7 @@ class EnquiriesController < ApplicationController
     services = params[:enquiry][:services]
     services.each do |service_name|
       service = Service.find_by_name(service_name)
-      if SERVICES.include?(service_name)
-        EnquiryService.create(enquiry: @enquiry, service: service)
-      end
+      EnquiryService.create(enquiry: @enquiry, service: service) if SERVICES.include?(service_name)
     end
     enquiry.save
   end
@@ -81,5 +80,10 @@ class EnquiriesController < ApplicationController
     enquiry.size = nil if params[:enquiry][:size].empty?
     enquiry.location = nil if params[:enquiry][:location].empty?
     enquiry.save
+  end
+
+  def assign_user(enquiry)
+    user = User.find_by(email: enquiry.email)
+    enquiry.update(user: user) if user
   end
 end
