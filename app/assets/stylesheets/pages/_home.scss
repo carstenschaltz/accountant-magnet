@@ -166,16 +166,28 @@ body {
     box-shadow: -3px 5px 10px 0 rgba(0,0,0,.03);
     display: flex;
     flex-direction: column;
-    flex: 1;
     min-height: 187px;
     padding: 0 20px;
     margin: 5px;
+    width: 23%;
 }
 
 .feature-card h3 {
   font-weight: lighter;
   font-weight: 400;
   font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  .feature-card {
+    width: 40%;
+  }
+}
+
+@media (max-width: 400px) {
+  .feature-card {
+    width: 70%;
+  }
 }
 
 .testimonials{
@@ -185,11 +197,12 @@ body {
   text-align: center;
 }
 
-.testimonal{
+.testimonial {
   display: flex;
   flex-direction: column;
   height: 250px;
-  max-width: 300px;
+  // max-width: 300px;
+  width: 300px;
   padding: 50px 30px;
   margin-bottom: 100px;
   background-color: white;
@@ -197,6 +210,23 @@ body {
   border-bottom-left-radius: 0;
   box-shadow: -3px 5px 10px 0 rgba(0,0,0,.03);
   text-align: center;
+}
+
+@media (min-width: 1268px) {
+  .testimonial {
+    &:first-child {
+      margin-left: 80px;
+    }
+    &:last-child {
+      margin-right: 80px;
+    }
+  }
+}
+
+@media(max-width: 1150px) {
+  .testimonial {
+    height: 300px;
+  }
 }
 
 .divider {
@@ -212,10 +242,6 @@ body {
 }
 .customers-section{
   background-color: $md-grey;
-}
-
-.customer-avatar{
-
 }
 
 .customer-copy{
@@ -258,7 +284,6 @@ body {
 }
 
 .container-how-it-works{
-  width: 70%;
   margin: 0 auto;
 }
 
@@ -272,7 +297,7 @@ body {
 
 .how-it-works-box{
   display: flex;
-  flex: 1 0 50%;
+  // flex: 1 0 50%;
   flex-direction: column;
   height: 250px;
   max-width: 400px;
@@ -284,6 +309,12 @@ body {
   box-shadow: -3px 5px 10px 0 rgba(0,0,0,.03);
   text-align: center;
   background-color: #F2F2F2;
+}
+
+@media (min-width: 1200px) {
+  .container-how-it-works {
+    width: 70%;
+  }
 }
 
 .accountant-skills-section{
