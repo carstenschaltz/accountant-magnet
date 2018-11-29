@@ -256,3 +256,49 @@ body {
 .footer .fa-heart {
   color: #D23333;
 }
+
+.container-how-it-works{
+  width: 70%;
+  margin: 0 auto;
+}
+
+
+.how-it-works-section{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.how-it-works-box{
+  display: flex;
+  flex: 1 0 50%;
+  flex-direction: column;
+  height: 250px;
+  max-width: 400px;
+  padding: 50px 30px;
+  margin-bottom: 50px;
+  background-color: white;
+  border-radius: 12px;
+  border-bottom-left-radius: 0;
+  box-shadow: -3px 5px 10px 0 rgba(0,0,0,.03);
+  text-align: center;
+  background-color: #F2F2F2;
+}
+
+.accountant-skills-section{
+  height: 300px;
+  background-color: white;
+}
+
+.how-it-works-section-background{
+  background-color: white;
+}
+
+.background-color-white{
+  background-color: white;
+}
+
+.space-right {
+  margin-right: 15px;
+}
