@@ -12,11 +12,9 @@
         <div class=" grey-wrapper">
           <div class="container">
             <div style="display: flex;">
-              <h3 id="title">
               <% if current_user.admin %>
-                <span style="color: red">Viewing as admin</span>
+                <h3 style="color: red" id="title">Viewing as admin</h3>
               <% end %>
-              </h3>
             </div>
             <div class="pos-rel">
 
@@ -37,7 +35,7 @@
                   </div>
               </div>
             </div>
-            <h3>Your Quotes <span class="display-none slow-appear btn text-right"></span><i class="fas fa-sync text-center" id="refresh-button"></i></h3>
+            <h3>Your Connections <span class="display-none slow-appear btn text-right"></span><i class="fas fa-sync text-center" id="refresh-button"></i></h3>
             <div class="row" id='quotes-container-<%= index + 1 %>'>
               <%= render 'fillQuotes', enquiry: enquiry, index: index %>
             </div>
