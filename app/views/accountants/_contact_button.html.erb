@@ -14,7 +14,7 @@
           <p>Email: <%= @accountant.email %>
             <% if user_signed_in? %>
               <span style="float: right;">
-                <button class="btn btn-primary-outline" id="send-email">Send Message</button>
+                <button class="btn btn-primary-outline" id="send-email">Send Email</button>
               </span>
             <% end %>
           </p>
@@ -26,13 +26,13 @@
           <p>Website: <%= link_to @accountant.website, 'http://' + @accountant.website, target: :_blank %></p>
         <% end %>
         <% if user_signed_in? %>
-          <form action="/accountants/<%= @accountant.id %>/send_email" class="hidden" method="post" id="email-form">
+          <form action="/accountants/<%= @accountant.id %>/send_email" class="hidden" method="post" id="email-form" data-remote="true">
             <hr>
             <p>From: <%= current_user.email %></p>
             <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
             <input type="text" placeholder="Subject" id='email-subject' name="subject">
             <textarea placeholder="Your message" id='email-body' name="body" rows="6"></textarea>
-            <input type="submit" value="Send" class="btn btn-primary">
+            <button class="btn btn-primary" id="send-now">Send</button>
           </form>
         <% end %>
       </div>

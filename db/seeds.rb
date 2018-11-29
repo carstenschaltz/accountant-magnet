@@ -11,6 +11,7 @@
 #   Service.create! name: service
 # end
 
+
 # u = User.create! name: "Paul", email: 'paul@abracadabra.com', password: 'password', company_size: '<1', company_name: 'Abracadabra Magicians Ltd', company_industry: 'Entertainment', company_location: 'London'
 # u2 = User.create! name: "James", email: 'james@slimline.org', password: 'password', company_size: '1-10', company_name: 'Slimline Fashion inc', company_industry: 'Retail', company_location: 'Oxford'
 # u3 = User.create! name: "Jennifer", email: 'jen@thedailyreporter.org', password: 'password', company_size: '10-25', company_name: 'The Daily Reporter', company_industry: 'Printing and Publishing', company_location: 'Reading'

@@ -6,14 +6,7 @@
           <h2>Invite <%= @accountant.name %> to quote</h2>
           <hr>
           <h4>Leave a message regarding <strong><%= @enquiry.title %>:</strong></h4>
-          <%= simple_form_for @quote do |f| %>
-            <%= f.input :accountant_id, as: :hidden, input_html: { value: @accountant.id } %>
-            <%= f.input :enquiry_id, as: :hidden, input_html: { value: @enquiry.id } %>
-            <%= f.input :invite, as: :hidden, input_html: { value: true } %>
-            <%= f.input :successful, as: :hidden, input_html: { value: true } %>
-            <%= f.input :message, label: false %>
-            <%= f.submit "Invite", class:'btn btn-primary btn-block' %>
-          <% end %>
+          <%= render 'new_form', accountant: @accountant, enquiry: @enquiry, quote: @quote %>
         </div>
       </div>
     </div>
