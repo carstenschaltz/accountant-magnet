@@ -9,7 +9,9 @@
       if (data.quotes.length === 0) {
         text = '<div class="row text-center">\
                   <div class="col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4">\
-                    <h3>Expect Quotes very soon!</h3>\
+                    <h3> No quotes yet. We are finding you the best accountants. </h3>\
+                    <br>\
+                    <p> Invite accountants to your enquiry to get started. </p>\
                   </div>\
                 </div>'
                 quotesContainer<%= index + 1 %>.insertAdjacentHTML('afterbegin', text)
@@ -25,9 +27,9 @@
                           </div>'
           }
           if (quote.successful === true) {
-            var successful = '<p><strong>Connected</strong></p>'
+            var successful = '<p class ="connected-button"><strong>Connected</strong> </p>'
           } else {
-            var successful = `<p id="connect${quote.id}">Not connected</p>`
+            var successful = `<p id="connect${quote.id}><strong>Not connected</strong> </p>`
           }
           acctName = `<a href="/accountants/${quote.accountant.id}">${quote.accountant.name}</a>`
           acctEmail = `${quote.accountant.email}`

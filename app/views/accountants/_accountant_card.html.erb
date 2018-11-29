@@ -1,38 +1,36 @@
 <div class="container">
-
-    <%= link_to accountant_path(accountant), class:'grey-text' do %>
-      <div class="white-card border-hover">
-        <div class="acct-card-title">
-          <div id = "accountant-name">
-            <h3><%= accountant.name %></h3>
-          </div>
-          <div>
-            <p>See more details</p>
-          </div>
+  <%= link_to accountant_path(accountant), class:'grey-text' do %>
+    <div class="white-card border-hover">
+      <div class="acct-card-title">
+        <div id = "accountant-name">
+          <h3><%= accountant.name %></h3>
         </div>
-        <hr class="sm-margin">
-        <div class="acct-card-details">
-          <div class="acct-card-contact">
-            <% city = accountant.location.split(',')[-3].capitalize %>
-            <% post_code = accountant.location.split(',')[-1] %>
-            <p class="text-bold"><%= "#{city}, #{post_code}" %></p>
-            <p><%= accountant.email %></p>
-            <p><%= accountant.phone_number %></p>
-          </div>
-          <div class="acct-card-services flex-reverse">
-            <% accountant.services.first(5).each do |service| %>
-              <div class="card-service">
-                <p><%= service.name %></p>
-              </div>
+        <div>
+          <p>See more details</p>
+        </div>
+      </div>
+      <hr class="sm-margin">
+      <div class="acct-card-details">
+        <div class="acct-card-contact">
+          <% city = accountant.location.split(',')[-3].capitalize %>
+          <% post_code = accountant.location.split(',')[-1] %>
+          <p class="text-bold"><%= "#{city}, #{post_code}" %></p>
+          <p><%= accountant.email %></p>
+          <p><%= accountant.phone_number %></p>
+        </div>
+        <div class="acct-card-services flex-reverse">
+          <% accountant.services.first(5).each do |service| %>
+            <div class="card-service">
+              <p><%= service.name %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+          <div class="service-size">
+            <% if accountant.services.size > 5 %>
+            <p> +  <%=  accountant.services.size - 5  %> more </p>
             <% end %>
           </div>
-        </div>
-            <div class="service-size">
-              <% if accountant.services.size > 5 %>
-              <p> +  <%=  accountant.services.size - 5  %> more </p>
-              <% end %>
-            </div>
-      </div>
-    <% end %>
-
+    </div>
+  <% end %>
 </div>
