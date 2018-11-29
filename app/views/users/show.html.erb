@@ -1,6 +1,6 @@
 
   <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
+  <ul class="nav nav-tabs hidden" role="tablist">
     <% @user_enquiries.each_with_index do |enquiry, index| %>
       <li role="presentation" class="<%= 'active' if index == 0 %>"><a href="#enquiry-<%= index %>" aria-controls="enquiry-<%= index %>" role="tab" data-toggle="tab"><%= enquiry.title %></a></li>
     <% end %>
@@ -12,17 +12,14 @@
         <div class=" grey-wrapper">
           <div class="container">
             <div style="display: flex;">
-              <h3 id="title">
-                Active Enquiry
               <% if current_user.admin %>
-                <span style="color: red">Viewing as admin</span>
+                <h3 style="color: red" id="title">Viewing as admin</h3>
               <% end %>
-              </h3>
-                <%= link_to "New Enquiry", new_enquiry_path, class:'btn-primary-outline btn  header-btn flex-buttons'%>
-                <%= link_to "Invite Accountants", accountants_path, class:'btn-primary btn  header-btn'%>
             </div>
             <div class="pos-rel">
-              <div class="card-edit-delete-link">
+
+              <%= link_to "Invite Accountants", accountants_path, class:'btn-primary btn header-btn top-right'%>
+              <div class="btm-right">
                 <%= link_to "", edit_enquiry_path(enquiry), class:"far fa-edit" %>
                 <%= link_to "",  enquiry_path(enquiry), class: "fas fa-trash-alt", method: :delete, data: { confirm: "Are you sure?" } %>
               </div>
@@ -38,7 +35,7 @@
                   </div>
               </div>
             </div>
-            <h3>Your Quotes <span class="display-none slow-appear btn text-right"></span><i class="fas fa-sync text-center" id="refresh-button"></i></h3>
+            <h3>Your Connections <span class="display-none slow-appear btn text-right"></span><i class="fas fa-sync text-center" id="refresh-button"></i></h3>
             <div class="row" id='quotes-container-<%= index + 1 %>'>
               <%= render 'fillQuotes', enquiry: enquiry, index: index %>
             </div>
