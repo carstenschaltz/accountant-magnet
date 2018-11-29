@@ -100,8 +100,13 @@
   color: #FCA311 !important;
 }
 
-#successful-pill {
+#connected-pill {
   background-color: $green;
+  color: white !important;
+}
+
+#unconnected-pill {
+  background-color: #F29D8C;
   color: white !important;
 }
 

@@ -27,9 +27,13 @@
                           </div>'
           }
           if (quote.successful === true) {
-            var successful = '<p class ="connected-button"><strong>Connected</strong> </p>'
+            var successful = `<div class="pill" id="connected-pill">\
+                                <p class ="connect"><strong>Connected</strong> </p>\
+                              </div>`
           } else {
-            var successful = `<p id="connect${quote.id}><strong>Not connected</strong> </p>`
+            var successful = `<div class="pill" id="unconnected-pill">\
+                                <p id="connect${quote.id}"><strong>Not connected</strong> </p>\
+                              </div>`
           }
           acctName = `<a href="/accountants/${quote.accountant.id}">${quote.accountant.name}</a>`
           acctEmail = `${quote.accountant.email}`
@@ -71,9 +75,7 @@
                     <div class="quote-card">\
                       <div class="acct-card-services" id="quote-pills">\
                         ${invited}\
-                        <div class="pill" id="successful-pill">
-                          ${successful}
-                        </div>\
+                        ${successful}
                       </div>\
                       <h4 id="quote-title">${acctName}</h4>\
                       <p id="quote-email">${acctEmail}</p>\
