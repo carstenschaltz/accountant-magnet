@@ -6,12 +6,16 @@ const location = () => {
     const places = require('places.js');
     const placesAutocomplete = places({
       container: locationInput
+    }).configure({
+      type: 'city',
     });
   } else if (searchFilter) {
     const places = require('places.js');
     const placesAutocomplete = places({
       container: searchFilter,
       style: false
+    }).configure({
+      type: 'city',
     });
   }
 };

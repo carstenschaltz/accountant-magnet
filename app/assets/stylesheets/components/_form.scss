@@ -210,4 +210,10 @@ svg { overflow:visible }
 
 #location-field-group .ap-nostyle-icon-pin { left: 5px;top: 17px; }
 #location-field-group .ap-nostyle-icon-clear { right: 5px;top: 17px }
-#location-field-group .ap-nostyle-suggestion { border: 1px solid $lt-grey; padding: 5px;}
+#location-field-group .ap-nostyle-suggestion {
+  border: 1px solid $lt-grey;
+  padding: 5px;
+  em {
+    font-weight: bold;
+    font-style: normal; }
+}
