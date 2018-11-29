@@ -19,6 +19,7 @@
     <% end %>
   </div>
 
+  <%= render 'no_accountants' if @accountants.length == 0 %>
   <% @accountants.each do |accountant| %>
     <%= render 'accountant_card', accountant: accountant %>
   <% end %>
@@ -30,10 +31,12 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-  $(document).ready(function() { $(".select2-services").select2({
-    placeholder: "Select the services you require:"
-  }); });
-  $(document).ready(function() { $(".select2-industries").select2({
-    placeholder: "Select the industries you require:"
-  }); });
+  $(document).ready(function() {
+    $(".select2-services").select2({
+      placeholder: "Select the services you require:"
+    });
+     $(".select2-industries").select2({
+      placeholder: "Select the industries you require:"
+    });
+   });
 </script>
