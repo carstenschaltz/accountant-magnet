@@ -46,7 +46,9 @@ class AccountantsController < ApplicationController
       end
     end
     # filter by
-    @accountants = @accountants.near(params[:search], 50, order: 'distance') if params[:search]
+    unless params[:search].nil?
+      @accountants = @accountants.near(params[:search], 50, order: 'distance') unless params[:search].empty?
+    end
   end
 
   def show
