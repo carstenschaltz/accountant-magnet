@@ -2,10 +2,10 @@
   <h3>A bit about you</h3>
   <button class="btn btn-default btn-secondary skip-button to-final-tab" type="button" style="opacity: 50%; max-height: 40px; align-items: center;">Skip</button>
 </div>
-<p>Find your business to help us get you the most relevant quotes</p>
+<p>The basics of your business profile will help us get you the most relevant accountants</p>
 <div class="row">
   <div class="col-xs-12 col-sm-8">
-    <table>
+    <!-- <table>
       <tr>
         <td>
           <p>Either:</p>
@@ -26,13 +26,13 @@
         <td>
           <p>Or:</p>
         </td>
-        <td>
+        <td> -->
           <%= f.input :industry_string, collection: INDUSTRIES, prompt: "Select one", label: 'Industry' %>
           <%= f.input :size, collection: COMPANY_SIZES.map { |e| "£#{e}m" }, prompt: "Turnover" %>
           <%= f.input :location %>
-        </td>
+<!--         </td>
       </tr>
-    </table>
+    </table> -->
     <br>
     <div class="item">
       <button class="btn btn-secondary breathing-room back-button" type="button">Back</button>
