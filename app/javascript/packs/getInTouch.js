@@ -5,7 +5,6 @@ const getInTouch = () => {
 
   if (button) {
     button.addEventListener('click', (event) => {
-      console.log(0)
       event.preventDefault();
       form.classList.toggle('hidden');
     });
