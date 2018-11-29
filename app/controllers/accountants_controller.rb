@@ -14,25 +14,30 @@ class AccountantsController < ApplicationController
     #   results = Accountant.find_by_sql(base_sql)
     #   @accountants = Accountant.where(id: results.map(&:id)).paginate(page: params[:page], per_page: 10)
     # end
-
-    if params[:search].present?
-      @accountants = @accountants.near(params[:search], 50, order: 'distance')
-    end
-
-    #New industries filter
-
-    if params[:accountant]
+    # New industries filter
+    if params[:accountants] && (params[:accountant][:services].length > 1 ||
+       params[:accountant][:industries].length > 1)
       to_search = params[:accountant][:industries].reject(&:blank?).map(&:to_i)
-      base_sql = "SELECT id FROM \"accountants\" WHERE EXISTS (SELECT \"accountant_industries\".* FROM \"accountant_industries\" WHERE (accountants.id = accountant_industries.accountant_id AND industry_id = #{to_search.first}))"
-      to_search[1..-1].each do |id|
-        add_serv = " AND EXISTS (SELECT \"accountant_industries\".* FROM \"accountant_industries\" WHERE (accountants.id = accountant_industries.accountant_id AND industry_id = #{id}))"
-        base_sql += add_serv
+      base_sql = "SELECT id FROM \"accountants\"
+                  WHERE EXISTS (SELECT \"accountant_industries\".*
+                  FROM \"accountant_industries\"
+                  WHERE (accountants.id = accountant_industries.accountant_id
+                  AND industry_id = #{to_search.first}))"
+      if to_search.length > 1
+        to_search.shift
+        to_search.each do |id|
+          add_serv = " AND EXISTS (SELECT \"accountant_industries\".*
+                      FROM \"accountant_industries\"
+                      WHERE (accountants.id = accountant_industries.accountant_id
+                      AND industry_id = #{id}))"
+          base_sql += add_serv
+        end
       end
       results = Accountant.find_by_sql(base_sql)
       @accountants = Accountant.where(id: results.map(&:id)).paginate(page: params[:page], per_page: 10)
     end
-
-
+    @accountants = @accountants.near(params[:search], 50, order: 'distance') if params[:search]
+    # raise
   end
 
   def show
