@@ -59,6 +59,17 @@ body {
   background-color: $md-grey;
 }
 
+#main-graphic {
+  height: 100%;
+  width: auto;
+}
+
+.banner {
+  a {
+    margin-bottom: 10px;
+  }
+}
+
 @media (max-width: 768px) {
   .banner {
     padding: 0 20px;
