@@ -1,6 +1,6 @@
 
   <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
+  <ul class="nav nav-tabs hidden" role="tablist">
     <% @user_enquiries.each_with_index do |enquiry, index| %>
       <li role="presentation" class="<%= 'active' if index == 0 %>"><a href="#enquiry-<%= index %>" aria-controls="enquiry-<%= index %>" role="tab" data-toggle="tab"><%= enquiry.title %></a></li>
     <% end %>
@@ -13,16 +13,15 @@
           <div class="container">
             <div style="display: flex;">
               <h3 id="title">
-                Active Enquiry
               <% if current_user.admin %>
                 <span style="color: red">Viewing as admin</span>
               <% end %>
               </h3>
-                <%= link_to "New Enquiry", new_enquiry_path, class:'btn-primary-outline btn  header-btn flex-buttons'%>
-                <%= link_to "Invite Accountants", accountants_path, class:'btn-primary btn  header-btn'%>
             </div>
             <div class="pos-rel">
-              <div class="card-edit-delete-link">
+
+              <%= link_to "Invite Accountants", accountants_path, class:'btn-primary btn header-btn top-right'%>
+              <div class="btm-right">
                 <%= link_to "", edit_enquiry_path(enquiry), class:"far fa-edit" %>
                 <%= link_to "",  enquiry_path(enquiry), class: "fas fa-trash-alt", method: :delete, data: { confirm: "Are you sure?" } %>
               </div>
