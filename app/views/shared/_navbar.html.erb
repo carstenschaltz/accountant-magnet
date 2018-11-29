@@ -7,19 +7,23 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <% if user_signed_in? %>
-    <%= link_to "How it works", root_path(anchor: 'works-link'), class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to "Find accountants", accountants_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to "Create Enquiry", new_enquiry_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <!-- Profile picture with dropdown list -->
-    <div class="navbar-wagon-item">
-      <div class="dropdown">
-          <img src=<%= image_path('avatar.png') %> class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
-        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><%= link_to "Your Enquiries", user_path(current_user) %></li>
-          <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
-        </ul>
+      <% if current_page?('/') %>
+        <%= link_to "How it works", "#works-link", class: "navbar-wagon-item navbar-wagon-link"%>
+      <% else %>
+        <%= link_to "How it works", root_path(anchor: 'works-link'), class: "navbar-wagon-item navbar-wagon-link" %>
+      <% end %>
+      <%= link_to "Find accountants", accountants_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Create Enquiry", new_enquiry_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <!-- Profile picture with dropdown list -->
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+            <img src=<%= image_path('avatar.png') %> class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li><%= link_to "Your Enquiries", user_path(current_user) %></li>
+            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </div>
       </div>
-    </div>
   </div>
   <% else  %>
     <% if current_page?('/') %>

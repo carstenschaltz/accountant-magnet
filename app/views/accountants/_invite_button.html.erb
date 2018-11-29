@@ -1,6 +1,6 @@
 <% if @show_button %>
   <a type="button" class="btn btn-primary-outline header-btn" data-toggle="modal" data-target="#myModal">
-          Invite to quote
+          Invite to enquiry
         </a>
 <% end %>
 
@@ -15,7 +15,7 @@
             <h4 class="modal-title" id="myModalLabel"><strong><%= accountant.name %></strong> already knows about your enquiries</h4>
           </div>
           <div class="modal-body">
-            Pop over to your dashboard to check your postings
+            Pop over to your dashboard to check your enquiries
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -30,11 +30,11 @@
         <div class="modal-content">
           <div class="modal-body">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Which of your postings do you want to invite <%= accountant.name %> to? </h4>
+            <h4 class="modal-title" id="myModalLabel">Which of your enquiries do you want to invite <%= accountant.name %> to? </h4>
             <%= simple_form_for accountant, url: new_quote_path, method: :get do |f| %>
               <%= f.input :accountant_id, as: :hidden, input_html: { value: accountant.id } %>
-              <%= f.input :id, as: :radio_buttons, collection: @open_enquiries_no_quote, hint: "Your postings that already have quotes from this accountant won't show", label: "" %>
-              <%= f.submit "Invite to quote", class:'btn btn-primary' %>
+              <%= f.input :id, as: :radio_buttons, collection: @open_enquiries_no_quote, hint: "Your enquiries that already have connections from this accountant won't show", label: "" %>
+              <%= f.submit "Invite to enquiry", class:'btn btn-primary' %>
             <% end %>
           </div>
         </div>
@@ -53,7 +53,7 @@
             <h4 class="modal-title" id="myModalLabel"><strong><%= accountant.name %></strong> already knows about your enquiry <strong><%= @open_enquiries.first.title %></strong></h4>
           </div>
           <div class="modal-body">
-            Pop over to your dashboard to check your posting
+            Pop over to your dashboard to check your enquiries
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -68,7 +68,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h2>Invite <%= accountant.name %> to quote</h2>
+            <h2>Invite <%= accountant.name %> to your enquiry</h2>
           </div>
           <div class="modal-body">
             <h4>Leave a message regarding <strong><%=  @open_enquiries.first.title %>:</strong></h4>
@@ -97,7 +97,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">You don't have any postings yet</h4>
+          <h4 class="modal-title" id="myModalLabel">You don't have any enquiries yet</h4>
         </div>
         <div class="modal-body">
           Let's quickly make one so you can get the help you need.
