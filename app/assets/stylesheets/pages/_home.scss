@@ -70,6 +70,10 @@ body {
   }
 }
 
+@media (max-width: 1290px) {
+  .banner h1 { font-size: 48px; }
+}
+
 @media (max-width: 768px) {
   .banner {
     padding: 0 20px;
