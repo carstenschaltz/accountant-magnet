@@ -19,6 +19,6 @@ Rails.application.routes.draw do
         get 'enquiries/:id', to: 'enquiries#show_quotes'
       end
     end
-  get 'network', to: 'enquiries#network'
+  get 'network', to: 'users#network'
 end
 

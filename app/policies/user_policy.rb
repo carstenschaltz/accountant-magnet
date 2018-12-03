@@ -12,12 +12,13 @@ class UserPolicy < ApplicationPolicy
     record.admin == true
   end
 
+  def network?
+    true
+  end
+
   class Scope < Scope
     def resolve
       scope.all
     end
   end
 end
-
-
-

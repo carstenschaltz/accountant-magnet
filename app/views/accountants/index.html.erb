@@ -1,6 +1,8 @@
 <div class="grey-wrapper">
   <div class="container">
-    <h1>Find your accountant</h1>
+    <div class="display-flex">
+      <h1>Find your accountant</h1><%= link_to "Trusted by my network", network_path, class:'btn btn-primary-outline btn-sm', style:'align-self: flex-end; margin-bottom: 22.5px;' %>
+    </div>
 
     <%= simple_form_for Accountant.new, url: accountants_path, method: :get, html: { class: 'accountant-search' } do |f| %>
         <div id="services-field-group">
