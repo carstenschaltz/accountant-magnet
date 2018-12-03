@@ -62,7 +62,7 @@ class EnquiriesController < ApplicationController
   end
 
   def enquiry_params
-    params.require(:enquiry).permit(:title, :email, :description, :is_local, :industry_string, :size, :location)
+    params.require(:enquiry).permit(:title, :email, :description, :is_local, :industry_string, :size, :location, :closed)
   end
 
   def update_services(enquiry)

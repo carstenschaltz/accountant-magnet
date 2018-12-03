@@ -1,10 +1,19 @@
 
   <!-- Nav tabs -->
-  <ul class="nav nav-tabs hidden" role="tablist">
-    <% @user_enquiries.each_with_index do |enquiry, index| %>
-      <li role="presentation" class="<%= 'active' if index == 0 %>"><a href="#enquiry-<%= index %>" aria-controls="enquiry-<%= index %>" role="tab" data-toggle="tab"><%= enquiry.title %></a></li>
-    <% end %>
-  </ul>
+  <% if @user_enquiries.count > 1 %>
+    <ul class="nav nav-tabs" role="tablist">
+      <% @user_enquiries.each_with_index do |enquiry, index| %>
+        <li role="presentation" class="<%= 'active' if index == 0 %>"><a href="#enquiry-<%= index %>" aria-controls="enquiry-<%= index %>" role="tab" data-toggle="tab"><%= enquiry.title %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <ul class="nav nav-tabs hidden" role="tablist">
+      <% @user_enquiries.each_with_index do |enquiry, index| %>
+        <li role="presentation" class="<%= 'active' if index == 0 %>"><a href="#enquiry-<%= index %>" aria-controls="enquiry-<%= index %>" role="tab" data-toggle="tab"><%= enquiry.title %></a></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <!-- Tab panes -->
   <div class="tab-content">
     <% @user_enquiries.each_with_index do |enquiry, index| %>
@@ -18,13 +27,18 @@
             </div>
             <div class="pos-rel">
 
-              <%= link_to "Invite Accountants", accountants_path, class:'btn-primary btn header-btn top-right'%>
               <div class="btm-right">
                 <%= link_to "", edit_enquiry_path(enquiry), class:"far fa-edit" %>
                 <%= link_to "",  enquiry_path(enquiry), class: "fas fa-trash-alt", method: :delete, data: { confirm: "Are you sure?" } %>
               </div>
               <div class="enquiry-card">
-                <h2> <%= enquiry.title %> </h2>
+                <div class="display-flex">
+                  <h2> <%= enquiry.title %></h2>
+                  <div>
+                    <%= link_to "Invite Accountants", accountants_path, class:'btn-primary-outline btn btn-sm header-btn'%>
+                    <%= link_to "Accountants in my network", network_path, class:'btn-primary btn btn-sm header-btn'%>
+                  </div>
+                </div>
                 <%= enquiry.description %>
                   <div class="acct-card-services">
                     <% enquiry.services.each do |service| %>
