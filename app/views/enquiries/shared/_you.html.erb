@@ -31,7 +31,7 @@
           <%= f.input :size, collection: COMPANY_SIZES.map { |e| "£#{e}m" }, prompt: "Turnover" %>
           <%= f.input :location %>
           <div class="display-flex">
-            <%= f.input :closed, label: "  Show me accountants in my network" %>
+            <%= f.input :network, label: "  Show me accountants in my network" %>
             <a type="button" class="far fa-edit" data-toggle="modal" data-target="#networkModal"></a>
           </div>
 <!--         </td>
