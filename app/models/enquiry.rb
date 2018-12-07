@@ -1,4 +1,6 @@
 class Enquiry < ApplicationRecord
+  after_create :send_enquiry_create_email
+
   belongs_to :user, optional: true
   has_many :quotes, dependent: :destroy
   has_many :enquiry_services, dependent: :destroy
@@ -10,4 +12,8 @@ class Enquiry < ApplicationRecord
   validates :description, presence: true
   validates :is_local, inclusion: { in: [true, false] }
   validates :industry_string, inclusion: { in: INDUSTRIES }, allow_nil: true
+
+  def send_enquiry_create_email
+    EnquiryMailer.created(self).deliver_now
+  end
 end

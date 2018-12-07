@@ -7,6 +7,7 @@ class AccountantMailer < ApplicationMailer
   #
   def contact(body, email_from, subject, email_to)
     @body = body
+    @email_from = email_from
 
     mail(to: email_to,
          subject: subject,
