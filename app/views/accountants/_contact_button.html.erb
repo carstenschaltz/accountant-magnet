@@ -1,6 +1,8 @@
-<a type="button" class="btn btn-info-outline header-btn" data-toggle="modal" data-target="#contactModal">
-  Get in touch
-</a>
+<% unless @accountant.email.empty? %>
+  <a type="button" class="btn btn-info-outline header-btn" data-toggle="modal" data-target="#contactModal">
+    Get in touch
+  </a>
+<% end %>
 
 <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">

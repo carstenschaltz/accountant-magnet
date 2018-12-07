@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  after_create :attach_enquiries
+  after_create :attach_enquiries, :send_user_create_email
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -18,5 +18,9 @@ class User < ApplicationRecord
     Enquiry.where(email: email, user_id: nil).each do |enquiry|
       enquiry.update(user: self)
     end
+  end
+
+  def send_user_create_email
+    UserMailer.created(self).deliver_now
   end
 end
