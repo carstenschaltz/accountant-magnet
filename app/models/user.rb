@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :enquiries
+  has_many :enquiries, dependent: :destroy
   validates :name, presence: true
   validates :email, format: { with: /[^@]{1,}\@[^@.]{1,}\.[^@]{1,}/ }, uniqueness: true
   validates :company_size, inclusion: { in: COMPANY_SIZES }, allow_nil: true
