@@ -8,6 +8,6 @@ class EnquiryMailer < ApplicationMailer
   def created(enquiry)
     @body = "Enquiry created!\nTitle: #{enquiry.title}\nId: #{enquiry.id}\nEmail: #{enquiry.email}\nDescription: #{enquiry.description}"
 
-    mail(to: "carsten@accountant-magnet.com", subject: "Enquiry created: #{enquiry.title}")
+    mail(to: "carsten@stotles.com", subject: "Enquiry created: #{enquiry.title}")
   end
 end

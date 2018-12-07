@@ -8,6 +8,6 @@ class UserMailer < ApplicationMailer
   def created(user)
     @body = "User created!\nName: #{user.name}\nId: #{user.id}\nEmail: #{user.email}"
 
-    mail(to: "carsten@accountant-magnet.com", subject: "User created: #{user.email}")
+    mail(to: "carsten@stotles.com", subject: "User created: #{user.email}")
   end
 end

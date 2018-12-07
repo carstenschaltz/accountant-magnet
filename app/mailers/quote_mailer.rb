@@ -8,6 +8,6 @@ class QuoteMailer < ApplicationMailer
   def created(quote)
     @body = "Quote created!\nQuote Id: #{quote.id}\nQuote message: #{quote.message}\nEnquiry: #{quote.enquiry.title}\nUser: #{quote.enquiry.user.email}"
 
-    mail(to: "carsten@accountant-magnet.com", subject: "Quote created: #{quote.id} - #{quote.message}")
+    mail(to: "carsten@stotles.com", subject: "Quote created: #{quote.id} - #{quote.message}")
   end
 end
