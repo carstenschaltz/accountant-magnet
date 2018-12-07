@@ -18,6 +18,7 @@ const fillSummary = () => {
   const industryField = document.getElementById('enquiry_industry_string');
   const sizeField = document.getElementById('enquiry_size');
   const locationField = document.getElementById('enquiry_location');
+  const networkBox = document.getElementById('enquiry_network');
 
   const blank_msg = '<i style="color: #CACACA">Blank - fill out to ensure quotes are as relevant as possible</i>'
 
@@ -66,6 +67,14 @@ const fillSummary = () => {
         locality_true.classList.remove('hidden')
         locality_false.classList.add('hidden')
       }
+
+      if (networkBox.checked) {
+        network_true.classList.remove('hidden')
+        network_false.classList.add('hidden')
+      } else {
+        // NEED TO MAKE MORE ROBUST IF TOGGLED MULTIPLE TIMES
+      }
+
     })
   }
 

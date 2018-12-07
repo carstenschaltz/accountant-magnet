@@ -30,6 +30,10 @@
           <%= f.input :industry_string, collection: INDUSTRIES, prompt: "Select one", label: 'Industry' %>
           <%= f.input :size, collection: COMPANY_SIZES.map { |e| "£#{e}m" }, prompt: "Turnover" %>
           <%= f.input :location %>
+          <div class="display-flex">
+            <%= f.input :network, label: "  Show me accountants in my network" %>
+            <a type="button" class="fas fa-info-circle" data-toggle="modal" data-target="#networkModal"></a>
+          </div>
 <!--         </td>
       </tr>
     </table> -->
@@ -40,3 +44,24 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+
+<div class="modal fade" id="networkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Find the accountants trusted by your network</h4>
+          </div>
+          <div class="modal-body">
+            <strong>Recommendations matter. </strong>Thats why we have the option to see who serves the businesses in your network. <br><br>
+            If you check this option we'll ask for some details about your network (e.g., LinkedIn connections). We'll use this to find your most trusted options.<br><br>
+            We <strong>never share any of your network data</strong> with third parties (including accountants).
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Got it.</button>
+          </div>
+        </div>
+      </div>
+    </div>
