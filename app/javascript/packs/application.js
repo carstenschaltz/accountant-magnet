@@ -6,6 +6,7 @@ import { location } from './location.js'
 import { next, back, skip } from './toggleEnquiryTabs.js'
 import { getInTouch } from './getInTouch.js'
 import { enquiryEvent } from './googleAnalyticsEvents.js'
+import { userEvent } from './googleAnalyticsEvents.js'
 // import './select2.js';
 
 showForm();
@@ -17,4 +18,5 @@ back();
 skip();
 getInTouch();
 enquiryEvent();
+userEvent();
 

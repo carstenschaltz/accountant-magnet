@@ -11,4 +11,19 @@ const enquiryEvent = () => {
   }
 }
 
+const userEvent = () => {
+  const button = document.getElementById('user-create');
+
+  if (button) {
+    button.addEventListener('click', (event) => {
+      gtag('event', 'userCreate', {
+        'event_category': 'user',
+        'event_label': 'create'
+      });
+    });
+  }
+}
+
+
 export { enquiryEvent }
+export { userEvent }
