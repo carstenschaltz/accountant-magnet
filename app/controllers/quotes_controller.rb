@@ -17,7 +17,7 @@ class QuotesController < ApplicationController
     @accountant = Accountant.where(id: params[:quote][:accountant_id]).first
     @enquiry = Enquiry.where(id: params[:quote][:enquiry_id]).first
     respond_to do |format|
-      format.js # <-- will render `app/views/reviews/create.js.erb`
+      format.js # <-- will render `app/views/quotes/id_check.js.erb`
     end
   end
 
